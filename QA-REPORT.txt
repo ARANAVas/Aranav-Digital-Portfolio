@@ -1,36 +1,20 @@
-ARANAV PORTFOLIO — V10 DEVICE-WIDE PERFORMANCE QA
-======================================================
+ARANAV PORTFOLIO V10 — ABILITY CARD & PERFORMANCE PASS
 
-BUILD: V10 (version number unchanged)
+Static checks:
+- javascript_syntax: passed (node --check)
+- html_parser: passed
+- duplicate_ids: []
+- missing_local_assets: []
+- css_parser: {'top_level_rules': 693, 'errors': []}
+- resume_portfolio_link_embedded: True
+- responsive_image_variants: True
 
-STATIC VALIDATION
-- Duplicate HTML IDs: 0
-- Unresolved ARIA references: 0
-- Missing local assets: 0
-- CSS top-level parse errors: 0
-- Image elements: 4; all have dimensions: True
-- Assets folder size: 692.7 KB
-- Hero image preload: present
-- Font display swap: present
-- Skip-to-content link: present
+Changes:
+- Ability card resized with fluid desktop/tablet/mobile dimensions, tighter spacing and typography, and a simpler shadow without backdrop blur.
+- Mobile card width and height are constrained for 320px–760px layouts; ability card remains anchored to the lower image area.
+- Hero visual uses layout containment without paint clipping.
+- Door overlays use transform-based movement and transient compositor hints; reduced-motion users retain non-animated navigation.
+- Responsive WebP variants and existing lazy-loading strategy retained.
+- Portfolio URL in the embedded ATS DOCX resume remains https://aranavas.github.io/Aranav-Digital-Portfolio/.
 
-PERFORMANCE CHANGES
-- Explicit font-display: swap for text-first rendering
-- High-priority responsive hero image preload retained
-- Below-fold images lazy-loaded, async-decoded and low fetch priority
-- Gallery sizes attribute aligned to actual 48px/72px rendered widths
-- Touch devices do not retain sticky hover transforms
-- Mobile ambient blur removed to reduce GPU compositing cost
-- Accessible keyboard skip-to-content link added
-- Back-to-top update is also refreshed on viewport resize
-
-BROWSER / DEVICE STATUS
-- Automated Chromium navigation could not run in this environment (ERR_BLOCKED_BY_ADMINISTRATOR; headless CLI timed out).
-- Therefore no new claims are made about runtime layout, FPS, Lighthouse, Safari, Firefox or physical devices.
-
-RECOMMENDED FINAL CHECK AFTER DEPLOYMENT
-- Test Android Chrome at 320 / 360 / 390 / 430px.
-- Test iPhone Safari at 375 / 390 / 430px.
-- Test tablet at 768 / 820 / 1024px and desktop at 1280 / 1440 / 1920px.
-- Run Lighthouse mobile and inspect LCP, CLS, INP, image transfer and font loading.
-- Verify all four door entry/exit cycles and contact dialog.
+Runtime testing: NOT COMPLETED. Chromium navigation was blocked by the execution environment (ERR_BLOCKED_BY_ADMINISTRATOR). This report does not claim real-device, cross-browser, Lighthouse or runtime overlap verification.

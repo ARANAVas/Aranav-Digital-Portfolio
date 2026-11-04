@@ -796,3 +796,105 @@ html[data-theme="light"] .story-image{border-color:rgba(181,31,50,.24)}
 /* The transition shells exist only during the short door journey. */
 
 @media(prefers-reduced-motion:reduce){.skip-link{transition:none!important}}
+
+
+/* V10 SCREENSHOT-LED FINISH: fully opaque mobile header in both themes. */
+@media (max-width:760px){
+  html[data-theme="light"] .header,
+  html[data-theme="dark"] .header,
+  .header{
+    background:#f8f7f4 !important;
+    background-color:#f8f7f4 !important;
+    -webkit-backdrop-filter:none !important;
+    backdrop-filter:none !important;
+    isolation:isolate;
+    border-bottom:1px solid rgba(23,33,42,.12);
+  }
+  html[data-theme="dark"] .header{
+    background:#101720 !important;
+    background-color:#101720 !important;
+    border-bottom-color:rgba(255,255,255,.12);
+  }
+  .header::before{content:none !important;}
+  .hero-main{min-width:0;}
+  .hero-description{overflow-wrap:anywhere;}
+  .hero-actions .btn{min-width:0;}
+  .hero-visual{isolation:isolate;}
+}
+@media (max-width:350px){
+  .hero-title{font-size:clamp(43px,12vw,48px);}
+  .hero-visual{height:310px;}
+  .hero-ability-card{width:min(194px,78%);}
+  .note-top{font-size:7px;max-width:132px;}
+}
+@media (min-width:761px){
+  .header{background:var(--bg);}
+  html[data-theme="light"] .header{background:#f8f7f4;}
+}
+
+/* V10 ABILITY CARD + ALL-DEVICE PERFORMANCE PASS */
+.hero-visual{contain:layout;}
+.hero-ability-card{
+  width:clamp(218px,22vw,246px);
+  min-height:122px;
+  padding:13px 15px 11px;
+  gap:6px;
+  border-radius:4px;
+  box-shadow:0 16px 38px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.08);
+  -webkit-backdrop-filter:none;
+  backdrop-filter:none;
+  transform:translateZ(0);
+}
+.hero-ability-card>strong{font-size:clamp(20px,1.8vw,23px);line-height:1.12;}
+.ability-card-top{font-size:8px;letter-spacing:1px;}
+.ability-card-skills{font-size:10px;line-height:1.45;}
+.ability-card-foot{font-size:7px;letter-spacing:.95px;}
+.hero-ability-card:focus-visible{outline:2px solid #b51f32;outline-offset:4px;}
+@media(min-width:761px) and (max-width:1100px){
+  .hero-ability-card{width:clamp(202px,23vw,224px);min-height:116px;left:-8px;bottom:38px;}
+  .hero-ability-card>strong{font-size:20px;}
+  .note-top{right:-2px;}
+}
+@media(max-width:760px){
+  .hero-visual{height:clamp(318px,88vw,360px);max-width:420px;}
+  .hero-image-frame{inset:8px 17px 18px 22px;}
+  .hero-ability-card{
+    left:0;
+    bottom:24px;
+    width:min(196px,58%);
+    min-height:102px;
+    padding:9px 11px 8px;
+    gap:5px;
+    box-shadow:0 12px 28px rgba(0,0,0,.18);
+  }
+  .hero-ability-card>strong{font-size:clamp(17px,5vw,20px);letter-spacing:-.65px;}
+  .ability-card-top{font-size:6.5px;letter-spacing:.85px;gap:6px;}
+  .ability-card-top i{width:5px;height:5px;flex:none;}
+  .ability-card-top b{font-size:12px;}
+  .ability-card-skills{font-size:8.5px;line-height:1.35;}
+  .ability-card-foot{padding-top:5px;font-size:6px;letter-spacing:.7px;}
+  .note-top{right:0;top:26px;padding:8px 9px;font-size:7px;}
+  .hero-scroll{position:relative;bottom:auto;margin-top:-2px;padding-bottom:2px;}
+  .hero{padding-bottom:58px;}
+}
+@media(max-width:430px){
+  .hero-visual{height:clamp(306px,86vw,342px);}
+  .hero-ability-card{width:min(188px,58%);min-height:98px;bottom:22px;}
+  .hero-ability-card>strong{font-size:18px;}
+  .ability-card-skills{font-size:8px;}
+  .ability-card-foot{font-size:5.8px;}
+}
+@media(max-width:350px){
+  .hero-visual{height:300px;}
+  .hero-ability-card{width:min(176px,61%);min-height:94px;padding:8px 9px;bottom:20px;}
+  .hero-ability-card>strong{font-size:17px;}
+  .ability-card-top{font-size:6px;}
+  .ability-card-skills{font-size:7.5px;}
+}
+/* Keep motion on compositor-friendly properties and avoid permanent layer promotion. */
+.door-arch,.door-flight-shell,.door-flight-portal,.door-flight-door,.door-return-shell,.door-return-portal,.door-return-door{backface-visibility:hidden;}
+.door-flight-shell,.door-return-shell{will-change:transform;}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important;}
+  .hero-visual,.hero-ability-card,.door-arch,.door-flight-shell,.door-flight-portal,.door-flight-door,.door-return-shell,.door-return-portal,.door-return-door{will-change:auto!important;transition:none!important;}
+}

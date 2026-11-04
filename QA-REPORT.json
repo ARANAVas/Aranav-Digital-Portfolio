@@ -1,66 +1,34 @@
 {
-  "project": "Aranav Portfolio",
   "version": "V10",
-  "build": "Device-wide performance pass",
-  "static_checks": {
+  "focus": "Ability card refinement and device-wide performance pass",
+  "checks": {
+    "javascript_syntax": "passed (node --check)",
+    "html_parser": "passed",
     "duplicate_ids": [],
-    "unresolved_aria_references": [],
     "missing_local_assets": [],
-    "css_top_level_parse_errors": [],
-    "image_sources": [
-      {
-        "src": "assets/photos/hero-office.webp",
-        "exists": true,
-        "bytes": 120200,
-        "loading": "eager",
-        "fetchpriority": "high",
-        "has_dimensions": true
-      },
-      {
-        "src": "assets/photos/working-desk.webp",
-        "exists": true,
-        "bytes": 128404,
-        "loading": "lazy",
-        "fetchpriority": "low",
-        "has_dimensions": true
-      },
-      {
-        "src": "assets/photos/portrait-blue-640.webp",
-        "exists": true,
-        "bytes": 24206,
-        "loading": "lazy",
-        "fetchpriority": "low",
-        "has_dimensions": true
-      },
-      {
-        "src": "assets/photos/portrait-dark-640.webp",
-        "exists": true,
-        "bytes": 27090,
-        "loading": "lazy",
-        "fetchpriority": "low",
-        "has_dimensions": true
-      }
-    ],
-    "asset_folder_bytes": 709373,
-    "hero_preload_present": true,
-    "google_fonts_display_swap": true,
-    "skip_link_present": true
+    "css_parser": {
+      "top_level_rules": 693,
+      "errors": []
+    },
+    "resume_portfolio_link_embedded": true,
+    "responsive_image_variants": true
   },
-  "optimizations": [
-    "Explicit font-display: swap for text-first rendering",
-    "High-priority responsive hero image preload retained",
-    "Below-fold images lazy-loaded, async-decoded and low fetch priority",
-    "Gallery sizes attribute aligned to actual 48px/72px rendered widths",
-    "Touch devices do not retain sticky hover transforms",
-    "Mobile ambient blur removed to reduce GPU compositing cost",
-    "Accessible keyboard skip-to-content link added",
-    "Back-to-top update is also refreshed on viewport resize"
+  "changes": [
+    "Ability card resized with fluid desktop/tablet/mobile dimensions, tighter spacing and typography, and a simpler shadow without backdrop blur.",
+    "Mobile card width and height are constrained for 320px\u2013760px layouts; ability card remains anchored to the lower image area.",
+    "Hero visual uses layout containment without paint clipping.",
+    "Door overlays use transform-based movement and transient compositor hints; reduced-motion users retain non-animated navigation.",
+    "Responsive WebP variants and existing lazy-loading strategy retained.",
+    "Portfolio URL in the embedded ATS DOCX resume remains https://aranavas.github.io/Aranav-Digital-Portfolio/."
   ],
-  "browser_validation": "Not completed in this run: local Chromium navigation was blocked by the execution environment (ERR_BLOCKED_BY_ADMINISTRATOR) and direct headless Chromium timed out. Do not treat static checks as device/browser QA.",
-  "remaining_external_tests": [
-    "Physical Android and iOS hardware",
-    "Safari and Firefox",
-    "Live GitHub Pages deployment",
-    "Lighthouse / Web Vitals / real-network waterfall"
-  ]
+  "runtime_testing": {
+    "status": "not_completed",
+    "reason": "Chromium navigation to both local HTTP and file URLs was blocked by the execution environment (ERR_BLOCKED_BY_ADMINISTRATOR).",
+    "not_claimed": [
+      "real Android/iOS device verification",
+      "Safari/Firefox verification",
+      "Lighthouse/Core Web Vitals score",
+      "runtime overlap measurements"
+    ]
+  }
 }
