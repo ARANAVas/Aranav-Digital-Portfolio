@@ -1,0 +1,23 @@
+ARANAV SHARMA — PORTFOLIO UPDATE
+
+WHAT'S INCLUDED
+- index.html, styles.css, script.js: refreshed website
+- README.md: project information
+- assets/: your four portfolio photos and resume PDF
+
+PUBLISH TO YOUR EXISTING GITHUB PAGES REPOSITORY
+Repository: https://github.com/AranavSharma07/Aranav-Digital-Portfolio
+Live URL: https://aranavsharma07.github.io/Aranav-Digital-Portfolio/
+
+IMPORTANT
+The connected GitHub integration allowed repository inspection but rejected write access (HTTP 403). Therefore these files are prepared and tested locally, but are NOT yet published to GitHub Pages.
+
+RECOMMENDED UPLOAD
+1. Download and extract this ZIP on your computer.
+2. Open the repository link above and confirm you are on the main branch.
+3. Replace the existing index.html, styles.css, script.js and README.md with the matching files from this folder. Keep the assets folder and its structure intact (assets/Aranav-Sharma-Resume.pdf and assets/photos/...).
+4. Commit the changes to main with a message such as: Premium portfolio refresh and interactive skill doors.
+5. Open the repository's Actions tab and wait until the newest Pages deployment is completed successfully.
+6. Open the Live URL in an incognito/private tab and test each door, the Start a conversation button, resume and mobile menu.
+
+DO NOT upload the ZIP itself as the website. Extract it first; GitHub Pages must see index.html at the repository root.

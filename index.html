@@ -13,7 +13,7 @@
   <title>Aranav Sharma — Digital Marketing Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet" />
   <link rel="preload" as="image" href="assets/photos/hero-office.webp" fetchpriority="high" />
   <link rel="stylesheet" href="styles.css" />
   <script>document.documentElement.classList.add('js');</script>
@@ -57,7 +57,7 @@
         <span class="sr-only">Digital Marketing Professional</span>
         <p class="hero-intro reveal">I bring together digital marketing, brand communication and organized execution to help businesses strengthen their online presence and move their goals forward.</p>
         <div class="hero-actions reveal">
-          <a class="button button-dark magnetic" href="#contact"><span>Start a conversation</span><b>↗</b></a>
+          <button class="button button-dark magnetic conversation-trigger" type="button"><span>Start a conversation</span><b>↗</b></button>
           <a class="button button-outline magnetic" href="#expertise"><span>See my work</span><b>↘</b></a>
         </div>
         <div class="hero-proof reveal"><span class="proof-line"></span><span>STRATEGY MINDED</span><span class="proof-dot">✳</span><span>EXECUTION FOCUSED</span></div>
@@ -81,11 +81,46 @@
 
     <section class="expertise section-shell section-pad" id="expertise">
       <div class="section-heading reveal"><div><span class="section-kicker">01 / WHAT I DO</span><h2>Magic happens<br /><em>behind the doors.</em></h2></div><p>From the first idea to the final report, I enjoy connecting creative thinking with structured execution. Explore the areas where I bring value.</p></div>
-      <div class="doors-grid">
-        <article class="door-card door-blue reveal" tabindex="0"><div class="door-top"><span>01 / DISCOVER</span><span class="door-symbol">⌕</span></div><div class="door-visual"><div class="door-arch"><span>SEARCH</span><i>↗</i></div></div><div class="door-content"><h3>SEO & Website</h3><p>Keyword research, SEO fundamentals, metadata review and practical website optimization.</p><a href="#skills" class="text-link">Explore capability <span>↗</span></a></div></article>
-        <article class="door-card door-lime reveal" tabindex="0"><div class="door-top"><span>02 / CONNECT</span><span class="door-symbol">◉</span></div><div class="door-visual"><div class="door-arch"><span>SOCIAL</span><i>↗</i></div></div><div class="door-content"><h3>Social Media</h3><p>Social media planning, online brand communication, digital promotion and audience engagement.</p><a href="#skills" class="text-link">Explore capability <span>↗</span></a></div></article>
-        <article class="door-card door-orange reveal" tabindex="0"><div class="door-top"><span>03 / CREATE</span><span class="door-symbol">✳</span></div><div class="door-visual"><div class="door-arch"><span>CONTENT</span><i>↗</i></div></div><div class="door-content"><h3>Content & Campaigns</h3><p>Content calendars, campaign concepts, brand promotion and day-to-day marketing deliverables.</p><a href="#skills" class="text-link">Explore capability <span>↗</span></a></div></article>
-        <article class="door-card door-violet reveal" tabindex="0"><div class="door-top"><span>04 / ORGANISE</span><span class="door-symbol">▦</span></div><div class="door-visual"><div class="door-arch"><span>INSIGHTS</span><i>↗</i></div></div><div class="door-content"><h3>Data & Operations</h3><p>Data accuracy, data management, reporting, documentation and team coordination.</p><a href="#skills" class="text-link">Explore capability <span>↗</span></a></div></article>
+      <div class="doors-grid" aria-label="Interactive skill doors">
+        <article class="door-card door-blue reveal" data-door-card>
+          <div class="door-top"><span>01 / DISCOVER</span><span class="door-state">CLICK TO OPEN</span></div>
+          <div class="door-stage">
+            <div class="door-room" aria-hidden="true"><span class="room-number">01</span><span class="room-word">VISIBILITY</span><span class="room-glow"></span></div>
+            <button class="door-trigger" type="button" aria-expanded="false" aria-controls="door-detail-seo" aria-label="Open SEO and Website skills"><span class="door-leaf"><span class="door-number">01</span><span class="door-label">SEO & WEBSITE</span><span class="door-handle"></span><span class="door-keyline"></span></span></button>
+          </div>
+          <div class="door-summary"><h3>SEO & Website</h3><p>Make websites easier to discover, understand and navigate.</p></div>
+          <div class="door-detail" id="door-detail-seo" hidden><div class="detail-kicker">INSIDE THIS DOOR / SEARCH & WEB</div><p>Research-led website improvements, from search intent to on-page presentation.</p><ul><li>Keyword research and search-intent mapping</li><li>SEO fundamentals, headings and on-page structure</li><li>Meta title and description review</li><li>Website content, usability and responsive checks</li><li>Indexability awareness, including noindex diagnostics</li></ul><div class="detail-result"><strong>HOW I APPLY IT</strong><span>Review → identify issues → prioritise fixes → recheck</span></div><button class="door-close" type="button" data-door-close>Close door <span>↗</span></button></div>
+        </article>
+
+        <article class="door-card door-lime reveal" data-door-card>
+          <div class="door-top"><span>02 / CONNECT</span><span class="door-state">CLICK TO OPEN</span></div>
+          <div class="door-stage">
+            <div class="door-room" aria-hidden="true"><span class="room-number">02</span><span class="room-word">COMMUNITY</span><span class="room-glow"></span></div>
+            <button class="door-trigger" type="button" aria-expanded="false" aria-controls="door-detail-social" aria-label="Open Social Media Marketing skills"><span class="door-leaf"><span class="door-number">02</span><span class="door-label">SOCIAL MEDIA</span><span class="door-handle"></span><span class="door-keyline"></span></span></button>
+          </div>
+          <div class="door-summary"><h3>Social Media</h3><p>Build a consistent brand voice and meaningful audience engagement.</p></div>
+          <div class="door-detail" id="door-detail-social" hidden><div class="detail-kicker">INSIDE THIS DOOR / AUDIENCE & COMMUNITY</div><p>Plan platform-specific communication that makes a brand feel active, recognisable and relevant.</p><ul><li>Social media strategy and page optimisation</li><li>Monthly content calendars and posting plans</li><li>Captions, hashtags, calls to action and post ideas</li><li>Audience engagement and community communication</li><li>Campaign coordination across Instagram, Facebook, LinkedIn and YouTube</li></ul><div class="detail-result"><strong>HOW I APPLY IT</strong><span>Plan → publish → engage → review performance</span></div><button class="door-close" type="button" data-door-close>Close door <span>↗</span></button></div>
+        </article>
+
+        <article class="door-card door-orange reveal" data-door-card>
+          <div class="door-top"><span>03 / CREATE</span><span class="door-state">CLICK TO OPEN</span></div>
+          <div class="door-stage">
+            <div class="door-room" aria-hidden="true"><span class="room-number">03</span><span class="room-word">STORYTELLING</span><span class="room-glow"></span></div>
+            <button class="door-trigger" type="button" aria-expanded="false" aria-controls="door-detail-content" aria-label="Open Content and Campaign skills"><span class="door-leaf"><span class="door-number">03</span><span class="door-label">CONTENT</span><span class="door-handle"></span><span class="door-keyline"></span></span></button>
+          </div>
+          <div class="door-summary"><h3>Content & Campaigns</h3><p>Turn ideas into clear creative briefs and coordinated promotions.</p></div>
+          <div class="door-detail" id="door-detail-content" hidden><div class="detail-kicker">INSIDE THIS DOOR / CREATIVE EXECUTION</div><p>Connect a campaign objective with a useful message, strong visual direction and a practical delivery plan.</p><ul><li>Campaign concepts, briefs and promotional planning</li><li>Content calendars, captions and brand storytelling</li><li>Short-form video ideas, scripts and hooks</li><li>Creative asset coordination and content reviews</li><li>Design workflow familiarity with Canva and Adobe Express</li></ul><div class="detail-result"><strong>HOW I APPLY IT</strong><span>Brief → create → coordinate → publish</span></div><button class="door-close" type="button" data-door-close>Close door <span>↗</span></button></div>
+        </article>
+
+        <article class="door-card door-violet reveal" data-door-card>
+          <div class="door-top"><span>04 / ORGANISE</span><span class="door-state">CLICK TO OPEN</span></div>
+          <div class="door-stage">
+            <div class="door-room" aria-hidden="true"><span class="room-number">04</span><span class="room-word">OPERATIONS</span><span class="room-glow"></span></div>
+            <button class="door-trigger" type="button" aria-expanded="false" aria-controls="door-detail-operations" aria-label="Open Data and Operations skills"><span class="door-leaf"><span class="door-number">04</span><span class="door-label">DATA & OPS</span><span class="door-handle"></span><span class="door-keyline"></span></span></button>
+          </div>
+          <div class="door-summary"><h3>Data & Operations</h3><p>Keep information accurate, organised and ready for action.</p></div>
+          <div class="door-detail" id="door-detail-operations" hidden><div class="detail-kicker">INSIDE THIS DOOR / SYSTEMS & DELIVERY</div><p>Support teams with accurate data, clear documentation and reliable daily coordination.</p><ul><li>Advanced data entry and data accuracy checks</li><li>Data management, spreadsheet organisation and reporting</li><li>MS Word, Microsoft Excel and document processing</li><li>Email handling, internet research and file management</li><li>Task planning, team coordination and progress updates</li></ul><div class="detail-result"><strong>HOW I APPLY IT</strong><span>Organise → validate → document → report</span></div><button class="door-close" type="button" data-door-close>Close door <span>↗</span></button></div>
+        </article>
       </div>
     </section>
 
@@ -128,6 +163,7 @@
         <article class="skill-group reveal"><div class="skill-head"><span class="skill-count">03 / INSIGHTS</span><span class="skill-mark">▤</span></div><h3>Data, Reporting & Administration</h3><p>Reliable data handling and clear documentation to support day-to-day business operations.</p><div class="skill-pills"><span>Advanced Data Entry</span><span>Data Accuracy</span><span>Data Management</span><span>Document Processing</span><span>File Management</span><span>Email Handling</span><span>Reporting</span></div><div class="skill-foot"><span>DETAIL-ORIENTED EXECUTION</span><span class="skill-foot-line"></span></div></article>
         <article class="skill-group reveal"><div class="skill-head"><span class="skill-count">04 / TOOLKIT</span><span class="skill-mark">▦</span></div><h3>Computer & Professional Skills</h3><p>Everyday productivity, research and collaboration skills that keep projects moving.</p><div class="skill-pills"><span>MS Word</span><span>Microsoft Excel</span><span>Internet Research</span><span>Computer Operations</span><span>Online Documentation</span><span>Team Coordination</span><span>Communication</span><span>Time Management</span><span>Problem Solving</span><span>Task Planning</span></div><div class="skill-foot"><span>WORKFLOW & COLLABORATION</span><span class="skill-foot-line"></span></div></article>
       </div>
+      <div class="skills-notes reveal"><div><span class="skills-notes-kicker">WORKING TOOLKIT</span><strong>Tools & working methods</strong></div><p>Canva · Adobe Express · Microsoft Word · Microsoft Excel · Internet research · Social platforms · Website content & metadata review · Team task tracking</p></div>
     </section>
 
     <section class="education-strip section-shell reveal"><div class="edu-mark">B.Sc.</div><div class="edu-copy"><span class="section-kicker">EDUCATION / CURRENTLY PURSUING</span><h2>Bachelor of Science <em>in Physics</em></h2><p>Daudnagar College, Daudnagar <span>·</span> Magadh University</p></div><div class="edu-side">FOUNDATION<br />IN SCIENCE<br /><span>↗</span></div></section>
@@ -136,10 +172,23 @@
       <div class="contact-top reveal"><span class="section-kicker"><span class="live-dot"></span> OPEN TO PROFESSIONAL CONVERSATIONS</span><span class="contact-index">05 / LET'S CONNECT</span></div>
       <h2 class="contact-title reveal">Got a project?<br /><em>Let's build it</em><br />together<span class="contact-period">.</span></h2>
       <p class="contact-description reveal">I’m focused on effective digital marketing, reliable data management and well-organized business operations. Have an opportunity or an idea to discuss? Let’s connect.</p>
-      <div class="contact-actions reveal"><a class="button button-dark magnetic" href="mailto:asarnavsharma04@gmail.com"><span>Start a conversation</span><b>↗</b></a><a class="button button-outline magnetic" href="assets/Aranav-Sharma-Resume.pdf" target="_blank" rel="noopener"><span>View my resume</span><b>↓</b></a></div>
-      <div class="contact-footer reveal"><div class="contact-links"><a href="mailto:asarnavsharma04@gmail.com">EMAIL <span>↗</span></a><a href="https://www.linkedin.com/in/aranav-sharma-161880443/" target="_blank" rel="noopener noreferrer">LINKEDIN <span>↗</span></a><a href="https://aranavsharma07.github.io/AranavSharma/" target="_blank" rel="noopener noreferrer">PORTFOLIO <span>↗</span></a></div><span class="footer-note">ARANAV SHARMA · DIGITAL MARKETING</span></div>
+      <div class="contact-actions reveal"><button class="button button-dark magnetic conversation-trigger" type="button"><span>Start a conversation</span><b>↗</b></button><a class="button button-outline magnetic" href="assets/Aranav-Sharma-Resume.pdf" target="_blank" rel="noopener"><span>View my resume</span><b>↓</b></a></div>
+      <div class="contact-footer reveal"><div class="contact-links"><a href="mailto:asarnavsharma04@gmail.com">EMAIL <span>↗</span></a><a href="https://www.linkedin.com/in/aranav-sharma-161880443/" target="_blank" rel="noopener noreferrer">LINKEDIN <span>↗</span></a></div><span class="footer-note">ARANAV SHARMA · DIGITAL MARKETING</span></div>
     </section>
   </main>
+
+  <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-dialog-title">
+    <div class="contact-dialog-inner">
+      <div class="dialog-topline"><span>ARANAV SHARMA / LET'S CONNECT</span><button class="dialog-close" type="button" aria-label="Close contact options" data-dialog-close>×</button></div>
+      <span class="dialog-kicker">A GOOD CONVERSATION STARTS HERE</span>
+      <h2 id="contact-dialog-title">Have an idea?<br /><em>Let's talk.</em></h2>
+      <p>Choose the easiest way to reach me. I usually respond through email or LinkedIn.</p>
+      <a class="dialog-option dialog-email" href="mailto:asarnavsharma04@gmail.com?subject=Let's%20connect%20-%20Aranav%20Sharma"><span><small>EMAIL</small><strong>asarnavsharma04@gmail.com</strong></span><b>↗</b></a>
+      <a class="dialog-option" href="https://www.linkedin.com/in/aranav-sharma-161880443/" target="_blank" rel="noopener noreferrer"><span><small>LINKEDIN</small><strong>Connect professionally</strong></span><b>↗</b></a>
+      <button class="dialog-option dialog-copy" type="button" id="copy-email"><span><small>QUICK ACTION</small><strong>Copy email address</strong></span><b>＋</b></button>
+      <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+    </div>
+  </dialog>
 
   <footer class="site-footer"><a class="brand" href="#home">AS<span>.</span></a><span>© <span id="year-now">2026</span> ARANAV SHARMA. ALL RIGHTS RESERVED.</span><a href="#home" class="back-top">BACK TO TOP ↑</a></footer>
   <script src="script.js" defer></script>

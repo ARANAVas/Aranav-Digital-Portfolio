@@ -24,16 +24,17 @@ Then open `http://localhost:8000`.
 
 - Light/dark theme toggle (remembers the visitor's choice when browser storage is available)
 - Mobile navigation with Escape-key support
-- Typewriter role strip
+- Typewriter role strip with fixed, short phrases
 - Scroll-triggered entrance animations
-- Interactive arched service-door cards
+- Click-to-open arched skill doors with a 3D swing animation and skill details
+- Accessible contact dialog with email, LinkedIn and copy-email actions
 - Desktop hover/cursor effects, disabled for touch devices and reduced-motion settings
-- Resume opens in a new tab; email opens the visitor's mail app; LinkedIn and portfolio links open in new tabs
+- Resume opens in a new tab; the Start a conversation buttons open an accessible contact chooser with email, LinkedIn and copy-email actions
 
 ## Accessibility and performance
 
 - Semantic section landmarks, accessible buttons and image alt text
-- Responsive layouts for desktop, tablet and mobile widths
+- Responsive layouts for desktop, tablet and mobile widths, with touch-friendly door controls
 - Reduced-motion preference support
 - WebP profile images, lazy loading for below-the-fold imagery, and preload for the hero image
 - No large animation libraries or external runtime dependencies
