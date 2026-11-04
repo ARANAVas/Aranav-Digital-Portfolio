@@ -1,6 +1,6 @@
-# Aranav — Digital Marketing & Applied AI Portfolio (V9 Recruiter-Ready)
+# Aranav — Digital Marketing & Applied AI Portfolio (V10)
 
-A responsive, single-page professional portfolio with a premium white + crimson-red default and a cinematic midnight alternate. The skills section uses four arched 3D doors; opening one reveals a focused skill-detail view.
+A responsive, single-page professional portfolio with a premium white + crimson-red default and a cinematic midnight alternate. The skills section uses four arched 3D doors. Selecting a door now creates a full camera-entry sequence before revealing its skill detail.
 
 ## Preview locally
 
@@ -12,14 +12,24 @@ python -m http.server 8000
 
 Then visit `http://localhost:8000`.
 
-## What changed in V9
+## What's new in V10
 
-- Replaced the two floating/overlapping mini portrait stickers with a balanced two-card portrait gallery beneath the main story image.
-- Added a recessed portal behind each skill door, a visible reverse panel and a weighted 3D hinge swing. Front labels fade while the door turns, preventing mirrored text on the back.
-- Synchronized the 3D door motion with the skill-detail reveal.
-- Corrected the typeface mapping: Manrope for interface/body copy, Cormorant Garamond for editorial emphasis and DM Mono for metadata. Google Fonts use `display=swap` with system fallbacks.
-- Added a direct `View resume` action in the hero for recruiter access.
-- Rebuilt the resume in a single-column, text-first ATS-friendly PDF and editable DOCX.
+- Added a multi-stage skill-door entrance based on the supplied reference video: camera approach/zoom, hinged door swing, portal push-in and skill-page reveal.
+- The selected card's original door fades away while the enlarged clone travels forward, avoiding a duplicated door during the effect.
+- The camera portal expands to cover the viewport before the skill detail is revealed; the temporary overlay is then removed and page scrolling is restored.
+- Added mobile-aware transition geometry so the portal fills narrow screens without creating horizontal page overflow.
+- Preserved the white + crimson-red default theme and the alternate cinematic dark theme.
+- Preserved all four skill areas, photo gallery, recruiter-friendly resume links and current portfolio content.
+- `prefers-reduced-motion` skips the cinematic movement and opens the skill details directly, without leaving a transition overlay or scroll lock behind.
+
+## V10 core maintenance fixes
+
+- Reframed the story portraits into proportionate vertical profile cards with readable captions.
+- Balanced the story/photo layout and tablet breakpoint to avoid compressed columns.
+- Rebuilt both Back to Top controls as real scroll actions; the floating control appears only after scrolling and works with keyboard focus.
+- Fixed Back to Doors so it returns to the actual doors grid position.
+- Preserved the white + crimson first-visit theme, alternate dark theme, and the existing four-stage V10 door-entry animation.
+- Rechecked 30 responsive viewport/theme combinations, all four lazy-loaded photos, all four skill detail return paths, both Back to Top controls, theme toggle and reduced-motion handling. See `QA-REPORT.txt` for limitations and exact scope.
 
 ## Main sections
 
@@ -49,12 +59,17 @@ Then visit `http://localhost:8000`.
 - Image dimensions declared to reduce layout shift
 - Reduced-motion support and system-font fallbacks
 - Semantic sections, descriptive alt text, button-based skill controls and visible focus states
-- Responsive layout and interaction checks completed in Chromium from 320px through 1440px in both themes
+- Door overlay is removed after the transition and the page scroll lock is released
 
-## Skills and AI positioning
+## V10 door interaction sequence
 
-AI/GenAI content distinguishes applied workflows from broader model-ecosystem awareness. Practical work is described most strongly around ChatGPT, Google Gemini and Gemini Veo; it does not claim equal expert proficiency across all model families. The paid-media section describes planning fundamentals and platform knowledge, not unverified live-spend results, ROAS figures or certifications.
+1. **Approach:** a single selected door grows from its original card position toward the centre of the viewport.
+2. **Open:** the door slab rotates on its left hinge; its front label fades instead of appearing mirrored.
+3. **Enter:** the dark recessed portal pushes toward the viewer and scales beyond the viewport, creating the impression of moving through the doorway.
+4. **Reveal:** the matching skill detail view appears, the overlay fades away, and normal scrolling resumes.
 
-## Deployment
+## QA and deployment
+
+The V10 interaction was exercised in Chromium at desktop size and narrow mobile sizes, including all four doors in full-motion mode and reduced-motion mode. See `QA-REPORT.txt` and `QA-REPORT.json` for the exact checks and limitations.
 
 Upload the complete project to the root of the GitHub Pages repository. Keep `assets/`, `index.html`, `styles.css` and `script.js` at the same relative paths. GitHub Pages should use branch `main` and folder `/ (root)`. See `UPLOAD-TO-GITHUB.txt` for replacement steps.

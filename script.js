@@ -160,14 +160,24 @@
     }
   };
 
-  // Door opens on its hinge, then transitions into the corresponding full skill page.
+  // Cinematic door journey: approach -> hinge swing -> move through portal -> reveal skill detail.
   const stage = $('#doors-stage');
   const detail = $('#skill-detail');
   let activeDoor = null;
-  let doorTimer = 0;
+  let doorTimers = [];
+  let flightOverlay = null;
   const detailEls = {
     counter: $('#detail-counter'), kicker: $('#detail-kicker'), title: $('#detail-title'), intro: $('#detail-intro'),
     tags: $('#detail-tags'), list: $('#detail-list'), tools: $('#detail-tools'), quote: $('#detail-quote'), symbol: $('#detail-symbol')
+  };
+  const clearDoorTimers = () => {
+    doorTimers.forEach(window.clearTimeout);
+    doorTimers = [];
+  };
+  const later = (callback, delay) => {
+    const timer = window.setTimeout(callback, delay);
+    doorTimers.push(timer);
+    return timer;
   };
   const fillSkillDetail = data => {
     detailEls.counter.textContent = data.number;
@@ -216,11 +226,75 @@
       button.setAttribute('aria-expanded', 'false');
     });
   };
+  const removeFlightOverlay = () => {
+    if (!flightOverlay) return;
+    flightOverlay.remove();
+    flightOverlay = null;
+    body.classList.remove('door-transitioning');
+  };
+  const buildFlightOverlay = (card, button) => {
+    removeFlightOverlay();
+    const arch = $('.door-arch', button);
+    const rect = (arch || button).getBoundingClientRect();
+    const ratio = Math.max(.48, Math.min(.9, rect.width / Math.max(rect.height, 1)));
+    const targetHeight = Math.min(window.innerHeight * .84, 900, (window.innerWidth * .84) / ratio);
+    const targetWidth = targetHeight * ratio;
+    const targetLeft = (window.innerWidth - targetWidth) / 2;
+    const targetTop = (window.innerHeight - targetHeight) / 2;
+    const zoom = Math.max(window.innerWidth / targetWidth, window.innerHeight / targetHeight) * 1.4;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'door-flight-overlay';
+    overlay.setAttribute('aria-hidden', 'true');
+    const portal = document.createElement('div');
+    portal.className = 'door-flight-portal';
+    portal.style.setProperty('--portal-zoom', String(zoom));
+    const shell = document.createElement('div');
+    shell.className = 'door-flight-shell ' + Array.from(card.classList).filter(name => /^door-(blue|violet|green|amber)$/.test(name)).join(' ');
+    shell.style.left = rect.left + 'px';
+    shell.style.top = rect.top + 'px';
+    shell.style.width = rect.width + 'px';
+    shell.style.height = rect.height + 'px';
+    const slab = arch ? arch.cloneNode(true) : document.createElement('div');
+    slab.classList.add('door-flight-door');
+    slab.setAttribute('aria-hidden', 'true');
+    slab.querySelectorAll('[id]').forEach(node => node.removeAttribute('id'));
+    shell.append(portal, slab);
+    overlay.appendChild(shell);
+    body.appendChild(overlay);
+    body.classList.add('door-transitioning');
+    flightOverlay = overlay;
+
+    // Let the browser paint the exact starting rectangle before the camera dolly begins.
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      if (!flightOverlay) return;
+      overlay.classList.add('is-approaching');
+      shell.style.left = targetLeft + 'px';
+      shell.style.top = targetTop + 'px';
+      shell.style.width = targetWidth + 'px';
+      shell.style.height = targetHeight + 'px';
+    }));
+    return { overlay, shell };
+  };
+  const revealSkillPage = () => {
+    if (!detail || !stage) return;
+    stage.classList.add('is-hidden');
+    detail.hidden = false;
+    requestAnimationFrame(() => {
+      detail.classList.add('is-active');
+      $('#detail-title')?.focus({ preventScroll: true });
+      detail.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      if (flightOverlay) {
+        flightOverlay.classList.add('is-exiting');
+        later(removeFlightOverlay, 520);
+      } else body.classList.remove('door-transitioning');
+    });
+  };
   const openSkill = key => {
     const data = skillData[key];
     const card = $('.skill-door[data-door="' + key + '"]');
-    if (!data || !card || !detail || !stage) return;
-    window.clearTimeout(doorTimer);
+    if (!data || !card || !detail || !stage || card.classList.contains('is-opening')) return;
+    clearDoorTimers();
     if (activeDoor) resetDoors();
     activeDoor = key;
     const button = $('.door-button', card);
@@ -228,19 +302,26 @@
     button.setAttribute('aria-expanded', 'true');
     card.classList.add('is-opening');
     fillSkillDetail(data);
-    doorTimer = window.setTimeout(() => {
-      stage.classList.add('is-hidden');
-      detail.hidden = false;
-      requestAnimationFrame(() => {
-        detail.classList.add('is-active');
-        $('#detail-title')?.focus({ preventScroll: true });
-        detail.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
-      });
-    }, reduceMotion ? 0 : 1200);
+
+    if (reduceMotion) {
+      card.classList.add('is-open');
+      later(revealSkillPage, 0);
+      return;
+    }
+
+    const flight = buildFlightOverlay(card, button);
+    // The selected door comes toward the viewer, swings on its hinge, then the portal rushes forward.
+    later(() => {
+      flight.overlay.classList.add('is-door-open');
+      card.classList.add('is-open');
+    }, 820);
+    later(() => flight.overlay.classList.add('is-entering'), 1450);
+    later(revealSkillPage, 2150);
   };
-  const closeSkill = () => {
+  const closeSkill = ({ scrollToStage = true, focusDoor = true } = {}) => {
     if (!detail || !stage) return;
-    window.clearTimeout(doorTimer);
+    clearDoorTimers();
+    removeFlightOverlay();
     detail.classList.remove('is-active');
     detail.hidden = true;
     stage.classList.remove('is-hidden');
@@ -248,7 +329,9 @@
     const previous = activeDoor;
     activeDoor = null;
     const restore = previous ? $('.skill-door[data-door="' + previous + '"] .door-button') : null;
-    restore?.focus({ preventScroll: true });
+    if (focusDoor) restore?.focus({ preventScroll: true });
+    // Return visitors to the actual door grid instead of leaving them at the now-hidden detail panel.
+    if (scrollToStage) stage.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
   };
   $$('.skill-door').forEach(card => $('.door-button', card)?.addEventListener('click', () => openSkill(card.dataset.door)));
   $('.back-to-doors')?.addEventListener('click', closeSkill);
@@ -256,15 +339,45 @@
     const keys = Object.keys(skillData);
     const index = keys.indexOf(activeDoor);
     const nextKey = keys[(index + 1) % keys.length];
-    activeDoor = null;
-    closeSkill();
+    closeSkill({ scrollToStage: false, focusDoor: false });
     const nextButton = $('.skill-door[data-door="' + nextKey + '"] .door-button');
     nextButton?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
-    window.setTimeout(() => openSkill(nextKey), reduceMotion ? 0 : 400);
+    later(() => openSkill(nextKey), reduceMotion ? 0 : 430);
   });
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && detail && !detail.hidden) closeSkill();
+    if (event.key === 'Escape') {
+      closeMenu();
+      if (detail && !detail.hidden) closeSkill();
+    }
   });
+
+  // Reliable back-to-top controls. The old #top target sat on a sticky header,
+  // whose visual position never changes while scrolling, so anchor navigation could appear broken.
+  const backToTop = $('#back-to-top');
+  const footerBackToTop = $('.footer-back-to-top');
+  let topButtonFrame = 0;
+  const updateBackToTop = () => {
+    topButtonFrame = 0;
+    const visible = window.scrollY > Math.max(420, window.innerHeight * 0.55);
+    backToTop?.classList.toggle('is-visible', visible);
+    backToTop?.setAttribute('aria-hidden', String(!visible));
+    if (backToTop) backToTop.tabIndex = visible ? 0 : -1;
+  };
+  const scheduleBackToTopUpdate = () => {
+    if (topButtonFrame) return;
+    topButtonFrame = window.requestAnimationFrame(updateBackToTop);
+  };
+  const scrollPageToTop = event => {
+    // Blur the clicked control first; otherwise browsers may keep the footer button in view
+    // and counteract the programmatic scroll by restoring focus visibility.
+    event?.currentTarget?.blur();
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+  };
+  backToTop?.addEventListener('click', scrollPageToTop);
+  footerBackToTop?.addEventListener('click', scrollPageToTop);
+  window.addEventListener('scroll', scheduleBackToTopUpdate, { passive: true });
+  window.addEventListener('pageshow', updateBackToTop);
+  updateBackToTop();
 
   // Contact dialog and copy actions.
   const modal = $('#contact-modal');

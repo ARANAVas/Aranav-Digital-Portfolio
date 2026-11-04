@@ -1,24 +1,25 @@
-UPDATE THE ARANAV PORTFOLIO ON GITHUB PAGES - V9 RECRUITER-READY
+UPDATE THE ARANAV PORTFOLIO ON GITHUB PAGES — V10 CORE OPTIMIZED
 
-1. Download and extract the V9 ZIP.
+1. Download and extract the V10 ZIP.
 2. Open the nested folder named "aranav-digital-portfolio".
 3. Open the GitHub repository:
    https://github.com/AranavSharma07/Aranav-Digital-Portfolio
 4. Replace the repository-root files with the files from this project folder:
    index.html, styles.css, script.js, README.md, QA-REPORT.txt,
    QA-REPORT.json and UPLOAD-TO-GITHUB.txt.
-5. Replace the complete "assets" folder, including the photos folder and both resume files.
+5. Replace the complete "assets" folder, including photos and both resume files.
    Do not merge only selected files; replace the full folder to avoid stale assets.
 6. Commit the changes to the "main" branch.
 7. In GitHub Settings > Pages, confirm:
    Deploy from a branch > main > /(root).
-8. Open Actions and verify that the latest Pages deployment finishes successfully.
-9. Check the live website:
+8. In GitHub Actions, verify that the latest Pages deployment finishes successfully.
+9. Open the live website and test all four doors and both Back to Top controls:
    https://aranavsharma07.github.io/Aranav-Digital-Portfolio/
 
 IMPORTANT
-- Keep index.html, styles.css, script.js and assets/ at the repository root level.
-- The website's resume button points to assets/Aranav-Resume.pdf.
+- Version number remains V10; this is a V10 maintenance/QA package, not V11.
+- Keep index.html, styles.css, script.js and assets/ at repository root.
+- The resume button points to assets/Aranav-Resume.pdf.
 - The editable ATS Word resume is assets/Aranav-Resume-ATS.docx.
-- Do not delete the assets/photos folder.
-- This package has not been pushed to GitHub by the assistant. The live site changes only after the repository files are replaced and the GitHub Pages workflow succeeds.
+- Do not delete assets/photos.
+- These files have not been pushed to GitHub by the assistant. The live site changes only after the repository files are replaced and the Pages workflow succeeds.

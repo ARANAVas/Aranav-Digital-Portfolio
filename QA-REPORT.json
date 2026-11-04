@@ -1,117 +1,166 @@
 {
-  "version": "V9 Recruiter-Ready",
-  "date": "2026-11-04",
-  "scope": "Local source checks in isolated headless Chromium; not a live-site or physical-device certification.",
-  "static_checks": {
-    "duplicate_ids": [],
-    "unresolved_aria_refs": [],
-    "missing_local_assets": [],
-    "images_missing_alt": [],
-    "buttons_missing_type": [],
-    "external_blank_links_missing_rel": [],
-    "css_top_level_errors": [],
-    "font_import_matches_css": true,
-    "gallery_cards": 2,
-    "door_portals": 4,
-    "javascript_syntax": "passed (node --check)"
-  },
-  "responsive_checks": {
-    "tested_widths_px": [
+  "version": "V10 Core Optimized (same version number retained)",
+  "environment": "Local Chromium via Playwright, headless Linux; static source inspection; tinycss2 CSS syntax parse; Node syntax check",
+  "scope": [
+    "Screenshot-driven hero/story image layout review",
+    "Portrait gallery proportions",
+    "Footer and floating Back to Top behaviour",
+    "Back-to-doors navigation",
+    "Themes",
+    "Skill-door transitions",
+    "Responsive layout",
+    "Lazy-loaded image delivery",
+    "Accessibility hooks and source integrity"
+  ],
+  "changes": [
+    "Reframed the two secondary portraits as compact vertical editorial profile cards with captions rather than wide landscape crops.",
+    "Adjusted story layout proportions and tablet stacking to prevent squeezed copy and awkward blank spacing.",
+    "Replaced the footer Back to Top anchor that targeted the sticky header with a real button and explicit scroll handler.",
+    "Added a floating Back to Top control that appears after scrolling, is keyboard accessible, and is removed from tab order when hidden.",
+    "Blurred the activated top control before scrolling so keyboard focus cannot keep the footer region visually anchored.",
+    "Updated Back to Doors behaviour to return the visitor to the doors grid rather than leaving the viewport at the previous detail position.",
+    "Preserved the first-visit white + crimson theme and alternate dark theme.",
+    "Preserved V10 four-stage camera approach, hinged swing, portal push-in and skill detail reveal, plus reduced-motion fallback."
+  ],
+  "responsive_layout": {
+    "cases": 30,
+    "viewport_widths_px": [
       320,
       360,
+      375,
       390,
       430,
-      600,
       760,
       768,
       800,
       820,
       900,
       1024,
+      1056,
       1280,
-      1440
+      1440,
+      1600
     ],
     "themes": [
-      "dark",
-      "light"
+      "light",
+      "dark"
     ],
-    "combinations": 26,
-    "no_horizontal_overflow": true,
-    "measured_overlap_widths_px": [
-      320,
-      390,
-      600,
-      760,
-      768,
-      800,
-      900,
-      1024,
-      1280,
-      1440
-    ],
-    "key_component_overlaps": true
+    "horizontal_overflow_cases": 0,
+    "gallery_fit_all_cases": true,
+    "hero_column_overlap_detected": false
   },
-  "interaction_checks": {
-    "first_visit_theme": "light",
-    "first_paint_theme_color": "#ffffff",
-    "theme_toggle_to_dark": true,
-    "story_gallery_has_two_cards": true,
-    "story_image_gallery_gap_px": 13,
-    "doors": [
+  "images": {
+    "after_scrolling_lazy_sections": [
       {
-        "title": "Digital Marketing & Paid Media",
-        "bullet_count": 10,
-        "detail_visible": true
+        "file": "hero-office.webp",
+        "loaded": true,
+        "dimensions_px": [
+          1024,
+          1536
+        ]
       },
       {
-        "title": "SEO & Website",
-        "bullet_count": 5,
-        "detail_visible": true
+        "file": "working-desk.webp",
+        "loaded": true,
+        "dimensions_px": [
+          1024,
+          1536
+        ]
       },
       {
-        "title": "AI & Generative AI",
-        "bullet_count": 8,
-        "detail_visible": true
+        "file": "portrait-blue.webp",
+        "loaded": true,
+        "dimensions_px": [
+          1280,
+          1536
+        ]
       },
       {
-        "title": "Data & Operations",
-        "bullet_count": 6,
-        "detail_visible": true
+        "file": "portrait-dark.webp",
+        "loaded": true,
+        "dimensions_px": [
+          1280,
+          1536
+        ]
       }
     ],
-    "all_four_doors_opened": true,
-    "contact_dialog_opens": true,
-    "mobile_menu_opens": true,
-    "mobile_menu_closes_on_navigation": true
+    "all_local_images_loaded_after_lazy_scroll": true,
+    "images_without_alt": 0,
+    "images_without_declared_dimensions": 0
   },
-  "runtime_checks": {
-    "console_errors": [],
-    "page_errors": [],
-    "failed_requests": [],
-    "all_images_loaded": true,
-    "image_count": 4
+  "navigation_and_controls": {
+    "floating_back_to_top": {
+      "tested_from_page_bottom": true,
+      "final_scroll_y_px": 0,
+      "pass": true
+    },
+    "footer_back_to_top": {
+      "tested_from_page_bottom": true,
+      "final_scroll_y_px": 0,
+      "pass": true
+    },
+    "back_to_top_floating_visibility": true,
+    "four_back_to_doors_cycles": [
+      {
+        "skill": "Digital Marketing & Paid Media",
+        "detail_hidden_after_return": true,
+        "doors_grid_reached": true
+      },
+      {
+        "skill": "SEO & Website",
+        "detail_hidden_after_return": true,
+        "doors_grid_reached": true
+      },
+      {
+        "skill": "AI & Generative AI",
+        "detail_hidden_after_return": true,
+        "doors_grid_reached": true
+      },
+      {
+        "skill": "Data & Operations",
+        "detail_hidden_after_return": true,
+        "doors_grid_reached": true
+      }
+    ],
+    "mobile_menu_open_close": true
   },
-  "resume_checks": {
-    "pdf": "one-page A4; searchable/selectable text; one-column layout; no photo, tables or sidebar; rendered and visually inspected",
-    "docx": "one-page editable Word document; one-column layout; rendered and visually inspected",
-    "pdf_file_size_bytes": 69278,
-    "docx_file_size_bytes": 38771,
-    "unsupported_metrics_or_certifications_added": false
+  "themes": {
+    "first_visit_default": "light (white + crimson red)",
+    "toggle_to_dark": true,
+    "preserves_existing_theme_options": true
   },
-  "performance_optimisations": [
-    "No frontend framework or animation library",
-    "WebP images",
-    "Hero preload/high fetch priority",
-    "Below-fold lazy loading and async decoding",
-    "Declared image dimensions",
-    "System font fallbacks and display=swap",
-    "Reduced-motion support",
-    "Removed cursor-following effect and reduced decorative blur work"
-  ],
+  "skill_doors": {
+    "full_motion_sequence": "approach zoom -> left-hinged swing -> portal push-in -> skill detail reveal",
+    "all_four_doors_full_motion_tested": true,
+    "reduced_motion_opens_details_without_overlay": true,
+    "overlay_removed_after_transition": true,
+    "scroll_unlocked_after_transition": true
+  },
+  "source_integrity": {
+    "duplicate_html_ids": 0,
+    "unresolved_aria_references": 0,
+    "missing_local_assets": 0,
+    "javascript_syntax": "passed (node --check)",
+    "css_parser_errors": 0,
+    "javascript_page_errors": 0
+  },
+  "summary": {
+    "responsive_layout_passed": true,
+    "image_gallery_fixes_passed": true,
+    "all_four_images_loaded_after_lazy_scroll": true,
+    "floating_and_footer_back_to_top_passed": true,
+    "back_to_doors_passed_for_all_four_skills": true,
+    "theme_toggle_passed": true,
+    "four_door_entry_sequence_passed": true,
+    "reduced_motion_passed": true,
+    "source_integrity_passed": true,
+    "no_javascript_page_errors": true
+  },
   "limitations": [
-    "Google Fonts network delivery and fallback behaviour were not benchmarked under live network conditions.",
-    "No Lighthouse/Core Web Vitals score or network-throttled performance run was captured.",
-    "Safari, Firefox and physical Android devices were not independently tested.",
-    "GitHub Pages repository was not updated or deployed by this package creation."
+    "Tests were run in local headless Chromium, not on the user\u2019s physical Windows/Android devices.",
+    "iOS Safari and Firefox have not been independently tested.",
+    "Live GitHub Pages deployment was not performed by the assistant.",
+    "No Lighthouse or PageSpeed score is claimed.",
+    "External Google Fonts delivery depends on network availability; system fallbacks remain configured."
   ]
 }
