@@ -1,44 +1,63 @@
-# Aranav Sharma — Digital Marketing Portfolio
+# Aranav — Digital Marketing & Applied AI Portfolio (V8 QA Refined)
 
-A responsive, single-page personal portfolio inspired by the supplied reference video. Built with plain HTML, CSS and JavaScript; no build step or framework dependency is required.
+A premium, responsive single-page portfolio with a cinematic midnight theme and an alternate white + crimson-red theme. The central skills section uses four interactive arched doors; each opens a focused skill-detail view with a return control.
 
 ## Preview locally
 
-Open `index.html` in a modern browser, or run a local static server from this folder:
+Open `index.html` in a modern browser, or run:
 
 ```bash
 python -m http.server 8000
 ```
 
-Then open `http://localhost:8000`.
+Then visit `http://localhost:8000`.
 
-## Files
+## Main sections
 
-- `index.html` — page structure, accessible navigation, resume-based content and metadata
-- `styles.css` — light/dark themes, responsive layouts, hover states and motion design
-- `script.js` — loader, local clock, theme control, role typewriter, scroll reveals, mobile navigation and subtle cursor effects
-- `assets/Aranav-Sharma-Resume.pdf` — resume linked from the contact section
-- `assets/photos/` — four optimized WebP profile photographs supplied for this portfolio
+- Hero with professional portrait, rotating specialisations and contact CTA
+- Four interactive skill doors: Digital Marketing & Paid Media, SEO & Website, AI & Generative AI, and Data & Operations
+- Selected work and practical examples
+- Professional experience at EliteFinish, RICOZ Innovation and IT Hub Solution
+- Personal story and current B.Sc. Physics education
+- Contact dialog with email, LinkedIn and copy-email actions
+
+## Theme options
+
+- First-visit default: cinematic midnight / dark theme
+- Alternate: premium white surfaces, graphite typography and restrained crimson-red accents
+- The chosen theme is applied before first paint and saved in browser storage when available
+
+## Typography
+
+- Manrope for interface and body copy
+- Cormorant Garamond for editorial/serif emphasis
+- Native system monospace for compact labels and metadata, avoiding a third font download
+- Google Fonts use `display=swap`; robust system fallbacks remain available if the font service is unavailable
 
 ## Included interactions
 
-- Light/dark theme toggle (remembers the visitor's choice when browser storage is available)
-- Mobile navigation with Escape-key support
-- Typewriter role strip with fixed, short phrases
-- Scroll-triggered entrance animations
-- Click-to-open arched skill doors with a 3D swing animation and skill details
-- Accessible contact dialog with email, LinkedIn and copy-email actions
-- Desktop hover/cursor effects, disabled for touch devices and reduced-motion settings
-- Resume opens in a new tab; the Start a conversation buttons open an accessible contact chooser with email, LinkedIn and copy-email actions
+- 3D hinged-door animation followed by a skill-detail view
+- Back-to-doors and next-skill navigation, with Escape-key support
+- Responsive mobile navigation with correct expanded state
+- Theme switch with accessible labels and browser preference persistence
+- Contact dialog, mail links and copy-email fallback
+- Scroll reveals, short role rotation and reduced-motion support
 
-## Accessibility and performance
+## Performance and accessibility
 
-- Semantic section landmarks, accessible buttons and image alt text
-- Responsive layouts for desktop, tablet and mobile widths, with touch-friendly door controls
-- Reduced-motion preference support
-- WebP profile images, lazy loading for below-the-fold imagery, and preload for the hero image
-- No large animation libraries or external runtime dependencies
+- Plain HTML, CSS and JavaScript; no framework or animation libraries
+- WebP photography; hero image preloaded with high fetch priority
+- Below-the-fold images lazy-loaded and asynchronously decoded
+- Image dimensions declared to reduce layout shift
+- Responsive safeguards tested from 320px through 1440px
+- Semantic sections, descriptive image alt text, button-based skill controls and visible focus states
+- Reduced-motion mode and fallback behaviour when IntersectionObserver is unavailable
+- No custom pointer-following animation or third-party JavaScript dependency
 
-## Deploy
+## Skills and AI positioning
 
-Upload the complete folder to GitHub Pages, Netlify or Vercel as a static site. Keep the `assets` folder alongside `index.html` so the resume and images load correctly.
+AI/GenAI content distinguishes applied workflows from broader model-ecosystem awareness. Practical work is described most strongly around ChatGPT, Google Gemini and Gemini Veo; it does not claim equal expert proficiency across all model families. The paid-media section describes planning fundamentals and platform knowledge, not unverified live-spend results, ROAS figures or certifications.
+
+## Deployment
+
+Upload the complete project to the root of the GitHub Pages repository. Keep `assets/`, `index.html`, `styles.css` and `script.js` at the same relative paths. GitHub Pages should use branch `main` and folder `/ (root)`. See `UPLOAD-TO-GITHUB.txt` for the replacement steps.

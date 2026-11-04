@@ -1,196 +1,177 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#f2f0e9" />
-  <meta name="description" content="Aranav Sharma — Digital Marketing, Brand Promotion, SEO Research, Content Strategy and Digital Operations. Explore professional experience, skills and projects." />
-  <meta name="color-scheme" content="light dark" />
-  <meta property="og:title" content="Aranav Sharma — Digital Marketing Portfolio" />
-  <meta property="og:description" content="Digital Marketing | Business Growth | Data Management" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/photos/hero-office.webp" />
-  <title>Aranav Sharma — Digital Marketing Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet" />
-  <link rel="preload" as="image" href="assets/photos/hero-office.webp" fetchpriority="high" />
-  <link rel="stylesheet" href="styles.css" />
-  <script>document.documentElement.classList.add('js');</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1018">
+  <meta name="description" content="Aranav — Digital Marketing, Meta Ads, Google Ads, Applied AI & Generative AI, SEO, brand growth and digital operations. Explore professional skills, experience and selected work.">
+  <meta property="og:title" content="Aranav | Digital Marketing & Applied AI Portfolio">
+  <meta property="og:description" content="Digital marketing, Meta Ads, Google Ads, applied AI, generative AI workflows, SEO and brand growth — a portfolio of skills and professional experience.">
+  <meta property="og:type" content="website">
+  <title>Aranav | Digital Marketing & Applied AI Portfolio</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/photos/hero-office.webp" fetchpriority="high">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    document.documentElement.classList.add('js');
+    try { document.documentElement.dataset.theme = localStorage.getItem('aranav-portfolio-theme') === 'light' ? 'light' : 'dark'; }
+    catch (_) { document.documentElement.dataset.theme = 'dark'; }
+  </script>
 </head>
 <body>
-  <div class="page-loader" aria-hidden="true">
-    <div class="loader-mark">AS<span>.</span></div>
-    <div class="loader-line"><span></span></div>
-    <small>LOADING PORTFOLIO</small>
-  </div>
-  <div class="cursor-dot" aria-hidden="true"></div>
-  <div class="cursor-ring" aria-hidden="true"></div>
-
-  <header class="site-header" id="top">
-    <a class="brand" href="#home" aria-label="Aranav Sharma home">AS<span>.</span></a>
-    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-navigation"><span></span><span></span></button>
-    <nav class="main-nav" id="main-navigation" aria-label="Main navigation">
-      <a class="nav-link active" href="#home">Home</a>
-      <a class="nav-link" href="#expertise">Marketing</a>
-      <a class="nav-link" href="#expertise">SEO & Website</a>
-      <a class="nav-link" href="#skills">My skills</a>
-      <a class="nav-link" href="#experience">Experience</a>
-      <a class="nav-link" href="#story">My story</a>
-      <a class="nav-link" href="#contact">Contact</a>
+  <div class="preloader" aria-hidden="true"><div class="preloader-mark">A<span>.</span></div><div class="preloader-line"><i></i></div><small>CREATING FIRST IMPRESSIONS</small></div>
+  <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
+  <header class="header" id="top">
+    <a class="brand" href="#home" aria-label="Aranav, home">A<span>.</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><i></i><i></i></button>
+    <nav class="nav" id="site-nav" aria-label="Main navigation">
+      <a href="#home" class="nav-link is-active">Home</a>
+      <a href="#expertise" class="nav-link">My skills</a>
+      <a href="#work" class="nav-link">Selected work</a>
+      <a href="#journey" class="nav-link">My journey</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Contact</a>
     </nav>
-    <div class="header-tools">
-      <div class="header-meta"><span class="live-dot"></span><span id="local-time">--:--</span><i></i><span id="local-date">-- --- ----</span></div>
-      <button class="theme-toggle" type="button" aria-label="Switch to dark theme" title="Toggle theme"><span class="theme-icon">◐</span></button>
-    </div>
+    <div class="header-right"><span class="availability"><i></i> OPEN TO OPPORTUNITIES</span><button class="theme-toggle" type="button" aria-label="Toggle dark and white-red theme" aria-pressed="false"><span>◐</span></button></div>
   </header>
 
   <main>
-    <section class="hero section-shell" id="home">
-      <div class="hero-copy">
-        <div class="eyebrow reveal"><span class="eyebrow-dot"></span> MARKETING PROFESSIONAL · INDIA</div>
-        <h1 class="hero-title reveal">Hi, I'm <span class="name-line">Aranav.</span><br />I am a</h1>
-        <div class="role-paper reveal" aria-hidden="true">
-          <span class="paper-springs" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-          <span id="changing-role">Digital Marketer</span><span class="type-cursor" aria-hidden="true"></span>
-        </div>
-        <span class="sr-only">Digital Marketing Professional</span>
-        <p class="hero-intro reveal">I bring together digital marketing, brand communication and organized execution to help businesses strengthen their online presence and move their goals forward.</p>
+    <section class="hero page-wrap" id="home">
+      <div class="hero-main">
+        <div class="micro-label reveal"><span class="micro-line"></span> DIGITAL MARKETING · PAID MEDIA · AI · BUSINESS GROWTH</div>
+        <h1 class="hero-title reveal">Ideas deserve<br><em>to make an impact.</em></h1>
+        <div class="hero-role reveal"><span class="role-prefix">I work at the intersection of</span><span class="role-window"><span id="role-text">Digital Marketing</span><b aria-hidden="true"></b></span></div>
+        <p class="hero-description reveal">I'm Aranav — a digital marketing professional combining brand strategy, SEO, paid media planning across Meta and Google Ads, content execution and applied generative AI workflows to help businesses communicate clearly and grow with intent.</p>
         <div class="hero-actions reveal">
-          <button class="button button-dark magnetic conversation-trigger" type="button"><span>Start a conversation</span><b>↗</b></button>
-          <a class="button button-outline magnetic" href="#expertise"><span>See my work</span><b>↘</b></a>
+          <button class="btn btn-primary js-contact-open" type="button"><span>Start a conversation</span><i>↗</i></button>
+          <a class="btn btn-quiet" href="#expertise"><span>Explore my skills</span><i>↓</i></a>
         </div>
-        <div class="hero-proof reveal"><span class="proof-line"></span><span>STRATEGY MINDED</span><span class="proof-dot">✳</span><span>EXECUTION FOCUSED</span></div>
+        <div class="hero-foot reveal"><span>BASED IN INDIA</span><span class="hero-foot-rule"></span><span>CURIOUS BY NATURE. PRECISE BY PRACTICE.</span></div>
       </div>
-
-      <div class="hero-portrait reveal">
-        <div class="portrait-frame">
-          <img src="assets/photos/hero-office.webp" alt="Aranav Sharma in a professional brown suit in a modern office" width="1024" height="1536" fetchpriority="high" decoding="async" />
-          <div class="portrait-shade"></div>
-          <div class="portrait-top"><span>PERSONAL PORTFOLIO</span><span>2026 / INDIA</span></div>
-          <a class="ability-card magnetic" href="#skills"><span class="ability-dot"></span><span><strong>My ability card</strong><small>Explore skills & strengths</small></span><b>↗</b></a>
-          <div class="portrait-caption"><strong>ARANAV SHARMA</strong><span>DIGITAL MARKETING · BUSINESS GROWTH</span></div>
-        </div>
-        <div class="portrait-coordinate">25° N · DIGITAL FIRST · GROWTH MINDED</div>
-        <div class="portrait-orbit orbit-a"></div><div class="portrait-orbit orbit-b"></div>
+      <div class="hero-visual reveal">
+        <div class="hero-image-frame"><img src="assets/photos/hero-office.webp" alt="Aranav in a professional suit" fetchpriority="high" decoding="async" width="1024" height="1536"><div class="image-vignette"></div><div class="image-index">PROFILE / 2026</div><div class="image-bottom"><span>ARANAV</span><span>DIGITAL FIRST <b>✳</b></span></div></div>
+        <div class="visual-note note-top"><span class="note-dot"></span><span>STRATEGY<br>WITH INTENT</span></div>
+        <a class="hero-ability-card" href="#expertise" aria-label="Explore Aranav's skills and professional capabilities">
+          <span class="ability-card-top"><i></i> MY ABILITY CARD <b>↗</b></span>
+          <strong>Marketing <em>×</em> AI</strong>
+          <span class="ability-card-skills">Meta Ads · Google Ads · GenAI</span>
+          <span class="ability-card-foot">LEARN / BUILD / IMPROVE</span>
+        </a>
+        <div class="visual-orbit" aria-hidden="true"></div>
       </div>
-      <div class="hero-bottomline"><span><span class="live-dot"></span> OPEN TO PROFESSIONAL OPPORTUNITIES</span><a href="#expertise">SCROLL TO EXPLORE <b>↓</b></a></div>
+      <div class="hero-scroll"><span>SCROLL TO DISCOVER</span><i></i></div>
     </section>
 
-    <div class="marquee" aria-label="Professional focus areas"><div class="marquee-track"><span>BRAND PROMOTION</span><b>✳</b><span>CONTENT STRATEGY</span><b>✳</b><span>SEO RESEARCH</span><b>✳</b><span>SOCIAL MEDIA</span><b>✳</b><span>DIGITAL OPERATIONS</span><b>✳</b><span>BUSINESS GROWTH</span><b>✳</b><span>BRAND PROMOTION</span><b>✳</b><span>CONTENT STRATEGY</span><b>✳</b><span>SEO RESEARCH</span><b>✳</b><span>SOCIAL MEDIA</span><b>✳</b><span>DIGITAL OPERATIONS</span><b>✳</b><span>BUSINESS GROWTH</span><b>✳</b></div></div>
-
-    <section class="expertise section-shell section-pad" id="expertise">
-      <div class="section-heading reveal"><div><span class="section-kicker">01 / WHAT I DO</span><h2>Magic happens<br /><em>behind the doors.</em></h2></div><p>From the first idea to the final report, I enjoy connecting creative thinking with structured execution. Explore the areas where I bring value.</p></div>
-      <div class="doors-grid" aria-label="Interactive skill doors">
-        <article class="door-card door-blue reveal" data-door-card>
-          <div class="door-top"><span>01 / DISCOVER</span><span class="door-state">CLICK TO OPEN</span></div>
-          <div class="door-stage">
-            <div class="door-room" aria-hidden="true"><span class="room-number">01</span><span class="room-word">VISIBILITY</span><span class="room-glow"></span></div>
-            <button class="door-trigger" type="button" aria-expanded="false" aria-controls="door-detail-seo" aria-label="Open SEO and Website skills"><span class="door-leaf"><span class="door-number">01</span><span class="door-label">SEO & WEBSITE</span><span class="door-handle"></span><span class="door-keyline"></span></span></button>
-          </div>
-          <div class="door-summary"><h3>SEO & Website</h3><p>Make websites easier to discover, understand and navigate.</p></div>
-          <div class="door-detail" id="door-detail-seo" hidden><div class="detail-kicker">INSIDE THIS DOOR / SEARCH & WEB</div><p>Research-led website improvements, from search intent to on-page presentation.</p><ul><li>Keyword research and search-intent mapping</li><li>SEO fundamentals, headings and on-page structure</li><li>Meta title and description review</li><li>Website content, usability and responsive checks</li><li>Indexability awareness, including noindex diagnostics</li></ul><div class="detail-result"><strong>HOW I APPLY IT</strong><span>Review → identify issues → prioritise fixes → recheck</span></div><button class="door-close" type="button" data-door-close>Close door <span>↗</span></button></div>
-        </article>
-
-        <article class="door-card door-lime reveal" data-door-card>
-          <div class="door-top"><span>02 / CONNECT</span><span class="door-state">CLICK TO OPEN</span></div>
-          <div class="door-stage">
-            <div class="door-room" aria-hidden="true"><span class="room-number">02</span><span class="room-word">COMMUNITY</span><span class="room-glow"></span></div>
-            <button class="door-trigger" type="button" aria-expanded="false" aria-controls="door-detail-social" aria-label="Open Social Media Marketing skills"><span class="door-leaf"><span class="door-number">02</span><span class="door-label">SOCIAL MEDIA</span><span class="door-handle"></span><span class="door-keyline"></span></span></button>
-          </div>
-          <div class="door-summary"><h3>Social Media</h3><p>Build a consistent brand voice and meaningful audience engagement.</p></div>
-          <div class="door-detail" id="door-detail-social" hidden><div class="detail-kicker">INSIDE THIS DOOR / AUDIENCE & COMMUNITY</div><p>Plan platform-specific communication that makes a brand feel active, recognisable and relevant.</p><ul><li>Social media strategy and page optimisation</li><li>Monthly content calendars and posting plans</li><li>Captions, hashtags, calls to action and post ideas</li><li>Audience engagement and community communication</li><li>Campaign coordination across Instagram, Facebook, LinkedIn and YouTube</li></ul><div class="detail-result"><strong>HOW I APPLY IT</strong><span>Plan → publish → engage → review performance</span></div><button class="door-close" type="button" data-door-close>Close door <span>↗</span></button></div>
-        </article>
-
-        <article class="door-card door-orange reveal" data-door-card>
-          <div class="door-top"><span>03 / CREATE</span><span class="door-state">CLICK TO OPEN</span></div>
-          <div class="door-stage">
-            <div class="door-room" aria-hidden="true"><span class="room-number">03</span><span class="room-word">STORYTELLING</span><span class="room-glow"></span></div>
-            <button class="door-trigger" type="button" aria-expanded="false" aria-controls="door-detail-content" aria-label="Open Content and Campaign skills"><span class="door-leaf"><span class="door-number">03</span><span class="door-label">CONTENT</span><span class="door-handle"></span><span class="door-keyline"></span></span></button>
-          </div>
-          <div class="door-summary"><h3>Content & Campaigns</h3><p>Turn ideas into clear creative briefs and coordinated promotions.</p></div>
-          <div class="door-detail" id="door-detail-content" hidden><div class="detail-kicker">INSIDE THIS DOOR / CREATIVE EXECUTION</div><p>Connect a campaign objective with a useful message, strong visual direction and a practical delivery plan.</p><ul><li>Campaign concepts, briefs and promotional planning</li><li>Content calendars, captions and brand storytelling</li><li>Short-form video ideas, scripts and hooks</li><li>Creative asset coordination and content reviews</li><li>Design workflow familiarity with Canva and Adobe Express</li></ul><div class="detail-result"><strong>HOW I APPLY IT</strong><span>Brief → create → coordinate → publish</span></div><button class="door-close" type="button" data-door-close>Close door <span>↗</span></button></div>
-        </article>
-
-        <article class="door-card door-violet reveal" data-door-card>
-          <div class="door-top"><span>04 / ORGANISE</span><span class="door-state">CLICK TO OPEN</span></div>
-          <div class="door-stage">
-            <div class="door-room" aria-hidden="true"><span class="room-number">04</span><span class="room-word">OPERATIONS</span><span class="room-glow"></span></div>
-            <button class="door-trigger" type="button" aria-expanded="false" aria-controls="door-detail-operations" aria-label="Open Data and Operations skills"><span class="door-leaf"><span class="door-number">04</span><span class="door-label">DATA & OPS</span><span class="door-handle"></span><span class="door-keyline"></span></span></button>
-          </div>
-          <div class="door-summary"><h3>Data & Operations</h3><p>Keep information accurate, organised and ready for action.</p></div>
-          <div class="door-detail" id="door-detail-operations" hidden><div class="detail-kicker">INSIDE THIS DOOR / SYSTEMS & DELIVERY</div><p>Support teams with accurate data, clear documentation and reliable daily coordination.</p><ul><li>Advanced data entry and data accuracy checks</li><li>Data management, spreadsheet organisation and reporting</li><li>MS Word, Microsoft Excel and document processing</li><li>Email handling, internet research and file management</li><li>Task planning, team coordination and progress updates</li></ul><div class="detail-result"><strong>HOW I APPLY IT</strong><span>Organise → validate → document → report</span></div><button class="door-close" type="button" data-door-close>Close door <span>↗</span></button></div>
-        </article>
-      </div>
+    <section class="intro-band">
+      <div class="page-wrap intro-inner"><span class="section-index">A / MY APPROACH</span><p class="intro-statement">Good marketing is not noise. It's <em>the right message</em>, in the right place, with a reason to remember.</p><span class="intro-mark">✳</span></div>
     </section>
 
-    <section class="statement-band"><div class="statement-inner section-shell reveal"><span class="section-kicker">THE WAY I APPROACH WORK</span><h2>Think with clarity.<br /><span>Execute with intent.</span><br />Improve with insight.</h2><div class="statement-stamp">PLAN<br />→<br />EXECUTE<br />→<br />IMPROVE</div></div></section>
-
-    <section class="experience section-shell section-pad" id="experience">
-      <div class="section-heading reveal"><div><span class="section-kicker">02 / PROFESSIONAL EXPERIENCE</span><h2>Work that moves<br /><em>things forward.</em></h2></div><p>Practical experience across marketing, digital promotion, website optimization and data-focused operations.</p></div>
-      <div class="experience-list">
-        <article class="experience-item reveal"><div class="experience-side"><span class="experience-index">01</span><span class="experience-type">2026 · 1 MONTH</span></div><div class="experience-main"><div class="exp-title-row"><div><h3>Head of Marketing</h3><h4>EliteFinish</h4></div><span class="exp-arrow">↗</span></div><p>Planned social media activities and content calendars to build brand awareness and audience engagement. Conducted SEO and keyword research, reviewed website metadata, coordinated creative content and team tasks, and prepared progress updates and actionable marketing plans.</p><div class="tag-list"><span>Social Strategy</span><span>SEO Research</span><span>Campaign Planning</span><span>Team Coordination</span></div></div></article>
-        <article class="experience-item reveal"><div class="experience-side"><span class="experience-index">02</span><span class="experience-type">INTERNSHIP EXPERIENCE</span></div><div class="experience-main"><div class="exp-title-row"><div><h3>Digital Marketing Intern</h3><h4>RICOZ Innovation</h4></div><span class="exp-arrow">↗</span></div><p>Supported social media marketing, digital promotion and online brand communication. Assisted with content planning, creative campaign development and day-to-day marketing execution, contributing to organized deliverables and progress updates.</p><div class="tag-list"><span>Digital Promotion</span><span>Content Planning</span><span>Brand Communication</span></div></div></article>
-        <article class="experience-item reveal"><div class="experience-side"><span class="experience-index">03</span><span class="experience-type">DIGITAL MARKETING INTERNSHIP</span></div><div class="experience-main"><div class="exp-title-row"><div><h3>Digital Marketing Intern</h3><h4>IT Hub Solution <small>· Kankarbagh, Patna</small></h4></div><span class="exp-arrow">↗</span></div><p>Worked on SEO fundamentals, keyword research and website optimization. Gained practical exposure to social media marketing and online advertising, and supported audience research, analytics, data analysis and reporting.</p><div class="tag-list"><span>SEO Fundamentals</span><span>Website Optimization</span><span>Analytics</span><span>Reporting</span></div></div></article>
+    <section class="expertise section-pad" id="expertise">
+      <div class="page-wrap">
+        <div class="section-heading reveal"><div><span class="section-index">01 / EXPLORE THE TOOLKIT</span><h2>Magic happens<br><em>behind the doors.</em></h2></div><div class="heading-aside"><p>Every door opens into a different part of my skill set. Step inside to explore the tools, thinking and practical capabilities behind the work.</p><span class="heading-hint"><i></i> SELECT A DOOR TO EXPLORE</span></div></div>
+        <div class="doors-stage" id="doors-stage" aria-label="Interactive skill doors">
+          <div class="doors-floor" aria-hidden="true"></div>
+          <article class="skill-door door-blue reveal" data-door="marketing">
+            <div class="door-meta"><span>01 / STRATEGY</span><span class="door-open-hint">OPEN ↗</span></div>
+            <button class="door-button" type="button" aria-expanded="false" aria-controls="skill-detail" aria-label="Open Digital Marketing skills">
+              <span class="door-arch"><span class="door-inner-rim"></span><span class="door-grooves"></span><span class="door-number">01</span><span class="door-title">DIGITAL<br>MARKETING</span><span class="door-plate">STRATEGY & GROWTH</span><span class="door-handle"></span><span class="door-keyhole"></span><span class="door-bottom-number">01</span></span>
+            </button>
+            <div class="door-caption"><h3>Digital Marketing</h3><p>Make brands clear, consistent and memorable.</p></div>
+          </article>
+          <article class="skill-door door-violet reveal" data-door="seo">
+            <div class="door-meta"><span>02 / DISCOVERY</span><span class="door-open-hint">OPEN ↗</span></div>
+            <button class="door-button" type="button" aria-expanded="false" aria-controls="skill-detail" aria-label="Open SEO and Website skills">
+              <span class="door-arch"><span class="door-inner-rim"></span><span class="door-grooves"></span><span class="door-number">02</span><span class="door-title">SEO &<br>WEBSITE</span><span class="door-plate">SEARCH & EXPERIENCE</span><span class="door-handle"></span><span class="door-keyhole"></span><span class="door-bottom-number">02</span></span>
+            </button>
+            <div class="door-caption"><h3>SEO & Website</h3><p>Help the right audience find the right information.</p></div>
+          </article>
+          <article class="skill-door door-green reveal" data-door="ai">
+            <div class="door-meta"><span>03 / INNOVATION</span><span class="door-open-hint">OPEN ↗</span></div>
+            <button class="door-button" type="button" aria-expanded="false" aria-controls="skill-detail" aria-label="Open AI and Generative AI skills">
+              <span class="door-arch"><span class="door-inner-rim"></span><span class="door-grooves"></span><span class="door-number">03</span><span class="door-title">AI &<br>GEN AI</span><span class="door-plate">INTELLIGENCE & IDEAS</span><span class="door-handle"></span><span class="door-keyhole"></span><span class="door-bottom-number">03</span></span>
+            </button>
+            <div class="door-caption"><h3>AI & Generative AI</h3><p>Use new tools to think, create and work smarter.</p></div>
+          </article>
+          <article class="skill-door door-amber reveal" data-door="operations">
+            <div class="door-meta"><span>04 / EXECUTION</span><span class="door-open-hint">OPEN ↗</span></div>
+            <button class="door-button" type="button" aria-expanded="false" aria-controls="skill-detail" aria-label="Open Data and Digital Operations skills">
+              <span class="door-arch"><span class="door-inner-rim"></span><span class="door-grooves"></span><span class="door-number">04</span><span class="door-title">DATA &<br>OPERATIONS</span><span class="door-plate">SYSTEMS & DELIVERY</span><span class="door-handle"></span><span class="door-keyhole"></span><span class="door-bottom-number">04</span></span>
+            </button>
+            <div class="door-caption"><h3>Data & Operations</h3><p>Turn information into reliable, organised action.</p></div>
+          </article>
+        </div>
+        <section class="skill-detail" id="skill-detail" aria-live="polite" aria-label="Selected skill details" hidden>
+          <div class="detail-top"><button class="back-to-doors" type="button"><span>←</span> BACK TO THE DOORS</button><span class="detail-counter" id="detail-counter">01 / 04</span></div>
+          <div class="detail-main">
+            <div class="detail-copy"><span class="section-index" id="detail-kicker">SKILL AREA / STRATEGY</span><h3 id="detail-title" tabindex="-1">Digital Marketing</h3><p id="detail-intro"></p><div class="detail-tags" id="detail-tags"></div><div class="detail-divider"></div><h4>HOW I PUT IT INTO PRACTICE</h4><ul class="detail-list" id="detail-list"></ul><div class="detail-platforms" id="detail-platforms" hidden aria-label="Paid advertising platform skills"></div><div class="detail-tools"><span>TOOLS & WORKFLOWS</span><p id="detail-tools"></p></div></div>
+            <aside class="detail-aside"><div class="detail-visual-icon" id="detail-symbol">✳</div><span class="detail-aside-label">THE THINKING BEHIND THE WORK</span><p id="detail-quote"></p><div class="detail-aside-rule"></div><span class="detail-aside-foot">PLAN WITH PURPOSE<br>EXECUTE WITH CARE<br>LEARN CONTINUOUSLY</span></aside>
+          </div>
+          <div class="detail-bottom"><span>ARANAV / DIGITAL MARKETING & AI</span><button class="detail-next" type="button">NEXT SKILL <span>↗</span></button></div>
+        </section>
       </div>
     </section>
 
-    <section class="story section-shell section-pad" id="story">
-      <div class="section-heading reveal"><div><span class="section-kicker">03 / MY STORY</span><h2>A little about<br /><em>the person behind the plan.</em></h2></div><p>A learning journey shaped by hands-on marketing work, digital tools, problem-solving and a foundation in Physics.</p></div>
-      <div class="story-layout">
-        <div class="story-visual reveal">
-          <figure class="story-photo story-photo-main"><img src="assets/photos/portrait-blue.webp" alt="Aranav Sharma professional headshot" width="1280" height="1536" loading="lazy" decoding="async" /><figcaption>THE PERSON BEHIND THE WORK</figcaption></figure>
-          <figure class="story-photo story-photo-secondary"><img src="assets/photos/working-desk.webp" alt="Aranav Sharma working at a desk with a laptop" width="1024" height="1536" loading="lazy" decoding="async" /><figcaption>FOCUSED ON EXECUTION</figcaption></figure>
-          <div class="story-photo-accent"><img src="assets/photos/portrait-dark.webp" alt="Aranav Sharma in a dark formal suit" width="1280" height="1536" loading="lazy" decoding="async" /></div>
+    <section class="work section-pad" id="work">
+      <div class="page-wrap">
+        <div class="section-heading reveal"><div><span class="section-index">02 / SELECTED WORK & PRACTICE</span><h2>Ideas put<br><em>into motion.</em></h2></div><div class="heading-aside"><p>A selection of areas where I have contributed, researched or developed practical concepts. I focus on the process, not inflated numbers.</p></div></div>
+        <div class="work-grid">
+          <article class="work-card work-wide reveal"><div class="work-card-visual visual-elite"><span class="visual-label">01 / BRAND & DIGITAL PRESENCE</span><div class="visual-large-type">EF<span>.</span></div><div class="visual-grid-lines"></div><span class="visual-stamp">ELITEFINISH<br>MARKETING</span></div><div class="work-card-copy"><div class="work-meta"><span>BRAND STRATEGY / SEO REVIEW</span><span>2026</span></div><h3>EliteFinish — Brand & Website Review</h3><p>Marketing planning, social media direction, content calendars, keyword research, website metadata checks and team coordination.</p><div class="work-tags"><span>Marketing Planning</span><span>SEO Research</span><span>Website QA</span></div></div></article>
+          <article class="work-card reveal"><div class="work-card-visual visual-ai"><span class="visual-label">02 / GENERATIVE AI CONCEPTS</span><div class="ai-orbit"><b>AI</b><i></i><i></i><i></i></div><span class="visual-stamp">IDEAS TO<br>STORYBOARDS</span></div><div class="work-card-copy"><div class="work-meta"><span>AI-ASSISTED CONTENT</span><span>CONCEPT</span></div><h3>AI Learning Content Concepts</h3><p>Educational short-video ideas, scene-by-scene prompts, Hinglish scripts and presenter-led smartboard concepts for AA Group of Studies.</p><div class="work-tags"><span>Prompt Design</span><span>Gemini / Veo</span><span>Content Scripts</span></div></div></article>
+          <article class="work-card reveal"><div class="work-card-visual visual-social"><span class="visual-label">03 / SOCIAL MEDIA SYSTEMS</span><div class="social-stack"><i>PLAN</i><i>CREATE</i><i>CONNECT</i></div><span class="visual-stamp">CONTENT<br>WITH INTENT</span></div><div class="work-card-copy"><div class="work-meta"><span>CONTENT & CAMPAIGN PLANNING</span><span>WORKFLOW</span></div><h3>Social Content & Promotion</h3><p>Content calendar planning, campaign ideas, platform-specific messaging, promotional concepts and coordinated deliverables.</p><div class="work-tags"><span>Social Media</span><span>Content Calendar</span><span>Campaign Planning</span></div></div></article>
+          <article class="work-card reveal"><div class="work-card-visual visual-paid"><span class="visual-label">04 / PAID MEDIA FRAMEWORK</span><div class="paid-media-map"><span class="paid-node node-meta">META</span><span class="paid-node node-google">GOOGLE</span><span class="paid-node node-audience">AUDIENCE</span><span class="paid-node node-creative">CREATIVE</span><span class="paid-node node-measure">MEASURE</span><i class="paid-link link-one"></i><i class="paid-link link-two"></i><i class="paid-link link-three"></i><i class="paid-link link-four"></i></div><span class="visual-stamp">PLAN<br>TEST<br>REFINE</span></div><div class="work-card-copy"><div class="work-meta"><span>PAID MEDIA / CAMPAIGN ARCHITECTURE</span><span>PLANNING CONCEPT</span></div><h3>Meta & Google Ads — Campaign Blueprint</h3><p>A planning framework for campaign objectives, audience and keyword strategy, ad creative variations, budget structure and performance measurement. Presented as a planning concept, not as a claim of live ad-spend results.</p><div class="work-tags"><span>Meta Ads</span><span>Google Ads</span><span>Performance Metrics</span></div></div></article>
         </div>
+      </div>
+    </section>
+
+    <section class="statement section-pad"><div class="page-wrap statement-inner reveal"><span class="section-index">A PRINCIPLE I WORK BY</span><h2>Stay curious.<br><em>Make it useful.</em><br>Make it better.</h2><div class="statement-side"><span>THINK CLEARLY</span><i>✳</i><span>BUILD CONSISTENTLY</span><i>✳</i><span>KEEP LEARNING</span></div></div></section>
+
+    <section class="journey section-pad" id="journey">
+      <div class="page-wrap">
+        <div class="section-heading reveal"><div><span class="section-index">03 / PROFESSIONAL JOURNEY</span><h2>Built through<br><em>real experience.</em></h2></div><div class="heading-aside"><p>Each experience has helped me strengthen a different part of the process — from digital fundamentals to planning and team coordination.</p></div></div>
+        <div class="timeline">
+          <article class="timeline-item reveal"><div class="timeline-side"><span>01</span><small>2026</small></div><div class="timeline-content"><div class="timeline-top"><span>MARKETING LEADERSHIP</span><span>ELITEFINISH</span></div><h3>Head of Marketing</h3><p>Planned social media activities and content calendars, conducted SEO and keyword research, reviewed website metadata, coordinated creative work and team tasks, and prepared progress updates and marketing plans.</p><div class="timeline-tags"><span>Brand Awareness</span><span>SEO Research</span><span>Campaign Planning</span><span>Coordination</span></div></div></article>
+          <article class="timeline-item reveal"><div class="timeline-side"><span>02</span><small>INTERNSHIP</small></div><div class="timeline-content"><div class="timeline-top"><span>DIGITAL PROMOTION</span><span>RICOZ INNOVATION</span></div><h3>Digital Marketing Intern</h3><p>Supported social media marketing, digital promotion and online brand communication. Assisted with content planning, creative campaign development and day-to-day marketing execution.</p><div class="timeline-tags"><span>Social Media</span><span>Content Planning</span><span>Brand Communication</span></div></div></article>
+          <article class="timeline-item reveal"><div class="timeline-side"><span>03</span><small>INTERNSHIP</small></div><div class="timeline-content"><div class="timeline-top"><span>SEARCH & DIGITAL FUNDAMENTALS</span><span>IT HUB SOLUTION</span></div><h3>Digital Marketing Intern</h3><p>Worked on SEO fundamentals, keyword research and website optimization. Gained exposure to social media marketing and online advertising, with support for audience research, analytics and reporting.</p><div class="timeline-tags"><span>SEO Fundamentals</span><span>Website Optimization</span><span>Analytics</span></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="story section-pad" id="about">
+      <div class="page-wrap story-layout">
+        <div class="story-image reveal"><img src="assets/photos/working-desk.webp" alt="Aranav working at a desk with a laptop" loading="lazy" decoding="async" width="1024" height="1536"><div class="story-image-overlay"><span>THE PERSON BEHIND THE PLAN</span><strong>Learning is<br><em>the advantage.</em></strong></div><div class="story-mini-gallery" aria-label="More professional portraits">
+            <figure class="story-mini story-mini-blue"><img src="assets/photos/portrait-blue.webp" alt="Aranav professional portrait" loading="lazy" decoding="async" width="1280" height="1536"><figcaption>PROFILE / 01</figcaption></figure>
+            <figure class="story-mini story-mini-dark"><img src="assets/photos/portrait-dark.webp" alt="Aranav in a formal dark suit" loading="lazy" decoding="async" width="1280" height="1536"><figcaption>PROFILE / 02</figcaption></figure>
+          </div><div class="story-index">04 / THE STORY</div></div>
         <div class="story-copy">
-          <div class="story-year reveal"><span class="year-label">CURRENT CHAPTER</span><strong>20<span>26</span></strong><div class="year-rule"></div><p>Learning. Building.<br />Moving forward.</p><span class="year-coordinate">ARANAV SHARMA / INDIA</span></div>
-          <div class="timeline">
-            <article class="timeline-item reveal"><span class="timeline-node"></span><div class="timeline-meta">2026 · PROFESSIONAL EXPERIENCE</div><h3>Head of Marketing <span>— EliteFinish</span></h3><p>Social media planning, SEO research, website metadata review, campaign coordination and marketing reporting.</p></article>
-            <article class="timeline-item reveal"><span class="timeline-node"></span><div class="timeline-meta">INTERNSHIP EXPERIENCE</div><h3>Digital Marketing Intern <span>— RICOZ Innovation</span></h3><p>Digital promotion, online brand communication, content planning and creative campaign support.</p></article>
-            <article class="timeline-item reveal"><span class="timeline-node"></span><div class="timeline-meta">DIGITAL MARKETING INTERNSHIP</div><h3>IT Hub Solution <span>— Patna</span></h3><p>SEO fundamentals, keyword research, website optimization, online advertising and analytics exposure.</p></article>
-            <article class="timeline-item reveal"><span class="timeline-node"></span><div class="timeline-meta">EDUCATION · CURRENTLY PURSUING</div><h3>Bachelor of Science <span>— Physics</span></h3><p>Daudnagar College, Daudnagar · Magadh University.</p></article>
-          </div>
+          <span class="section-index reveal">04 / MY STORY</span><h2 class="reveal">A curious mind.<br><em>A practical mindset.</em></h2>
+          <p class="story-lead reveal">My journey is shaped by a simple belief: you do not need to know everything to begin — you need the curiosity to learn and the discipline to keep going.</p>
+          <p class="reveal">As a B.Sc. Physics student, I am drawn to understanding how things work. That curiosity gradually found another direction in digital platforms, marketing and technology. I started building practical knowledge through SEO, social media, content planning and digital operations, then applied it through experiences at IT Hub Solution and RICOZ Innovation.</p>
+          <p class="reveal">Taking on the Head of Marketing role at EliteFinish gave me a wider view of how strategy, communication, creative work and coordination come together. Along the way, experimenting with generative AI tools has added a new layer to how I research, develop ideas and shape content.</p>
+          <p class="story-close reveal">I am still learning, still building and still improving — with the intention of turning every opportunity into better work.</p>
+          <div class="story-signature reveal"><span>ARANAV</span><i>STAY CURIOUS. KEEP BUILDING.</i></div>
         </div>
       </div>
     </section>
 
-    <section class="skills section-shell section-pad" id="skills">
-      <div class="section-heading reveal"><div><span class="section-kicker">04 / MY TOOLKIT</span><h2>Skills built<br /><em>for real execution.</em></h2></div><p>A practical mix of marketing capabilities, SEO knowledge, data handling, computer proficiency and professional working skills. No inflated proficiency scores—just a clear view of the skills I bring.</p></div>
-      <div class="skills-grid">
-        <article class="skill-group skill-feature reveal"><div class="skill-head"><span class="skill-count">01 / STRATEGY</span><span class="skill-mark">↗</span></div><h3>Digital Marketing & Brand Growth</h3><p>Planning and coordinating digital activity that keeps a brand visible, consistent and audience-focused.</p><div class="skill-pills"><span>Social Media Marketing</span><span>Content Strategy</span><span>Content Calendars</span><span>Brand Promotion</span><span>Campaign Planning</span></div><div class="skill-foot"><span>APPLIED IN MARKETING WORK</span><span class="skill-foot-line"></span></div></article>
-        <article class="skill-group reveal"><div class="skill-head"><span class="skill-count">02 / DISCOVERY</span><span class="skill-mark">⌕</span></div><h3>SEO & Website Optimization</h3><p>Research-led improvements to search visibility, website information and on-page essentials.</p><div class="skill-pills"><span>SEO Fundamentals</span><span>Keyword Research</span><span>Website Optimization</span><span>Metadata Review</span><span>Audience Research</span></div><div class="skill-foot"><span>HANDS-ON SEO EXPOSURE</span><span class="skill-foot-line"></span></div></article>
-        <article class="skill-group reveal"><div class="skill-head"><span class="skill-count">03 / INSIGHTS</span><span class="skill-mark">▤</span></div><h3>Data, Reporting & Administration</h3><p>Reliable data handling and clear documentation to support day-to-day business operations.</p><div class="skill-pills"><span>Advanced Data Entry</span><span>Data Accuracy</span><span>Data Management</span><span>Document Processing</span><span>File Management</span><span>Email Handling</span><span>Reporting</span></div><div class="skill-foot"><span>DETAIL-ORIENTED EXECUTION</span><span class="skill-foot-line"></span></div></article>
-        <article class="skill-group reveal"><div class="skill-head"><span class="skill-count">04 / TOOLKIT</span><span class="skill-mark">▦</span></div><h3>Computer & Professional Skills</h3><p>Everyday productivity, research and collaboration skills that keep projects moving.</p><div class="skill-pills"><span>MS Word</span><span>Microsoft Excel</span><span>Internet Research</span><span>Computer Operations</span><span>Online Documentation</span><span>Team Coordination</span><span>Communication</span><span>Time Management</span><span>Problem Solving</span><span>Task Planning</span></div><div class="skill-foot"><span>WORKFLOW & COLLABORATION</span><span class="skill-foot-line"></span></div></article>
+    <section class="education page-wrap reveal"><div class="education-mark">B.Sc.</div><div class="education-copy"><span class="section-index">EDUCATION / CURRENTLY PURSUING</span><h3>Bachelor of Science <em>in Physics</em></h3><p>Daudnagar College, Daudnagar <span>·</span> Magadh University</p></div><span class="education-aside">SCIENCE-LED<br>THINKING <b>↗</b></span></section>
+
+    <section class="contact section-pad" id="contact">
+      <div class="page-wrap">
+        <div class="contact-top reveal"><span class="section-index"><i class="status-dot"></i> OPEN TO PROFESSIONAL OPPORTUNITIES</span><span class="section-index">05 / LET'S CONNECT</span></div>
+        <h2 class="contact-title reveal">Have an idea?<br><em>Let's make</em><br>it matter<span>.</span></h2>
+        <div class="contact-bottom reveal"><p>Whether it is a digital marketing role, a paid media opportunity, a brand growth project or a conversation about applied AI, I would be glad to connect.</p><button class="btn btn-primary js-contact-open" type="button"><span>Start a conversation</span><i>↗</i></button></div>
+        <div class="contact-links reveal"><a href="mailto:asarnavsharma04@gmail.com">EMAIL <span>↗</span></a><a href="https://www.linkedin.com/in/aranav-sharma-161880443/" target="_blank" rel="noopener noreferrer">LINKEDIN <span>↗</span></a><a href="assets/Aranav-Resume.pdf" target="_blank" rel="noopener">VIEW RESUME <span>↗</span></a><button type="button" id="copy-email">COPY EMAIL <span>＋</span></button></div>
+        <p class="copy-feedback" id="copy-feedback" role="status" aria-live="polite"></p>
       </div>
-      <div class="skills-notes reveal"><div><span class="skills-notes-kicker">WORKING TOOLKIT</span><strong>Tools & working methods</strong></div><p>Canva · Adobe Express · Microsoft Word · Microsoft Excel · Internet research · Social platforms · Website content & metadata review · Team task tracking</p></div>
-    </section>
-
-    <section class="education-strip section-shell reveal"><div class="edu-mark">B.Sc.</div><div class="edu-copy"><span class="section-kicker">EDUCATION / CURRENTLY PURSUING</span><h2>Bachelor of Science <em>in Physics</em></h2><p>Daudnagar College, Daudnagar <span>·</span> Magadh University</p></div><div class="edu-side">FOUNDATION<br />IN SCIENCE<br /><span>↗</span></div></section>
-
-    <section class="contact section-shell section-pad" id="contact">
-      <div class="contact-top reveal"><span class="section-kicker"><span class="live-dot"></span> OPEN TO PROFESSIONAL CONVERSATIONS</span><span class="contact-index">05 / LET'S CONNECT</span></div>
-      <h2 class="contact-title reveal">Got a project?<br /><em>Let's build it</em><br />together<span class="contact-period">.</span></h2>
-      <p class="contact-description reveal">I’m focused on effective digital marketing, reliable data management and well-organized business operations. Have an opportunity or an idea to discuss? Let’s connect.</p>
-      <div class="contact-actions reveal"><button class="button button-dark magnetic conversation-trigger" type="button"><span>Start a conversation</span><b>↗</b></button><a class="button button-outline magnetic" href="assets/Aranav-Sharma-Resume.pdf" target="_blank" rel="noopener"><span>View my resume</span><b>↓</b></a></div>
-      <div class="contact-footer reveal"><div class="contact-links"><a href="mailto:asarnavsharma04@gmail.com">EMAIL <span>↗</span></a><a href="https://www.linkedin.com/in/aranav-sharma-161880443/" target="_blank" rel="noopener noreferrer">LINKEDIN <span>↗</span></a></div><span class="footer-note">ARANAV SHARMA · DIGITAL MARKETING</span></div>
     </section>
   </main>
 
-  <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-dialog-title">
-    <div class="contact-dialog-inner">
-      <div class="dialog-topline"><span>ARANAV SHARMA / LET'S CONNECT</span><button class="dialog-close" type="button" aria-label="Close contact options" data-dialog-close>×</button></div>
-      <span class="dialog-kicker">A GOOD CONVERSATION STARTS HERE</span>
-      <h2 id="contact-dialog-title">Have an idea?<br /><em>Let's talk.</em></h2>
-      <p>Choose the easiest way to reach me. I usually respond through email or LinkedIn.</p>
-      <a class="dialog-option dialog-email" href="mailto:asarnavsharma04@gmail.com?subject=Let's%20connect%20-%20Aranav%20Sharma"><span><small>EMAIL</small><strong>asarnavsharma04@gmail.com</strong></span><b>↗</b></a>
-      <a class="dialog-option" href="https://www.linkedin.com/in/aranav-sharma-161880443/" target="_blank" rel="noopener noreferrer"><span><small>LINKEDIN</small><strong>Connect professionally</strong></span><b>↗</b></a>
-      <button class="dialog-option dialog-copy" type="button" id="copy-email"><span><small>QUICK ACTION</small><strong>Copy email address</strong></span><b>＋</b></button>
-      <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
-    </div>
-  </dialog>
+  <footer class="footer"><a class="brand" href="#top">A<span>.</span></a><span>© <b id="current-year">2026</b> ARANAV. ALL RIGHTS RESERVED.</span><a href="#top">BACK TO TOP ↑</a></footer>
 
-  <footer class="site-footer"><a class="brand" href="#home">AS<span>.</span></a><span>© <span id="year-now">2026</span> ARANAV SHARMA. ALL RIGHTS RESERVED.</span><a href="#home" class="back-top">BACK TO TOP ↑</a></footer>
+  <dialog class="contact-modal" id="contact-modal" aria-labelledby="modal-title"><div class="modal-inner"><div class="modal-top"><span>ARANAV / CONNECT</span><button type="button" class="modal-close" aria-label="Close dialog">×</button></div><span class="section-index">LET'S START WITH A CONVERSATION</span><h2 id="modal-title">Good things<br><em>start here.</em></h2><p>Choose the channel that works best for you. I look forward to hearing from you.</p><a class="modal-option" href="mailto:asarnavsharma04@gmail.com?subject=Professional%20Opportunity%20-%20Aranav%20Sharma"><span><small>EMAIL</small><b>asarnavsharma04@gmail.com</b></span><i>↗</i></a><a class="modal-option" href="https://www.linkedin.com/in/aranav-sharma-161880443/" target="_blank" rel="noopener noreferrer"><span><small>LINKEDIN</small><b>Connect professionally</b></span><i>↗</i></a><button class="modal-option" type="button" id="modal-copy"><span><small>QUICK ACTION</small><b>Copy my email address</b></span><i>＋</i></button><div class="modal-status" id="modal-status" aria-live="polite"></div></div></dialog>
   <script src="script.js" defer></script>
 </body>
 </html>

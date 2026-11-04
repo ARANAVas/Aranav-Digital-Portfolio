@@ -1,0 +1,62 @@
+ARANAV PORTFOLIO — V8 CORE QA & OPTIMISATION REPORT
+Date: 04 November 2026
+Package base: V7 White + Crimson Red
+
+SUMMARY
+V8 is a focused quality/performance pass on the existing portfolio. The dark cinematic theme remains the first-visit default; the alternate theme remains white + crimson red.
+
+AUDIT FINDINGS, VERIFICATIONS & FIXES
+1. TYPOGRAPHY VERIFICATION
+   - Confirmed the active CSS tokens and Google Fonts request consistently use Manrope and Cormorant Garamond.
+   - Compact labels use the native system monospace stack by design, avoiding a third remote font download.
+   - Kept `display=swap` and safe system fallbacks to avoid blocking initial text paint.
+2. THEME FIRST-PAINT FLASH
+   - The saved theme was previously applied by the footer script after the page had begun rendering.
+   - Theme preference is now read in the head before the stylesheet is painted, with guarded storage access.
+3. NARROW MOBILE HEADLINE OVERFLOW
+   - The italic hero headline could extend beyond the viewport at 320px.
+   - It now wraps naturally at widths up to 360px. Browser measurements show both body and document scroll width match the viewport at tested widths.
+4. TABLET HERO COLLISION RISK
+   - At 768px the long hero headline approached/overlapped the portrait frame.
+   - Tuned the heading scale from 761px to 820px, leaving a clear measured gap between headline and image.
+5. WHITE-THEME CONTRAST
+   - Improved secondary text contrast and set the white/red primary CTA to a white-on-crimson treatment; dark theme styling remains intact.
+6. SKILL-DOOR MOTION TIMING
+   - The detail panel was appearing before the 1.05s hinge animation had completed.
+   - Synchronised the panel reveal with the door transition; reduced-motion mode skips the hinge movement.
+7. NO-JAVASCRIPT FALLBACK
+   - Added a safeguard so the preloader does not cover content when JavaScript is unavailable.
+
+STATIC QA
+- HTML parsed successfully.
+- 28 IDs checked; no duplicates.
+- Internal fragment and ARIA ID references resolve.
+- All local asset paths resolve; no missing assets.
+- All 4 images have alt text.
+- All 13 buttons specify a type.
+- External links using target=_blank include safe rel attributes.
+- CSS parser: no top-level syntax errors.
+- JavaScript syntax: node --check passed.
+
+BROWSER QA (CHROMIUM, ISOLATED LOCAL SOURCE)
+- Responsive widths checked: 320, 360, 375, 390, 430, 768, 800, 900, 960, 1024, 1280 and 1440 pixels.
+- Document and body scroll widths matched the viewport at the tested widths; no non-decorative content was found outside the viewport.
+- Hero heading/photo spacing checked at tablet widths; the 768–820px collision risk was corrected.
+- All four skill-detail views populated with their expected titles, tags and bullet lists.
+- Door open/back behaviour, theme switching, mobile navigation and contact dialog open/close passed.
+- Lazy-loaded story images loaded when scrolled into view.
+- No JavaScript page errors were recorded in the test harness.
+- Reduced-motion mode was used for the all-four-door content checks; a normal-motion door open/back interaction was separately checked.
+
+PERFORMANCE NOTES
+- No frontend framework or animation library is loaded.
+- Hero photo is preloaded and marked high priority; below-the-fold photos remain lazy-loaded.
+- Images are WebP and use asynchronous decoding; image dimensions are declared.
+- Custom cursor-following effects remain removed; decorative blur filters were reduced in the existing refinement pass.
+- Project assets are lightweight; total expanded project size is approximately 680 KB before browser caching.
+
+LIMITATIONS
+- These checks were run against the local source embedded into Chromium because direct file/server navigation is restricted in this execution environment.
+- External Google Fonts delivery, real network throttling, Lighthouse/Core Web Vitals, and cross-browser testing (Safari/Firefox/real Android devices) were not verified here.
+- The GitHub Pages site was not modified or deployed. The ZIP must be uploaded to the repository and the Pages workflow must succeed before the public site changes.
+- No automated test can guarantee zero defects on every device/browser; the report records the checks actually completed.

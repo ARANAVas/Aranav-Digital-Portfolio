@@ -1,0 +1,145 @@
+{
+  "project": "Aranav Digital Marketing & Applied AI Portfolio",
+  "version": "V8 Core QA Refined",
+  "date": "2026-11-04",
+  "themes": {
+    "default": "midnight dark",
+    "alternate": "white + crimson red"
+  },
+  "typography": {
+    "sans": "Manrope",
+    "serif": "Cormorant Garamond",
+    "mono": "system monospace",
+    "font_request_matches_active_css": true
+  },
+  "static_checks": {
+    "html_parsed": true,
+    "id_count": 28,
+    "duplicate_ids": [],
+    "unresolved_internal_or_aria_refs": [],
+    "missing_local_assets": [],
+    "image_alt_missing": [],
+    "buttons_without_type": [],
+    "blank_target_missing_rel": [],
+    "css_errors": [],
+    "javascript_syntax": "node --check passed"
+  },
+  "responsive_checks": {
+    "tested_widths_px": [
+      320,
+      360,
+      375,
+      390,
+      430,
+      768,
+      800,
+      900,
+      960,
+      1024,
+      1280,
+      1440
+    ],
+    "body_and_document_scroll_width_equal_viewport": true,
+    "headline_photo_spacing_tablet": "fixed and measured at 768\u2013820px",
+    "details": {
+      "320": {
+        "document_scroll_width": 320,
+        "body_scroll_width": 320,
+        "outside_content_nodes": 0
+      },
+      "360": {
+        "document_scroll_width": 360,
+        "body_scroll_width": 360,
+        "outside_content_nodes": 0
+      },
+      "375": {
+        "document_scroll_width": 375,
+        "body_scroll_width": 375,
+        "outside_content_nodes": 0
+      },
+      "390": {
+        "document_scroll_width": 390,
+        "body_scroll_width": 390,
+        "outside_content_nodes": 0
+      },
+      "430": {
+        "document_scroll_width": 430,
+        "body_scroll_width": 430,
+        "outside_content_nodes": 0
+      },
+      "768": {
+        "document_scroll_width": 768,
+        "body_scroll_width": 768,
+        "outside_content_nodes": 0
+      },
+      "1024": {
+        "document_scroll_width": 1024,
+        "body_scroll_width": 1024,
+        "outside_content_nodes": 0
+      },
+      "1280": {
+        "document_scroll_width": 1280,
+        "body_scroll_width": 1280,
+        "outside_content_nodes": 0
+      },
+      "1440": {
+        "document_scroll_width": 1440,
+        "body_scroll_width": 1440,
+        "outside_content_nodes": 0
+      }
+    }
+  },
+  "interaction_checks": {
+    "all_four_skill_details_populate": true,
+    "details": [
+      {
+        "n": 1,
+        "title": "Digital Marketing & Paid Media",
+        "bullets": 10,
+        "tags": 10,
+        "hidden": false
+      },
+      {
+        "n": 2,
+        "title": "SEO & Website",
+        "bullets": 5,
+        "tags": 6,
+        "hidden": false
+      },
+      {
+        "n": 3,
+        "title": "AI & Generative AI",
+        "bullets": 8,
+        "tags": 9,
+        "hidden": false
+      },
+      {
+        "n": 4,
+        "title": "Data & Operations",
+        "bullets": 6,
+        "tags": 7,
+        "hidden": false
+      }
+    ],
+    "door_open_and_back_normal_motion": "passed for Digital Marketing detail",
+    "theme_switch": "passed",
+    "mobile_menu_open_close": "passed",
+    "contact_dialog_open_close": "passed",
+    "lazy_images_load_when_story_scrolled_into_view": true,
+    "page_errors": []
+  },
+  "performance_notes": {
+    "framework_or_animation_library": false,
+    "hero_image_preloaded_high_priority": true,
+    "below_fold_images_lazy_loaded": true,
+    "webp_assets": 4,
+    "approx_expanded_project_bytes": 686419,
+    "custom_cursor_tracking": "removed",
+    "reduced_motion": "supported"
+  },
+  "limitations": [
+    "Chromium browser tests used the exact local HTML, CSS, JS and image bytes embedded into an isolated page because direct local file/server navigation was restricted.",
+    "Google Fonts network delivery, real network throttling, Lighthouse/Core Web Vitals and Safari/Firefox/physical-device testing were not verified.",
+    "GitHub Pages was not deployed or modified; the user must upload the ZIP contents and confirm the Pages workflow."
+  ]
+}

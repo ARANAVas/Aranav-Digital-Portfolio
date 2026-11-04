@@ -1,23 +1,21 @@
-ARANAV SHARMA — PORTFOLIO UPDATE
+UPDATE THE ARANAV PORTFOLIO ON GITHUB PAGES — V8 QA REFINED
 
-WHAT'S INCLUDED
-- index.html, styles.css, script.js: refreshed website
-- README.md: project information
-- assets/: your four portfolio photos and resume PDF
+1. Download and extract the V8 ZIP.
+2. Open the Aranav-Digital-Portfolio GitHub repository.
+3. Replace the existing index.html, styles.css, script.js and README.md.
+4. Replace the complete assets folder too. Keep the folder structure unchanged.
+5. Commit the changes to the main branch.
+6. Open Settings > Pages and confirm: Deploy from a branch > main > /(root).
+7. Open Actions and confirm the Pages deployment finishes successfully.
+8. Check the published site:
+   https://aranavsharma07.github.io/Aranav-Digital-Portfolio/
 
-PUBLISH TO YOUR EXISTING GITHUB PAGES REPOSITORY
-Repository: https://github.com/AranavSharma07/Aranav-Digital-Portfolio
-Live URL: https://aranavsharma07.github.io/Aranav-Digital-Portfolio/
+Do not upload only the HTML file. The CSS, JavaScript and complete assets folder are required.
+
+THEMES
+- Default first visit: cinematic midnight / dark.
+- Header toggle: premium white + crimson-red theme.
+- The visitor's selected theme is remembered by the browser when storage is available.
 
 IMPORTANT
-The connected GitHub integration allowed repository inspection but rejected write access (HTTP 403). Therefore these files are prepared and tested locally, but are NOT yet published to GitHub Pages.
-
-RECOMMENDED UPLOAD
-1. Download and extract this ZIP on your computer.
-2. Open the repository link above and confirm you are on the main branch.
-3. Replace the existing index.html, styles.css, script.js and README.md with the matching files from this folder. Keep the assets folder and its structure intact (assets/Aranav-Sharma-Resume.pdf and assets/photos/...).
-4. Commit the changes to main with a message such as: Premium portfolio refresh and interactive skill doors.
-5. Open the repository's Actions tab and wait until the newest Pages deployment is completed successfully.
-6. Open the Live URL in an incognito/private tab and test each door, the Start a conversation button, resume and mobile menu.
-
-DO NOT upload the ZIP itself as the website. Extract it first; GitHub Pages must see index.html at the repository root.
+This package has not been pushed to GitHub by the assistant. The public site changes only after the repository files are replaced and the GitHub Pages workflow succeeds.
