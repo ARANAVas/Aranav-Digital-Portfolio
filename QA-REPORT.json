@@ -1,96 +1,66 @@
 {
+  "project": "Aranav Portfolio",
   "version": "V10",
-  "scope": "Photo clarity, responsive image delivery, door motion smoothing and final interaction regression",
+  "build": "Device-wide performance pass",
   "static_checks": {
-    "duplicate_ids": 0,
-    "unresolved_aria_references": 0,
-    "missing_local_assets": 0,
-    "javascript_syntax": "pass",
-    "css_parser_errors": 0
-  },
-  "responsive": {
-    "checks": 20,
-    "widths_px": [
-      320,
-      360,
-      390,
-      600,
-      768,
-      820,
-      1024,
-      1280,
-      1440,
-      1600
-    ],
-    "themes": [
-      "light",
-      "dark"
-    ],
-    "horizontal_overflow_cases": 0,
-    "detached_hero_frame_visible": false,
-    "gallery_bounds": "pass"
-  },
-  "photos": {
-    "enhanced_count": 4,
-    "loaded_count": 4,
-    "enhancement": "luminance-focused local contrast and restrained edge sharpening; no face regeneration or composition changes",
-    "full_size_widths_px": {
-      "hero-office": 1024,
-      "working-desk": 1024,
-      "portrait-blue": 1280,
-      "portrait-dark": 1280
-    },
-    "responsive_variants": [
-      "hero-office-640.webp",
-      "working-desk-640.webp",
-      "portrait-blue-320.webp",
-      "portrait-blue-640.webp",
-      "portrait-dark-320.webp",
-      "portrait-dark-640.webp"
-    ],
-    "lazy_loading": "story/workspace photos and profile portraits",
-    "hero_fetch_priority": "high",
-    "estimated_candidate_transfer_bytes": {
-      "dpr_1_all_four_images": 126924,
-      "dpr_2_all_four_images": 264604,
-      "previous_four_full_images": 462758,
-      "estimated_reduction_percent": {
-        "dpr_1": 72.6,
-        "dpr_2": 42.8
+    "duplicate_ids": [],
+    "unresolved_aria_references": [],
+    "missing_local_assets": [],
+    "css_top_level_parse_errors": [],
+    "image_sources": [
+      {
+        "src": "assets/photos/hero-office.webp",
+        "exists": true,
+        "bytes": 120200,
+        "loading": "eager",
+        "fetchpriority": "high",
+        "has_dimensions": true
+      },
+      {
+        "src": "assets/photos/working-desk.webp",
+        "exists": true,
+        "bytes": 128404,
+        "loading": "lazy",
+        "fetchpriority": "low",
+        "has_dimensions": true
+      },
+      {
+        "src": "assets/photos/portrait-blue-640.webp",
+        "exists": true,
+        "bytes": 24206,
+        "loading": "lazy",
+        "fetchpriority": "low",
+        "has_dimensions": true
+      },
+      {
+        "src": "assets/photos/portrait-dark-640.webp",
+        "exists": true,
+        "bytes": 27090,
+        "loading": "lazy",
+        "fetchpriority": "low",
+        "has_dimensions": true
       }
-    },
-    "estimation_note": "Calculated from configured srcset candidates and local WebP file sizes; not a measured network waterfall."
+    ],
+    "asset_folder_bytes": 709373,
+    "hero_preload_present": true,
+    "google_fonts_display_swap": true,
+    "skip_link_present": true
   },
-  "door_motion": {
-    "desktop_entry_exit": {
-      "marketing": "pass",
-      "seo": "pass",
-      "ai": "pass",
-      "operations": "pass"
-    },
-    "mobile_exit": {
-      "320px": "pass",
-      "390px": "pass"
-    },
-    "reduced_motion": "pass",
-    "motion_changes": [
-      "transform-based camera movement",
-      "smoother easing and slightly longer staged approach/hinge/portal timing",
-      "transform/opacity-focused transitions to avoid animating layout dimensions and heavy filters"
-    ]
-  },
-  "navigation": {
-    "next_skill": "pass",
-    "back_to_top_floating": "pass; final scrollY < 10px",
-    "back_to_top_footer": "pass; final scrollY < 10px"
-  },
-  "runtime": {
-    "javascript_page_errors": 0
-  },
-  "limitations": [
-    "Actual Windows/Android hardware not independently tested",
-    "Safari and Firefox not independently tested",
-    "Live GitHub Pages deployment not updated or tested",
-    "Lighthouse/network field performance scores not measured"
+  "optimizations": [
+    "Explicit font-display: swap for text-first rendering",
+    "High-priority responsive hero image preload retained",
+    "Below-fold images lazy-loaded, async-decoded and low fetch priority",
+    "Gallery sizes attribute aligned to actual 48px/72px rendered widths",
+    "Touch devices do not retain sticky hover transforms",
+    "Mobile ambient blur removed to reduce GPU compositing cost",
+    "Accessible keyboard skip-to-content link added",
+    "Back-to-top update is also refreshed on viewport resize"
+  ],
+  "browser_validation": "Not completed in this run: local Chromium navigation was blocked by the execution environment (ERR_BLOCKED_BY_ADMINISTRATOR) and direct headless Chromium timed out. Do not treat static checks as device/browser QA.",
+  "remaining_external_tests": [
+    "Physical Android and iOS hardware",
+    "Safari and Firefox",
+    "Live GitHub Pages deployment",
+    "Lighthouse / Web Vitals / real-network waterfall"
   ]
 }

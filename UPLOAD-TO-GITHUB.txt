@@ -1,25 +1,12 @@
-UPDATE THE ARANAV PORTFOLIO ON GITHUB PAGES — V10 FINAL POLISHED
+V10 DEPLOYMENT CHECKLIST
 
-1. Download and extract the V10 ZIP.
-2. Open the nested folder named "aranav-digital-portfolio".
-3. Open the GitHub repository:
-   https://github.com/AranavSharma07/Aranav-Digital-Portfolio
-4. Replace the repository-root files with the files from this project folder:
-   index.html, styles.css, script.js, README.md, QA-REPORT.txt,
-   QA-REPORT.json and UPLOAD-TO-GITHUB.txt.
-5. Replace the complete "assets" folder, including photos and both resume files.
-   Do not merge only selected files; replace the full folder to avoid stale assets.
-6. Commit the changes to the "main" branch.
-7. In GitHub Settings > Pages, confirm:
-   Deploy from a branch > main > /(root).
-8. In GitHub Actions, verify that the latest Pages deployment finishes successfully.
-9. Open the live website and test all four doors in both directions (entry and exit), both Back to Top controls, the theme toggle and mobile navigation:
-   https://aranavsharma07.github.io/Aranav-Digital-Portfolio/
+1. Extract this ZIP.
+2. Open the `aranav-digital-portfolio` folder.
+3. Replace the website source files in your GitHub repository with these files.
+4. Replace the entire `assets` folder (do not merge with stale assets).
+5. Keep the repository's existing GitHub Pages source/branch settings unchanged.
+6. Commit the changes to `main` and wait for the Pages deployment workflow.
+7. Open the public website in a private/incognito tab or hard-refresh to avoid cached CSS/images.
+8. Test Android Chrome and iOS Safari, then run Lighthouse mobile.
 
-IMPORTANT
-- Version number remains V10; this is a V10 final maintenance/QA package, not V11.
-- Keep index.html, styles.css, script.js and assets/ at repository root.
-- The resume button points to assets/Aranav-Resume.pdf.
-- The editable ATS Word resume is assets/Aranav-Resume-ATS.docx.
-- Do not delete assets/photos. The updated folder now also contains responsive -320.webp and -640.webp photo variants referenced by srcset.
-- These files have not been pushed to GitHub by the assistant. The live site changes only after the repository files are replaced and the Pages workflow succeeds.
+Do not upload the outer ZIP itself as the website root; upload the folder contents.

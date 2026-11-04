@@ -1,45 +1,36 @@
-ARANAV PORTFOLIO — V10 PHOTO CLARITY + PERFORMANCE POLISH
-==============================================================
+ARANAV PORTFOLIO — V10 DEVICE-WIDE PERFORMANCE QA
+======================================================
 
-Summary: Four portraits sharpened conservatively; responsive WebP delivery added; camera and door transitions smoothed.
+BUILD: V10 (version number unchanged)
 
-STATIC CHECKS
+STATIC VALIDATION
 - Duplicate HTML IDs: 0
 - Unresolved ARIA references: 0
-- Missing local files / image candidates: 0
-- JavaScript syntax: PASS
-- CSS parser errors: 0
+- Missing local assets: 0
+- CSS top-level parse errors: 0
+- Image elements: 4; all have dimensions: True
+- Assets folder size: 692.7 KB
+- Hero image preload: present
+- Font display swap: present
+- Skip-to-content link: present
 
-RESPONSIVE CHECKS
-- 20 viewport/theme combinations (10 widths × light/dark)
-- Widths: 320, 360, 390, 600, 768, 820, 1024, 1280, 1440, 1600px
-- Horizontal overflow: none detected
-- Detached hero orbit/frame line: hidden
-- Story gallery bounds: PASS
+PERFORMANCE CHANGES
+- Explicit font-display: swap for text-first rendering
+- High-priority responsive hero image preload retained
+- Below-fold images lazy-loaded, async-decoded and low fetch priority
+- Gallery sizes attribute aligned to actual 48px/72px rendered widths
+- Touch devices do not retain sticky hover transforms
+- Mobile ambient blur removed to reduce GPU compositing cost
+- Accessible keyboard skip-to-content link added
+- Back-to-top update is also refreshed on viewport resize
 
-PHOTO DELIVERY
-- 4/4 images loaded in local Chromium test
-- Conservative local contrast + edge sharpening; no face regeneration
-- Hero/workspace: 640px WebP variants + 1024px full-size source
-- Profile photos: 320px, 640px and 1280px candidates
-- Hero preloaded at high fetch priority; lower-page photos lazy-loaded
-- Estimated all-image payload at DPR1: 126,924 bytes vs 462,758 bytes previously (about 72.6% lower)
-- Estimated all-image payload at DPR2: 264,604 bytes (about 42.8% lower)
-- Estimates use configured srcset candidate sizes; not a measured network waterfall.
+BROWSER / DEVICE STATUS
+- Automated Chromium navigation could not run in this environment (ERR_BLOCKED_BY_ADMINISTRATOR; headless CLI timed out).
+- Therefore no new claims are made about runtime layout, FPS, Lighthouse, Safari, Firefox or physical devices.
 
-DOOR / INTERACTION CHECKS
-- Desktop entry + reverse exit + door close: Marketing, SEO, AI and Operations — 4/4 PASS
-- Mobile reverse exit at 320px and 390px: PASS
-- Reduced-motion direct navigation: PASS
-- Next Skill shortcut: PASS
-- Floating Back to Top: PASS (final scroll position under 10px)
-- Footer Back to Top: PASS (final scroll position under 10px)
-- Browser JavaScript page errors: 0
-
-NOT INDEPENDENTLY TESTED
-- Physical Windows / Android devices
-- Safari / Firefox browsers
-- Live GitHub Pages deployment
-- Lighthouse scores or measured network waterfall
-
-This report covers the local Chromium build. It is not a guarantee of zero issues in every device or browser.
+RECOMMENDED FINAL CHECK AFTER DEPLOYMENT
+- Test Android Chrome at 320 / 360 / 390 / 430px.
+- Test iPhone Safari at 375 / 390 / 430px.
+- Test tablet at 768 / 820 / 1024px and desktop at 1280 / 1440 / 1920px.
+- Run Lighthouse mobile and inspect LCP, CLS, INP, image transfer and font loading.
+- Verify all four door entry/exit cycles and contact dialog.

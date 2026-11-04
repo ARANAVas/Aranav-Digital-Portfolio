@@ -309,13 +309,17 @@
     }
 
     const flight = buildFlightOverlay(card, button);
-    // The selected door comes toward the viewer, swings on its hinge, then the portal rushes forward.
+    // Match stage timings to the compositor-friendly transition durations on compact screens.
+    const compact = window.matchMedia('(max-width: 760px)').matches;
+    const swingAt = compact ? 720 : 850;
+    const enterAt = compact ? 1360 : 1570;
+    const revealAt = compact ? 2380 : 2670;
     later(() => {
       flight.overlay.classList.add('is-door-open');
       card.classList.add('is-open');
-    }, 850);
-    later(() => flight.overlay.classList.add('is-entering'), 1570);
-    later(revealSkillPage, 2670);
+    }, swingAt);
+    later(() => flight.overlay.classList.add('is-entering'), enterAt);
+    later(revealSkillPage, revealAt);
   };
   const buildReturnOverlay = card => {
     // Begin with a full-screen portal. As the camera retreats, it resolves into the
@@ -386,14 +390,18 @@
       const scaleY = targetRect.height / window.innerHeight;
       flight.shell.style.transform = `translate3d(${targetRect.left}px, ${targetRect.top}px, 0) scale(${scaleX}, ${scaleY})`;
     }));
-    later(() => flight.overlay.classList.add('is-shutting'), 980);
-    later(() => flight.overlay.classList.add('is-exiting'), 1810);
+    const compact = window.matchMedia('(max-width: 760px)').matches;
+    const shutAt = compact ? 860 : 980;
+    const fadeAt = compact ? 1580 : 1810;
+    const removeAt = compact ? 1980 : 2240;
+    later(() => flight.overlay.classList.add('is-shutting'), shutAt);
+    later(() => flight.overlay.classList.add('is-exiting'), fadeAt);
     later(() => {
       flight.overlay.remove();
       stage.classList.remove('is-returning');
       body.classList.remove('door-transitioning');
       if (focusDoor) restore?.focus({ preventScroll: true });
-    }, 2240);
+    }, removeAt);
   };
   $$('.skill-door').forEach(card => $('.door-button', card)?.addEventListener('click', () => openSkill(card.dataset.door)));
   $('.back-to-doors')?.addEventListener('click', closeSkill);
@@ -439,6 +447,7 @@
   footerBackToTop?.addEventListener('click', scrollPageToTop);
   window.addEventListener('scroll', scheduleBackToTopUpdate, { passive: true });
   window.addEventListener('pageshow', updateBackToTop);
+  window.addEventListener('resize', scheduleBackToTopUpdate, { passive: true });
   updateBackToTop();
 
   // Contact dialog and copy actions.

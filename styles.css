@@ -69,7 +69,6 @@ img{display:block;max-width:100%}
 .note-top{right:-8px;top:53px;padding:12px 14px;display:flex;gap:10px;align-items:center;font:8px/1.5 var(--mono);letter-spacing:1px}
 .note-dot{width:6px;height:6px;background:#a4c18f;border-radius:50%;box-shadow:0 0 12px rgba(164,193,143,.75)}
 .note-bottom{left:0;bottom:53px;padding:12px 15px;display:flex;align-items:center;gap:14px}.note-bottom strong{font:500 25px var(--serif);color:var(--gold)}.note-bottom span{font:7px var(--mono);letter-spacing:1px;color:var(--muted)}
-.visual-orbit{position:absolute;z-index:-1;inset:0;border:1px solid rgba(216,185,130,.18);border-radius:48% 48% 4px 4px;transform:rotate(-6deg) scale(.94)}
 .hero-scroll{position:absolute;left:0;right:0;bottom:22px;display:flex;align-items:center;justify-content:center;gap:13px;color:var(--dim);font:8px var(--mono);letter-spacing:1.3px}
 .hero-scroll i{height:28px;width:1px;background:linear-gradient(var(--gold),transparent);display:block}
 .intro-band{border-block:1px solid var(--line);background:linear-gradient(110deg,rgba(216,185,130,.07),transparent 64%),var(--bg-2)}
@@ -649,9 +648,6 @@ html[data-theme="light"] .story-image{border-color:rgba(181,31,50,.24)}
 @media(prefers-reduced-motion:reduce){.back-to-top,.footer-back-to-top,.story-gallery-card,.story-gallery-photo img{transition:none!important}}
 
 
-/* V10 FINAL POLISH — remove the detached decorative orbit/frame behind the hero portrait. */
-.hero-visual .visual-orbit{display:none!important}
-
 /* V10 FINAL POLISH — cinematic reverse journey: leave the skill space, retreat through
    the portal, resolve into the selected door, then swing it closed. */
 .door-return-overlay{position:fixed;inset:0;z-index:10000;overflow:hidden;pointer-events:none;isolation:isolate;opacity:1;background:radial-gradient(ellipse at 50% 42%,rgba(25,38,52,.18),rgba(3,7,12,.94) 78%);transition:opacity .42s ease}
@@ -692,3 +688,111 @@ html[data-theme="light"] .story-image{border-color:rgba(181,31,50,.24)}
 .door-return-door{transition:transform .9s cubic-bezier(.22,1,.36,1),opacity .34s ease!important;filter:none!important}
 .door-return-overlay.is-shutting .door-return-portal{filter:none!important}
 @media(prefers-reduced-motion:reduce){.door-arch,.door-flight-shell,.door-flight-door,.door-flight-portal,.door-return-shell,.door-return-portal,.door-return-door{transition:none!important;will-change:auto!important}}
+
+
+/* V10 MOBILE FINISH — safer sticky header, comfortable tap targets and a balanced hero. */
+@media(max-width:760px){
+  html{scroll-padding-top:calc(76px + env(safe-area-inset-top));}
+  body{overscroll-behavior-x:none;}
+  .header{
+    height:calc(68px + env(safe-area-inset-top));
+    padding:env(safe-area-inset-top) 18px 0;
+    background:var(--bg);
+    -webkit-backdrop-filter:none;
+    backdrop-filter:none;
+  }
+  .menu-toggle,.theme-toggle{
+    width:44px;height:44px;min-width:44px;min-height:44px;
+  }
+  .header-right{gap:8px;}
+  .nav{top:calc(67px + env(safe-area-inset-top));}
+  .hero{
+    padding-top:clamp(34px,9vw,48px);
+    padding-bottom:calc(62px + env(safe-area-inset-bottom));
+    gap:23px;
+  }
+  .hero-title{font-size:clamp(47px,11.5vw,66px);line-height:1.025;letter-spacing:-.065em;}
+  .hero-description{font-size:14px;line-height:1.72;max-width:100%;}
+  .hero-actions{
+    display:grid;
+    grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);
+    gap:9px;
+    width:100%;
+    margin-top:22px;
+  }
+  .hero-actions .btn{
+    width:100%;min-width:0;height:50px;
+    padding-inline:12px;
+    gap:8px;
+    font-size:clamp(9px,2.8vw,11px);
+    white-space:nowrap;
+  }
+  .hero-actions .btn span{overflow:hidden;text-overflow:ellipsis;}
+  .hero-foot{flex-wrap:wrap;row-gap:7px;margin-top:27px;line-height:1.7;}
+  .hero-visual{height:clamp(320px,94vw,370px);max-width:440px;margin-top:0;}
+  .hero-image-frame{inset:8px 19px 18px 26px;transform:rotate(.45deg);}
+  .note-top{right:0;top:32px;padding:10px 11px;}
+  .hero-ability-card{
+    left:0;
+    bottom:clamp(100px,31vw,122px);
+    width:min(210px,76%);
+    min-height:108px;
+    padding:10px 12px;
+    box-shadow:0 15px 34px rgba(0,0,0,.2);
+    -webkit-backdrop-filter:none;
+    backdrop-filter:none;
+  }
+  .hero-ability-card>strong{font-size:20px;}
+  .ability-card-top{font-size:7px;}
+  .ability-card-skills{font-size:9px;white-space:normal;}
+  .ability-card-foot{font-size:6.5px;}
+  .hero-scroll{bottom:calc(12px + env(safe-area-inset-bottom));gap:9px;}
+  .section-pad{scroll-margin-top:calc(76px + env(safe-area-inset-top));}
+  #home,#expertise,#work,#journey,#about,#contact{scroll-margin-top:calc(76px + env(safe-area-inset-top));}
+  .door-flight-shell,.door-return-shell{filter:none!important;}
+  .door-flight-portal:before,.door-return-portal:before{filter:none!important;}
+  .door-flight-shell{transition:transform .82s cubic-bezier(.22,1,.36,1)!important;}
+  .door-flight-door{transition:transform .82s cubic-bezier(.22,1,.36,1),opacity .3s ease!important;filter:none!important;}
+  .door-flight-portal{transition:transform .88s cubic-bezier(.22,1,.36,1),opacity .5s ease,border-radius .82s cubic-bezier(.22,1,.36,1)!important;}
+  .door-return-shell{transition:transform .88s cubic-bezier(.22,1,.36,1)!important;}
+  .door-return-door{transition:transform .82s cubic-bezier(.22,1,.36,1),opacity .28s ease!important;filter:none!important;}
+  .door-return-portal{transition:border-radius .84s cubic-bezier(.22,1,.36,1),opacity .6s ease!important;}
+}
+@media(max-width:350px){
+  .hero-actions{grid-template-columns:1fr;gap:8px;}
+  .hero-actions .btn{height:46px;}
+  .hero-foot-rule{display:none;}
+  .hero-foot{column-gap:10px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .header,.hero-ability-card,.hero-image-frame,.hero-image-frame img{transition:none!important;}
+  .door-flight-shell,.door-flight-door,.door-flight-portal,.door-return-shell,.door-return-door,.door-return-portal{will-change:auto!important;}
+}
+
+/* V10 phone composition: keep the ability card on the lower torso, never over the face. */
+@media(max-width:760px){
+  .hero-ability-card{bottom:clamp(22px,6vw,30px);}
+  .image-bottom{justify-content:flex-end;}
+  .image-bottom>span:first-child{display:none;}
+}
+
+
+/* V10 DEVICE-WIDE PERFORMANCE & ACCESSIBILITY FINISH */
+.skip-link{position:fixed;z-index:3000;top:8px;left:8px;padding:11px 15px;background:var(--ink);color:var(--bg);font:600 12px var(--sans);transform:translateY(-160%);transition:transform .18s ease}
+.skip-link:focus{transform:translateY(0);outline:2px solid #b51f32;outline-offset:3px}
+/* Keep hover-only motion off touch hardware; this prevents sticky hover states after taps. */
+@media(hover:none),(pointer:coarse){
+  .hero-visual:hover .hero-image-frame{transform:rotate(.45deg)}
+  .work-card:hover,.story-gallery-card:hover{transform:none;box-shadow:0 9px 24px rgba(0,0,0,.08)}
+  .work-card:hover .work-card-image img,.story-gallery-card:hover .story-gallery-photo img{transform:none}
+  .btn:hover{transform:none}
+}
+/* Avoid large blurred ambient layers on constrained mobile GPUs. */
+@media(max-width:760px){
+  .ambient{filter:none;opacity:.38}
+  .ambient-one,.ambient-two{max-width:100vw}
+  .door-flight-shell,.door-return-shell{will-change:transform}
+}
+/* The transition shells exist only during the short door journey. */
+
+@media(prefers-reduced-motion:reduce){.skip-link{transition:none!important}}
