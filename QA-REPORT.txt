@@ -1,62 +1,71 @@
-ARANAV PORTFOLIO — V8 CORE QA & OPTIMISATION REPORT
+ARANAV PORTFOLIO — V9 RECRUITER-READY QA REPORT
 Date: 04 November 2026
-Package base: V7 White + Crimson Red
+Package: White + Crimson Red default theme; cinematic dark alternate
 
 SUMMARY
-V8 is a focused quality/performance pass on the existing portfolio. The dark cinematic theme remains the first-visit default; the alternate theme remains white + crimson red.
+V9 refines the portfolio's photo storytelling, skill-door interaction, typography and recruiter access. The white + crimson-red look shown in the supplied reference screenshot is now the first-visit default; the dark theme remains available through the theme toggle. The awkward mini portrait stickers have been removed from the main image and replaced with a balanced two-card gallery beneath it. The resume is a one-column ATS-friendly PDF with an editable DOCX counterpart.
 
-AUDIT FINDINGS, VERIFICATIONS & FIXES
-1. TYPOGRAPHY VERIFICATION
-   - Confirmed the active CSS tokens and Google Fonts request consistently use Manrope and Cormorant Garamond.
-   - Compact labels use the native system monospace stack by design, avoiding a third remote font download.
-   - Kept `display=swap` and safe system fallbacks to avoid blocking initial text paint.
-2. THEME FIRST-PAINT FLASH
-   - The saved theme was previously applied by the footer script after the page had begun rendering.
-   - Theme preference is now read in the head before the stylesheet is painted, with guarded storage access.
-3. NARROW MOBILE HEADLINE OVERFLOW
-   - The italic hero headline could extend beyond the viewport at 320px.
-   - It now wraps naturally at widths up to 360px. Browser measurements show both body and document scroll width match the viewport at tested widths.
-4. TABLET HERO COLLISION RISK
-   - At 768px the long hero headline approached/overlapped the portrait frame.
-   - Tuned the heading scale from 761px to 820px, leaving a clear measured gap between headline and image.
-5. WHITE-THEME CONTRAST
-   - Improved secondary text contrast and set the white/red primary CTA to a white-on-crimson treatment; dark theme styling remains intact.
-6. SKILL-DOOR MOTION TIMING
-   - The detail panel was appearing before the 1.05s hinge animation had completed.
-   - Synchronised the panel reveal with the door transition; reduced-motion mode skips the hinge movement.
-7. NO-JAVASCRIPT FALLBACK
-   - Added a safeguard so the preloader does not cover content when JavaScript is unavailable.
+VISUAL & UX CHANGES
+1. PHOTO PRESENTATION
+   - The main story/workspace portrait is shown without floating profile stickers.
+   - The two formal portraits are placed in equal, aligned editorial cards below the main image.
+   - The fourth photo remains in the hero, giving all four photos distinct roles across the site.
+   - Desktop story composition was visually inspected; portrait cards sit below the main photo with a measured 13px gap in the tested layout.
+2. SKILL-DOOR ANIMATION
+   - Four doors reveal a recessed portal with a visible inner frame and plain reverse panel.
+   - Door panels use a 3D hinge swing with weighted easing; front-facing labels fade during rotation to avoid mirrored text.
+   - The detail-panel reveal is synchronised with the 1.18-second door transition.
+   - Mid-opening desktop capture was visually inspected.
+3. TYPE & RECRUITER ACCESS
+   - Manrope is used for UI/body copy, Cormorant Garamond for editorial emphasis, and DM Mono for compact metadata.
+   - HTML font imports and CSS font variables now match; system fallbacks remain available.
+   - A direct View resume action is available in the hero.
+4. ATS RESUME
+   - Rebuilt as a clean one-column, text-first, one-page A4 PDF and editable one-page DOCX.
+   - No photograph, sidebar, complex tables or text boxes; contact links remain clickable.
+   - Experience and skills are described without invented metrics, awards or certifications. Internship date ranges were not supplied, so no dates were invented.
 
 STATIC QA
-- HTML parsed successfully.
-- 28 IDs checked; no duplicates.
-- Internal fragment and ARIA ID references resolve.
-- All local asset paths resolve; no missing assets.
-- All 4 images have alt text.
-- All 13 buttons specify a type.
-- External links using target=_blank include safe rel attributes.
-- CSS parser: no top-level syntax errors.
-- JavaScript syntax: node --check passed.
+- Duplicate IDs: 0
+- Unresolved ARIA references: 0
+- Missing local assets: 0
+- Images without alt text: 0
+- Buttons without type: 0
+- External blank-target links missing rel: 0
+- CSS top-level parse errors: 0
+- Google Fonts import matches CSS: True
+- JavaScript syntax (`node --check`): passed
 
-BROWSER QA (CHROMIUM, ISOLATED LOCAL SOURCE)
-- Responsive widths checked: 320, 360, 375, 390, 430, 768, 800, 900, 960, 1024, 1280 and 1440 pixels.
-- Document and body scroll widths matched the viewport at the tested widths; no non-decorative content was found outside the viewport.
-- Hero heading/photo spacing checked at tablet widths; the 768–820px collision risk was corrected.
-- All four skill-detail views populated with their expected titles, tags and bullet lists.
-- Door open/back behaviour, theme switching, mobile navigation and contact dialog open/close passed.
-- Lazy-loaded story images loaded when scrolled into view.
-- No JavaScript page errors were recorded in the test harness.
-- Reduced-motion mode was used for the all-four-door content checks; a normal-motion door open/back interaction was separately checked.
+RESPONSIVE & OVERLAP QA (HEADLESS CHROMIUM)
+- 13 widths tested in 2 themes (26 width/theme combinations): 320, 360, 390, 430, 600, 760, 768, 800, 820, 900, 1024, 1280, 1440 px.
+- No horizontal overflow in tested viewports: True.
+- Key component overlap audit at 10 widths: 320, 390, 600, 760, 768, 800, 900, 1024, 1280, 1440 px.
+- Checked hero text/photo, story text/image, main image/gallery, header and skill-door card relationships; no tested key-component overlaps were found.
 
-PERFORMANCE NOTES
+INTERACTION QA
+- First-visit theme: light with theme-colour #ffffff.
+- Theme toggle from white/red to dark: dark.
+- Story gallery: 2 portrait cards, with 13px separation from the main story image.
+- Skill-detail views:
+  - Digital Marketing & Paid Media: visible detail, 10 content bullets.
+  - SEO & Website: visible detail, 5 content bullets.
+  - AI & Generative AI: visible detail, 8 content bullets.
+  - Data & Operations: visible detail, 6 content bullets.
+- All four doors opened successfully: True.
+- Contact dialog open: True.
+- Mobile menu open and closes on navigation: True / True.
+- Runtime page errors: 0; console errors: 0; failed requests in isolated test: 0.
+- All 4 portfolio images loaded in the test harness: True.
+
+PERFORMANCE WORK
 - No frontend framework or animation library is loaded.
-- Hero photo is preloaded and marked high priority; below-the-fold photos remain lazy-loaded.
-- Images are WebP and use asynchronous decoding; image dimensions are declared.
-- Custom cursor-following effects remain removed; decorative blur filters were reduced in the existing refinement pass.
-- Project assets are lightweight; total expanded project size is approximately 680 KB before browser caching.
+- WebP photography; hero image preload/high fetch priority; below-fold lazy loading and async decoding.
+- Intrinsic image dimensions, system font fallbacks and `display=swap` are retained.
+- Reduced-motion support remains; cursor-following effects remain removed; decorative blur work is restrained.
 
 LIMITATIONS
-- These checks were run against the local source embedded into Chromium because direct file/server navigation is restricted in this execution environment.
-- External Google Fonts delivery, real network throttling, Lighthouse/Core Web Vitals, and cross-browser testing (Safari/Firefox/real Android devices) were not verified here.
-- The GitHub Pages site was not modified or deployed. The ZIP must be uploaded to the repository and the Pages workflow must succeed before the public site changes.
-- No automated test can guarantee zero defects on every device/browser; the report records the checks actually completed.
+- Browser checks ran against local source embedded into isolated headless Chromium, not the published website.
+- External Google Fonts delivery, real network throttling, Lighthouse/Core Web Vitals and physical Android performance were not benchmarked.
+- Safari and Firefox were not independently tested.
+- The GitHub repository was not pushed or deployed. Replace repository-root files with this package and verify the GitHub Pages workflow before sharing the updated live URL.
+- Automated checks reduce risk but cannot guarantee zero defects on every browser, device or network.

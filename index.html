@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b1018">
+  <meta name="theme-color" content="#ffffff">
   <meta name="description" content="Aranav — Digital Marketing, Meta Ads, Google Ads, Applied AI & Generative AI, SEO, brand growth and digital operations. Explore professional skills, experience and selected work.">
   <meta property="og:title" content="Aranav | Digital Marketing & Applied AI Portfolio">
   <meta property="og:description" content="Digital marketing, Meta Ads, Google Ads, applied AI, generative AI workflows, SEO and brand growth — a portfolio of skills and professional experience.">
@@ -12,13 +12,16 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/photos/hero-office.webp" fetchpriority="high">
   <link rel="stylesheet" href="styles.css">
   <script>
     document.documentElement.classList.add('js');
-    try { document.documentElement.dataset.theme = localStorage.getItem('aranav-portfolio-theme') === 'light' ? 'light' : 'dark'; }
-    catch (_) { document.documentElement.dataset.theme = 'dark'; }
+    try { const storedTheme = localStorage.getItem('aranav-portfolio-theme'); document.documentElement.dataset.theme = storedTheme === 'dark' ? 'dark' : 'light'; }
+    catch (_) { document.documentElement.dataset.theme = 'light'; }
+    const selectedTheme = document.documentElement.dataset.theme;
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+    if (themeColor) themeColor.content = selectedTheme === 'light' ? '#ffffff' : '#0b1018';
   </script>
 </head>
 <body>
@@ -47,7 +50,7 @@
         <p class="hero-description reveal">I'm Aranav — a digital marketing professional combining brand strategy, SEO, paid media planning across Meta and Google Ads, content execution and applied generative AI workflows to help businesses communicate clearly and grow with intent.</p>
         <div class="hero-actions reveal">
           <button class="btn btn-primary js-contact-open" type="button"><span>Start a conversation</span><i>↗</i></button>
-          <a class="btn btn-quiet" href="#expertise"><span>Explore my skills</span><i>↓</i></a>
+          <a class="btn btn-quiet" href="assets/Aranav-Resume.pdf" target="_blank" rel="noopener"><span>View resume</span><i>↗</i></a>
         </div>
         <div class="hero-foot reveal"><span>BASED IN INDIA</span><span class="hero-foot-rule"></span><span>CURIOUS BY NATURE. PRECISE BY PRACTICE.</span></div>
       </div>
@@ -77,28 +80,28 @@
           <article class="skill-door door-blue reveal" data-door="marketing">
             <div class="door-meta"><span>01 / STRATEGY</span><span class="door-open-hint">OPEN ↗</span></div>
             <button class="door-button" type="button" aria-expanded="false" aria-controls="skill-detail" aria-label="Open Digital Marketing skills">
-              <span class="door-arch"><span class="door-inner-rim"></span><span class="door-grooves"></span><span class="door-number">01</span><span class="door-title">DIGITAL<br>MARKETING</span><span class="door-plate">STRATEGY & GROWTH</span><span class="door-handle"></span><span class="door-keyhole"></span><span class="door-bottom-number">01</span></span>
+              <span class="door-portal" aria-hidden="true"></span><span class="door-arch"><span class="door-inner-rim"></span><span class="door-grooves"></span><span class="door-number">01</span><span class="door-title">DIGITAL<br>MARKETING</span><span class="door-plate">STRATEGY & GROWTH</span><span class="door-handle"></span><span class="door-keyhole"></span><span class="door-bottom-number">01</span></span>
             </button>
             <div class="door-caption"><h3>Digital Marketing</h3><p>Make brands clear, consistent and memorable.</p></div>
           </article>
           <article class="skill-door door-violet reveal" data-door="seo">
             <div class="door-meta"><span>02 / DISCOVERY</span><span class="door-open-hint">OPEN ↗</span></div>
             <button class="door-button" type="button" aria-expanded="false" aria-controls="skill-detail" aria-label="Open SEO and Website skills">
-              <span class="door-arch"><span class="door-inner-rim"></span><span class="door-grooves"></span><span class="door-number">02</span><span class="door-title">SEO &<br>WEBSITE</span><span class="door-plate">SEARCH & EXPERIENCE</span><span class="door-handle"></span><span class="door-keyhole"></span><span class="door-bottom-number">02</span></span>
+              <span class="door-portal" aria-hidden="true"></span><span class="door-arch"><span class="door-inner-rim"></span><span class="door-grooves"></span><span class="door-number">02</span><span class="door-title">SEO &<br>WEBSITE</span><span class="door-plate">SEARCH & EXPERIENCE</span><span class="door-handle"></span><span class="door-keyhole"></span><span class="door-bottom-number">02</span></span>
             </button>
             <div class="door-caption"><h3>SEO & Website</h3><p>Help the right audience find the right information.</p></div>
           </article>
           <article class="skill-door door-green reveal" data-door="ai">
             <div class="door-meta"><span>03 / INNOVATION</span><span class="door-open-hint">OPEN ↗</span></div>
             <button class="door-button" type="button" aria-expanded="false" aria-controls="skill-detail" aria-label="Open AI and Generative AI skills">
-              <span class="door-arch"><span class="door-inner-rim"></span><span class="door-grooves"></span><span class="door-number">03</span><span class="door-title">AI &<br>GEN AI</span><span class="door-plate">INTELLIGENCE & IDEAS</span><span class="door-handle"></span><span class="door-keyhole"></span><span class="door-bottom-number">03</span></span>
+              <span class="door-portal" aria-hidden="true"></span><span class="door-arch"><span class="door-inner-rim"></span><span class="door-grooves"></span><span class="door-number">03</span><span class="door-title">AI &<br>GEN AI</span><span class="door-plate">INTELLIGENCE & IDEAS</span><span class="door-handle"></span><span class="door-keyhole"></span><span class="door-bottom-number">03</span></span>
             </button>
             <div class="door-caption"><h3>AI & Generative AI</h3><p>Use new tools to think, create and work smarter.</p></div>
           </article>
           <article class="skill-door door-amber reveal" data-door="operations">
             <div class="door-meta"><span>04 / EXECUTION</span><span class="door-open-hint">OPEN ↗</span></div>
             <button class="door-button" type="button" aria-expanded="false" aria-controls="skill-detail" aria-label="Open Data and Digital Operations skills">
-              <span class="door-arch"><span class="door-inner-rim"></span><span class="door-grooves"></span><span class="door-number">04</span><span class="door-title">DATA &<br>OPERATIONS</span><span class="door-plate">SYSTEMS & DELIVERY</span><span class="door-handle"></span><span class="door-keyhole"></span><span class="door-bottom-number">04</span></span>
+              <span class="door-portal" aria-hidden="true"></span><span class="door-arch"><span class="door-inner-rim"></span><span class="door-grooves"></span><span class="door-number">04</span><span class="door-title">DATA &<br>OPERATIONS</span><span class="door-plate">SYSTEMS & DELIVERY</span><span class="door-handle"></span><span class="door-keyhole"></span><span class="door-bottom-number">04</span></span>
             </button>
             <div class="door-caption"><h3>Data & Operations</h3><p>Turn information into reliable, organised action.</p></div>
           </article>
@@ -141,10 +144,23 @@
 
     <section class="story section-pad" id="about">
       <div class="page-wrap story-layout">
-        <div class="story-image reveal"><img src="assets/photos/working-desk.webp" alt="Aranav working at a desk with a laptop" loading="lazy" decoding="async" width="1024" height="1536"><div class="story-image-overlay"><span>THE PERSON BEHIND THE PLAN</span><strong>Learning is<br><em>the advantage.</em></strong></div><div class="story-mini-gallery" aria-label="More professional portraits">
-            <figure class="story-mini story-mini-blue"><img src="assets/photos/portrait-blue.webp" alt="Aranav professional portrait" loading="lazy" decoding="async" width="1280" height="1536"><figcaption>PROFILE / 01</figcaption></figure>
-            <figure class="story-mini story-mini-dark"><img src="assets/photos/portrait-dark.webp" alt="Aranav in a formal dark suit" loading="lazy" decoding="async" width="1280" height="1536"><figcaption>PROFILE / 02</figcaption></figure>
-          </div><div class="story-index">04 / THE STORY</div></div>
+        <div class="story-visual-column reveal">
+          <div class="story-image">
+            <img src="assets/photos/working-desk.webp" alt="Aranav in a professional workspace, working at a laptop" loading="lazy" decoding="async" width="1024" height="1536">
+            <div class="story-image-overlay"><span>THE PERSON BEHIND THE PLAN</span><strong>Learning is<br><em>the advantage.</em></strong></div>
+            <div class="story-index">04 / THE STORY</div>
+          </div>
+          <div class="story-gallery" aria-label="Professional portrait gallery">
+            <figure class="story-gallery-card">
+              <div class="story-gallery-photo"><img src="assets/photos/portrait-blue.webp" alt="Aranav wearing a navy suit against a clean blue studio background" loading="lazy" decoding="async" width="1280" height="1536"></div>
+              <figcaption><span>01 / FORMAL PROFILE</span><strong>Professional portrait</strong></figcaption>
+            </figure>
+            <figure class="story-gallery-card">
+              <div class="story-gallery-photo"><img src="assets/photos/portrait-dark.webp" alt="Aranav in a dark suit with a softly lit studio background" loading="lazy" decoding="async" width="1280" height="1536"></div>
+              <figcaption><span>02 / EDITORIAL PROFILE</span><strong>Studio portrait</strong></figcaption>
+            </figure>
+          </div>
+        </div>
         <div class="story-copy">
           <span class="section-index reveal">04 / MY STORY</span><h2 class="reveal">A curious mind.<br><em>A practical mindset.</em></h2>
           <p class="story-lead reveal">My journey is shaped by a simple belief: you do not need to know everything to begin — you need the curiosity to learn and the discipline to keep going.</p>

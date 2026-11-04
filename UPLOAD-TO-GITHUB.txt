@@ -1,21 +1,24 @@
-UPDATE THE ARANAV PORTFOLIO ON GITHUB PAGES — V8 QA REFINED
+UPDATE THE ARANAV PORTFOLIO ON GITHUB PAGES - V9 RECRUITER-READY
 
-1. Download and extract the V8 ZIP.
-2. Open the Aranav-Digital-Portfolio GitHub repository.
-3. Replace the existing index.html, styles.css, script.js and README.md.
-4. Replace the complete assets folder too. Keep the folder structure unchanged.
-5. Commit the changes to the main branch.
-6. Open Settings > Pages and confirm: Deploy from a branch > main > /(root).
-7. Open Actions and confirm the Pages deployment finishes successfully.
-8. Check the published site:
+1. Download and extract the V9 ZIP.
+2. Open the nested folder named "aranav-digital-portfolio".
+3. Open the GitHub repository:
+   https://github.com/AranavSharma07/Aranav-Digital-Portfolio
+4. Replace the repository-root files with the files from this project folder:
+   index.html, styles.css, script.js, README.md, QA-REPORT.txt,
+   QA-REPORT.json and UPLOAD-TO-GITHUB.txt.
+5. Replace the complete "assets" folder, including the photos folder and both resume files.
+   Do not merge only selected files; replace the full folder to avoid stale assets.
+6. Commit the changes to the "main" branch.
+7. In GitHub Settings > Pages, confirm:
+   Deploy from a branch > main > /(root).
+8. Open Actions and verify that the latest Pages deployment finishes successfully.
+9. Check the live website:
    https://aranavsharma07.github.io/Aranav-Digital-Portfolio/
 
-Do not upload only the HTML file. The CSS, JavaScript and complete assets folder are required.
-
-THEMES
-- Default first visit: cinematic midnight / dark.
-- Header toggle: premium white + crimson-red theme.
-- The visitor's selected theme is remembered by the browser when storage is available.
-
 IMPORTANT
-This package has not been pushed to GitHub by the assistant. The public site changes only after the repository files are replaced and the GitHub Pages workflow succeeds.
+- Keep index.html, styles.css, script.js and assets/ at the repository root level.
+- The website's resume button points to assets/Aranav-Resume.pdf.
+- The editable ATS Word resume is assets/Aranav-Resume-ATS.docx.
+- Do not delete the assets/photos folder.
+- This package has not been pushed to GitHub by the assistant. The live site changes only after the repository files are replaced and the GitHub Pages workflow succeeds.

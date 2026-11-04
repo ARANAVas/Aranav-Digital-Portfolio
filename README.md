@@ -1,6 +1,6 @@
-# Aranav — Digital Marketing & Applied AI Portfolio (V8 QA Refined)
+# Aranav — Digital Marketing & Applied AI Portfolio (V9 Recruiter-Ready)
 
-A premium, responsive single-page portfolio with a cinematic midnight theme and an alternate white + crimson-red theme. The central skills section uses four interactive arched doors; each opens a focused skill-detail view with a return control.
+A responsive, single-page professional portfolio with a premium white + crimson-red default and a cinematic midnight alternate. The skills section uses four arched 3D doors; opening one reveals a focused skill-detail view.
 
 ## Preview locally
 
@@ -12,36 +12,34 @@ python -m http.server 8000
 
 Then visit `http://localhost:8000`.
 
+## What changed in V9
+
+- Replaced the two floating/overlapping mini portrait stickers with a balanced two-card portrait gallery beneath the main story image.
+- Added a recessed portal behind each skill door, a visible reverse panel and a weighted 3D hinge swing. Front labels fade while the door turns, preventing mirrored text on the back.
+- Synchronized the 3D door motion with the skill-detail reveal.
+- Corrected the typeface mapping: Manrope for interface/body copy, Cormorant Garamond for editorial emphasis and DM Mono for metadata. Google Fonts use `display=swap` with system fallbacks.
+- Added a direct `View resume` action in the hero for recruiter access.
+- Rebuilt the resume in a single-column, text-first ATS-friendly PDF and editable DOCX.
+
 ## Main sections
 
-- Hero with professional portrait, rotating specialisations and contact CTA
+- Hero with professional portrait, rotating specialisations, contact action and resume link
 - Four interactive skill doors: Digital Marketing & Paid Media, SEO & Website, AI & Generative AI, and Data & Operations
 - Selected work and practical examples
 - Professional experience at EliteFinish, RICOZ Innovation and IT Hub Solution
-- Personal story and current B.Sc. Physics education
+- Personal story, separate professional portrait cards and current B.Sc. Physics education
 - Contact dialog with email, LinkedIn and copy-email actions
 
 ## Theme options
 
-- First-visit default: cinematic midnight / dark theme
-- Alternate: premium white surfaces, graphite typography and restrained crimson-red accents
-- The chosen theme is applied before first paint and saved in browser storage when available
+- First-visit default: white surfaces, graphite typography and restrained crimson-red accents
+- Alternate: cinematic midnight / dark theme
+- Saved theme is applied in the document head before the first paint and persisted when browser storage is available
 
-## Typography
+## Resume files
 
-- Manrope for interface and body copy
-- Cormorant Garamond for editorial/serif emphasis
-- Native system monospace for compact labels and metadata, avoiding a third font download
-- Google Fonts use `display=swap`; robust system fallbacks remain available if the font service is unavailable
-
-## Included interactions
-
-- 3D hinged-door animation followed by a skill-detail view
-- Back-to-doors and next-skill navigation, with Escape-key support
-- Responsive mobile navigation with correct expanded state
-- Theme switch with accessible labels and browser preference persistence
-- Contact dialog, mail links and copy-email fallback
-- Scroll reveals, short role rotation and reduced-motion support
+- `assets/Aranav-Resume.pdf` — one-page searchable PDF, single column, no photograph or sidebars
+- `assets/Aranav-Resume-ATS.docx` — editable one-page Word version with the same text-first structure
 
 ## Performance and accessibility
 
@@ -49,10 +47,9 @@ Then visit `http://localhost:8000`.
 - WebP photography; hero image preloaded with high fetch priority
 - Below-the-fold images lazy-loaded and asynchronously decoded
 - Image dimensions declared to reduce layout shift
-- Responsive safeguards tested from 320px through 1440px
-- Semantic sections, descriptive image alt text, button-based skill controls and visible focus states
-- Reduced-motion mode and fallback behaviour when IntersectionObserver is unavailable
-- No custom pointer-following animation or third-party JavaScript dependency
+- Reduced-motion support and system-font fallbacks
+- Semantic sections, descriptive alt text, button-based skill controls and visible focus states
+- Responsive layout and interaction checks completed in Chromium from 320px through 1440px in both themes
 
 ## Skills and AI positioning
 
@@ -60,4 +57,4 @@ AI/GenAI content distinguishes applied workflows from broader model-ecosystem aw
 
 ## Deployment
 
-Upload the complete project to the root of the GitHub Pages repository. Keep `assets/`, `index.html`, `styles.css` and `script.js` at the same relative paths. GitHub Pages should use branch `main` and folder `/ (root)`. See `UPLOAD-TO-GITHUB.txt` for the replacement steps.
+Upload the complete project to the root of the GitHub Pages repository. Keep `assets/`, `index.html`, `styles.css` and `script.js` at the same relative paths. GitHub Pages should use branch `main` and folder `/ (root)`. See `UPLOAD-TO-GITHUB.txt` for replacement steps.

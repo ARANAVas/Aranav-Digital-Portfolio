@@ -44,8 +44,8 @@
 
   // Theme switch with guarded persistence.
   const themeButton = $('.theme-toggle');
-  let savedTheme = 'dark';
-  try { savedTheme = localStorage.getItem('aranav-portfolio-theme') || 'dark'; } catch (_) { /* Storage can be disabled. */ }
+  let savedTheme = 'light';
+  try { savedTheme = localStorage.getItem('aranav-portfolio-theme') || 'light'; } catch (_) { /* Storage can be disabled. */ }
   const setTheme = theme => {
     const value = theme === 'light' ? 'light' : 'dark';
     root.dataset.theme = value;
@@ -236,7 +236,7 @@
         $('#detail-title')?.focus({ preventScroll: true });
         detail.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
       });
-    }, reduceMotion ? 0 : 1050);
+    }, reduceMotion ? 0 : 1200);
   };
   const closeSkill = () => {
     if (!detail || !stage) return;
