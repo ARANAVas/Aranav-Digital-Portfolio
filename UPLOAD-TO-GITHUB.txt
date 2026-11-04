@@ -1,4 +1,4 @@
-UPDATE THE ARANAV PORTFOLIO ON GITHUB PAGES — V10 CORE OPTIMIZED
+UPDATE THE ARANAV PORTFOLIO ON GITHUB PAGES — V10 FINAL POLISHED
 
 1. Download and extract the V10 ZIP.
 2. Open the nested folder named "aranav-digital-portfolio".
@@ -13,13 +13,13 @@ UPDATE THE ARANAV PORTFOLIO ON GITHUB PAGES — V10 CORE OPTIMIZED
 7. In GitHub Settings > Pages, confirm:
    Deploy from a branch > main > /(root).
 8. In GitHub Actions, verify that the latest Pages deployment finishes successfully.
-9. Open the live website and test all four doors and both Back to Top controls:
+9. Open the live website and test all four doors in both directions (entry and exit), both Back to Top controls, the theme toggle and mobile navigation:
    https://aranavsharma07.github.io/Aranav-Digital-Portfolio/
 
 IMPORTANT
-- Version number remains V10; this is a V10 maintenance/QA package, not V11.
+- Version number remains V10; this is a V10 final maintenance/QA package, not V11.
 - Keep index.html, styles.css, script.js and assets/ at repository root.
 - The resume button points to assets/Aranav-Resume.pdf.
 - The editable ATS Word resume is assets/Aranav-Resume-ATS.docx.
-- Do not delete assets/photos.
+- Do not delete assets/photos. The updated folder now also contains responsive -320.webp and -640.webp photo variants referenced by srcset.
 - These files have not been pushed to GitHub by the assistant. The live site changes only after the repository files are replaced and the Pages workflow succeeds.

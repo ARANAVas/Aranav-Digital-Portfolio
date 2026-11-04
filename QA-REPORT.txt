@@ -1,43 +1,45 @@
-ARANAV PORTFOLIO — V10 CORE OPTIMIZED QA REPORT
-Version: V10 (number intentionally retained)
-Environment: local Chromium / Playwright, headless Linux; static source checks; Node syntax check; tinycss2 CSS parsing.
+ARANAV PORTFOLIO — V10 PHOTO CLARITY + PERFORMANCE POLISH
+==============================================================
 
-SCREENSHOT-DRIVEN FIXES
-[PASS] Two secondary portraits changed from short wide crops to compact vertical profile cards with captions.
-[PASS] Story visual/text layout rebalanced; tablet layout stacks to avoid narrow-column squeeze.
-[PASS] Footer Back to Top no longer links to the sticky header; it uses an explicit scroll-to-top handler.
-[PASS] Floating Back to Top appears after scrolling and is keyboard accessible while visible.
-[PASS] Both floating and footer Back to Top controls tested from the document bottom; final scrollY was 0 for both.
-[PASS] Back to Doors returns to the skill-door grid for all four skill areas.
+Summary: Four portraits sharpened conservatively; responsive WebP delivery added; camera and door transitions smoothed.
 
-RESPONSIVE / THEME TESTS
-[PASS] 30 combinations tested: 15 viewport widths (320, 360, 375, 390, 430, 760, 768, 800, 820, 900, 1024, 1056, 1280, 1440, 1600 px) × 2 themes.
-[PASS] No horizontal overflow in the tested responsive cases.
-[PASS] Gallery cards fit the tested widths; no hero-column overlap was detected.
-[PASS] First-visit theme is white + crimson red; theme toggle switches to dark.
+STATIC CHECKS
+- Duplicate HTML IDs: 0
+- Unresolved ARIA references: 0
+- Missing local files / image candidates: 0
+- JavaScript syntax: PASS
+- CSS parser errors: 0
 
-IMAGES / INTERACTIONS
-[PASS] All 4 local WebP images loaded after scrolling through lazy-loaded sections.
-[PASS] All image elements have alt text and declared width/height.
-[PASS] Four skill doors completed the full approach → hinge swing → portal push-in → detail reveal sequence.
-[PASS] Reduced-motion mode opens skill details without the cinematic overlay.
-[PASS] Mobile menu opens and closes after navigation.
-[PASS] Door details return to the doors grid for all four skills.
-[PASS] No JavaScript page errors in the tested Chromium flows.
+RESPONSIVE CHECKS
+- 20 viewport/theme combinations (10 widths × light/dark)
+- Widths: 320, 360, 390, 600, 768, 820, 1024, 1280, 1440, 1600px
+- Horizontal overflow: none detected
+- Detached hero orbit/frame line: hidden
+- Story gallery bounds: PASS
 
-SOURCE CHECKS
-[PASS] No duplicate HTML IDs.
-[PASS] No unresolved ARIA references.
-[PASS] No missing local assets.
-[PASS] JavaScript syntax passed with node --check.
-[PASS] CSS parser reported 0 syntax errors.
+PHOTO DELIVERY
+- 4/4 images loaded in local Chromium test
+- Conservative local contrast + edge sharpening; no face regeneration
+- Hero/workspace: 640px WebP variants + 1024px full-size source
+- Profile photos: 320px, 640px and 1280px candidates
+- Hero preloaded at high fetch priority; lower-page photos lazy-loaded
+- Estimated all-image payload at DPR1: 126,924 bytes vs 462,758 bytes previously (about 72.6% lower)
+- Estimated all-image payload at DPR2: 264,604 bytes (about 42.8% lower)
+- Estimates use configured srcset candidate sizes; not a measured network waterfall.
 
-LIMITATIONS
-- Local headless Chromium tests do not guarantee zero defects on every physical device or browser.
-- Physical Windows/Android hardware, iOS Safari, and Firefox have not been independently tested.
-- Live GitHub Pages deployment was not performed by the assistant; the ZIP must be uploaded by the repository owner.
-- No Lighthouse/PageSpeed score is claimed.
-- Google Fonts require network access; local system fallbacks remain configured.
+DOOR / INTERACTION CHECKS
+- Desktop entry + reverse exit + door close: Marketing, SEO, AI and Operations — 4/4 PASS
+- Mobile reverse exit at 320px and 390px: PASS
+- Reduced-motion direct navigation: PASS
+- Next Skill shortcut: PASS
+- Floating Back to Top: PASS (final scroll position under 10px)
+- Footer Back to Top: PASS (final scroll position under 10px)
+- Browser JavaScript page errors: 0
 
-DEPLOYMENT
-This package is still V10. Replace the existing repository-root files with the nested project files, commit to main, then verify the GitHub Pages Actions deployment. See UPLOAD-TO-GITHUB.txt.
+NOT INDEPENDENTLY TESTED
+- Physical Windows / Android devices
+- Safari / Firefox browsers
+- Live GitHub Pages deployment
+- Lighthouse scores or measured network waterfall
+
+This report covers the local Chromium build. It is not a guarantee of zero issues in every device or browser.

@@ -29,7 +29,7 @@ Then visit `http://localhost:8000`.
 - Rebuilt both Back to Top controls as real scroll actions; the floating control appears only after scrolling and works with keyboard focus.
 - Fixed Back to Doors so it returns to the actual doors grid position.
 - Preserved the white + crimson first-visit theme, alternate dark theme, and the existing four-stage V10 door-entry animation.
-- Rechecked 30 responsive viewport/theme combinations, all four lazy-loaded photos, all four skill detail return paths, both Back to Top controls, theme toggle and reduced-motion handling. See `QA-REPORT.txt` for limitations and exact scope.
+- Rechecked 20 responsive viewport/theme combinations (10 widths × 2 themes), all four lazy-loaded photos, all four desktop door exit paths, mobile reverse transitions at 320px and 390px, both Back to Top controls, Next Skill and reduced-motion handling. See `QA-REPORT.txt` for limitations and exact scope.
 
 ## Main sections
 
@@ -73,3 +73,27 @@ Then visit `http://localhost:8000`.
 The V10 interaction was exercised in Chromium at desktop size and narrow mobile sizes, including all four doors in full-motion mode and reduced-motion mode. See `QA-REPORT.txt` and `QA-REPORT.json` for the exact checks and limitations.
 
 Upload the complete project to the root of the GitHub Pages repository. Keep `assets/`, `index.html`, `styles.css` and `script.js` at the same relative paths. GitHub Pages should use branch `main` and folder `/ (root)`. See `UPLOAD-TO-GITHUB.txt` for replacement steps.
+
+
+## V10 final polish update
+- Added a reverse cinematic exit matching the entry journey: the camera retreats from the skill detail through the portal, resolves into the selected door, and the door swings shut.
+- Corrected return-door geometry to use the stable door-button frame rather than the still-rotating 3D door bounds.
+- Removed the detached decorative orbit outline behind the hero portrait while preserving the portrait’s own frame.
+- Converted both camera-shell movements to transform-based composited animation to reduce per-frame layout work.
+- Kept reduced-motion and Next Skill paths direct and accessible.
+
+
+## V10 photo clarity and loading refinement
+
+- Enhanced all four existing photographs with conservative luminance-local contrast and edge sharpening. Faces and compositions were not regenerated.
+- Added responsive WebP candidates: 640px variants for hero/workspace photos, plus 320px and 640px profile-photo thumbnails; full-resolution sources remain available for high-density screens.
+- Matched the hero preload's `imagesrcset` and `imagesizes` to the hero image's `srcset`/`sizes` so the browser can choose the same candidate without fetching an unnecessary duplicate.
+- Kept below-the-fold imagery lazy-loaded and asynchronously decoded.
+
+## V10 motion and performance refinement
+
+- Smoothed camera approach and return easing, door hinge swing and portal travel timing.
+- Kept camera-shell geometry on `transform` transitions rather than animating `left`, `top`, `width` and `height`.
+- Focused transition changes on `transform` and `opacity`, avoiding animated layout dimensions and unnecessary filter transitions.
+- Retained the complete entry and exit journey for all four doors and the reduced-motion direct-navigation path.
+- Latest QA: 20 responsive/theme combinations, 4/4 photo load checks, all four desktop door entry/exit flows, 320px/390px mobile exit checks, Next Skill and both Back to Top controls. See `QA-REPORT.txt`.

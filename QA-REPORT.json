@@ -1,42 +1,23 @@
 {
-  "version": "V10 Core Optimized (same version number retained)",
-  "environment": "Local Chromium via Playwright, headless Linux; static source inspection; tinycss2 CSS syntax parse; Node syntax check",
-  "scope": [
-    "Screenshot-driven hero/story image layout review",
-    "Portrait gallery proportions",
-    "Footer and floating Back to Top behaviour",
-    "Back-to-doors navigation",
-    "Themes",
-    "Skill-door transitions",
-    "Responsive layout",
-    "Lazy-loaded image delivery",
-    "Accessibility hooks and source integrity"
-  ],
-  "changes": [
-    "Reframed the two secondary portraits as compact vertical editorial profile cards with captions rather than wide landscape crops.",
-    "Adjusted story layout proportions and tablet stacking to prevent squeezed copy and awkward blank spacing.",
-    "Replaced the footer Back to Top anchor that targeted the sticky header with a real button and explicit scroll handler.",
-    "Added a floating Back to Top control that appears after scrolling, is keyboard accessible, and is removed from tab order when hidden.",
-    "Blurred the activated top control before scrolling so keyboard focus cannot keep the footer region visually anchored.",
-    "Updated Back to Doors behaviour to return the visitor to the doors grid rather than leaving the viewport at the previous detail position.",
-    "Preserved the first-visit white + crimson theme and alternate dark theme.",
-    "Preserved V10 four-stage camera approach, hinged swing, portal push-in and skill detail reveal, plus reduced-motion fallback."
-  ],
-  "responsive_layout": {
-    "cases": 30,
-    "viewport_widths_px": [
+  "version": "V10",
+  "scope": "Photo clarity, responsive image delivery, door motion smoothing and final interaction regression",
+  "static_checks": {
+    "duplicate_ids": 0,
+    "unresolved_aria_references": 0,
+    "missing_local_assets": 0,
+    "javascript_syntax": "pass",
+    "css_parser_errors": 0
+  },
+  "responsive": {
+    "checks": 20,
+    "widths_px": [
       320,
       360,
-      375,
       390,
-      430,
-      760,
+      600,
       768,
-      800,
       820,
-      900,
       1024,
-      1056,
       1280,
       1440,
       1600
@@ -46,121 +27,70 @@
       "dark"
     ],
     "horizontal_overflow_cases": 0,
-    "gallery_fit_all_cases": true,
-    "hero_column_overlap_detected": false
+    "detached_hero_frame_visible": false,
+    "gallery_bounds": "pass"
   },
-  "images": {
-    "after_scrolling_lazy_sections": [
-      {
-        "file": "hero-office.webp",
-        "loaded": true,
-        "dimensions_px": [
-          1024,
-          1536
-        ]
-      },
-      {
-        "file": "working-desk.webp",
-        "loaded": true,
-        "dimensions_px": [
-          1024,
-          1536
-        ]
-      },
-      {
-        "file": "portrait-blue.webp",
-        "loaded": true,
-        "dimensions_px": [
-          1280,
-          1536
-        ]
-      },
-      {
-        "file": "portrait-dark.webp",
-        "loaded": true,
-        "dimensions_px": [
-          1280,
-          1536
-        ]
-      }
-    ],
-    "all_local_images_loaded_after_lazy_scroll": true,
-    "images_without_alt": 0,
-    "images_without_declared_dimensions": 0
-  },
-  "navigation_and_controls": {
-    "floating_back_to_top": {
-      "tested_from_page_bottom": true,
-      "final_scroll_y_px": 0,
-      "pass": true
+  "photos": {
+    "enhanced_count": 4,
+    "loaded_count": 4,
+    "enhancement": "luminance-focused local contrast and restrained edge sharpening; no face regeneration or composition changes",
+    "full_size_widths_px": {
+      "hero-office": 1024,
+      "working-desk": 1024,
+      "portrait-blue": 1280,
+      "portrait-dark": 1280
     },
-    "footer_back_to_top": {
-      "tested_from_page_bottom": true,
-      "final_scroll_y_px": 0,
-      "pass": true
-    },
-    "back_to_top_floating_visibility": true,
-    "four_back_to_doors_cycles": [
-      {
-        "skill": "Digital Marketing & Paid Media",
-        "detail_hidden_after_return": true,
-        "doors_grid_reached": true
-      },
-      {
-        "skill": "SEO & Website",
-        "detail_hidden_after_return": true,
-        "doors_grid_reached": true
-      },
-      {
-        "skill": "AI & Generative AI",
-        "detail_hidden_after_return": true,
-        "doors_grid_reached": true
-      },
-      {
-        "skill": "Data & Operations",
-        "detail_hidden_after_return": true,
-        "doors_grid_reached": true
-      }
+    "responsive_variants": [
+      "hero-office-640.webp",
+      "working-desk-640.webp",
+      "portrait-blue-320.webp",
+      "portrait-blue-640.webp",
+      "portrait-dark-320.webp",
+      "portrait-dark-640.webp"
     ],
-    "mobile_menu_open_close": true
+    "lazy_loading": "story/workspace photos and profile portraits",
+    "hero_fetch_priority": "high",
+    "estimated_candidate_transfer_bytes": {
+      "dpr_1_all_four_images": 126924,
+      "dpr_2_all_four_images": 264604,
+      "previous_four_full_images": 462758,
+      "estimated_reduction_percent": {
+        "dpr_1": 72.6,
+        "dpr_2": 42.8
+      }
+    },
+    "estimation_note": "Calculated from configured srcset candidates and local WebP file sizes; not a measured network waterfall."
   },
-  "themes": {
-    "first_visit_default": "light (white + crimson red)",
-    "toggle_to_dark": true,
-    "preserves_existing_theme_options": true
+  "door_motion": {
+    "desktop_entry_exit": {
+      "marketing": "pass",
+      "seo": "pass",
+      "ai": "pass",
+      "operations": "pass"
+    },
+    "mobile_exit": {
+      "320px": "pass",
+      "390px": "pass"
+    },
+    "reduced_motion": "pass",
+    "motion_changes": [
+      "transform-based camera movement",
+      "smoother easing and slightly longer staged approach/hinge/portal timing",
+      "transform/opacity-focused transitions to avoid animating layout dimensions and heavy filters"
+    ]
   },
-  "skill_doors": {
-    "full_motion_sequence": "approach zoom -> left-hinged swing -> portal push-in -> skill detail reveal",
-    "all_four_doors_full_motion_tested": true,
-    "reduced_motion_opens_details_without_overlay": true,
-    "overlay_removed_after_transition": true,
-    "scroll_unlocked_after_transition": true
+  "navigation": {
+    "next_skill": "pass",
+    "back_to_top_floating": "pass; final scrollY < 10px",
+    "back_to_top_footer": "pass; final scrollY < 10px"
   },
-  "source_integrity": {
-    "duplicate_html_ids": 0,
-    "unresolved_aria_references": 0,
-    "missing_local_assets": 0,
-    "javascript_syntax": "passed (node --check)",
-    "css_parser_errors": 0,
+  "runtime": {
     "javascript_page_errors": 0
   },
-  "summary": {
-    "responsive_layout_passed": true,
-    "image_gallery_fixes_passed": true,
-    "all_four_images_loaded_after_lazy_scroll": true,
-    "floating_and_footer_back_to_top_passed": true,
-    "back_to_doors_passed_for_all_four_skills": true,
-    "theme_toggle_passed": true,
-    "four_door_entry_sequence_passed": true,
-    "reduced_motion_passed": true,
-    "source_integrity_passed": true,
-    "no_javascript_page_errors": true
-  },
   "limitations": [
-    "Tests were run in local headless Chromium, not on the user\u2019s physical Windows/Android devices.",
-    "iOS Safari and Firefox have not been independently tested.",
-    "Live GitHub Pages deployment was not performed by the assistant.",
-    "No Lighthouse or PageSpeed score is claimed.",
-    "External Google Fonts delivery depends on network availability; system fallbacks remain configured."
+    "Actual Windows/Android hardware not independently tested",
+    "Safari and Firefox not independently tested",
+    "Live GitHub Pages deployment not updated or tested",
+    "Lighthouse/network field performance scores not measured"
   ]
 }

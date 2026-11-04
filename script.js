@@ -269,10 +269,9 @@
     requestAnimationFrame(() => requestAnimationFrame(() => {
       if (!flightOverlay) return;
       overlay.classList.add('is-approaching');
-      shell.style.left = targetLeft + 'px';
-      shell.style.top = targetTop + 'px';
-      shell.style.width = targetWidth + 'px';
-      shell.style.height = targetHeight + 'px';
+      const scaleX = targetWidth / rect.width;
+      const scaleY = targetHeight / rect.height;
+      shell.style.transform = `translate3d(${targetLeft - rect.left}px, ${targetTop - rect.top}px, 0) scale(${scaleX}, ${scaleY})`;
     }));
     return { overlay, shell };
   };
@@ -314,24 +313,87 @@
     later(() => {
       flight.overlay.classList.add('is-door-open');
       card.classList.add('is-open');
-    }, 820);
-    later(() => flight.overlay.classList.add('is-entering'), 1450);
-    later(revealSkillPage, 2150);
+    }, 850);
+    later(() => flight.overlay.classList.add('is-entering'), 1570);
+    later(revealSkillPage, 2670);
   };
-  const closeSkill = ({ scrollToStage = true, focusDoor = true } = {}) => {
-    if (!detail || !stage) return;
+  const buildReturnOverlay = card => {
+    // Begin with a full-screen portal. As the camera retreats, it resolves into the
+    // selected door; the door then swings shut to complete the reverse journey.
+    const overlay = document.createElement('div');
+    overlay.className = 'door-return-overlay';
+    overlay.setAttribute('aria-hidden', 'true');
+    const shell = document.createElement('div');
+    shell.className = 'door-return-shell ' + Array.from(card.classList).filter(name => /^door-(blue|violet|green|amber)$/.test(name)).join(' ');
+    shell.style.left = '0px';
+    shell.style.top = '0px';
+    shell.style.width = window.innerWidth + 'px';
+    shell.style.height = window.innerHeight + 'px';
+    const portal = document.createElement('div');
+    portal.className = 'door-return-portal';
+    const source = $('.door-arch', $('.door-button', card));
+    const slab = source ? source.cloneNode(true) : document.createElement('div');
+    slab.classList.add('door-return-door');
+    slab.setAttribute('aria-hidden', 'true');
+    slab.querySelectorAll('[id]').forEach(node => node.removeAttribute('id'));
+    shell.append(portal, slab);
+    overlay.appendChild(shell);
+    body.appendChild(overlay);
+    return { overlay, shell, portal, slab };
+  };
+  const closeSkill = ({ scrollToStage = true, focusDoor = true, animate = true } = {}) => {
+    if (!detail || !stage || detail.hidden) return;
     clearDoorTimers();
     removeFlightOverlay();
+    const previous = activeDoor;
+    const card = previous ? $('.skill-door[data-door="' + previous + '"]') : null;
+    const restore = card ? $('.door-button', card) : null;
+
+    // Reduced-motion users and the Next Skill shortcut get a direct, accessible change.
+    if (!animate || reduceMotion || !scrollToStage || !card) {
+      detail.classList.remove('is-active');
+      detail.hidden = true;
+      stage.classList.remove('is-hidden');
+      resetDoors();
+      activeDoor = null;
+      if (focusDoor) restore?.focus({ preventScroll: true });
+      if (scrollToStage) stage.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      body.classList.remove('door-transitioning');
+      return;
+    }
+
+    const flight = buildReturnOverlay(card);
     detail.classList.remove('is-active');
     detail.hidden = true;
     stage.classList.remove('is-hidden');
+    stage.classList.add('is-returning');
     resetDoors();
-    const previous = activeDoor;
     activeDoor = null;
-    const restore = previous ? $('.skill-door[data-door="' + previous + '"] .door-button') : null;
-    if (focusDoor) restore?.focus({ preventScroll: true });
-    // Return visitors to the actual door grid instead of leaving them at the now-hidden detail panel.
-    if (scrollToStage) stage.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+
+    // Put the real door grid behind the overlay first, then measure its stable viewport position.
+    stage.scrollIntoView({ behavior: 'instant', block: 'start' });
+    body.classList.add('door-transitioning');
+    const targetButton = restore;
+    const target = targetButton.getBoundingClientRect();
+    // Measure the button's stable box, not the hinged arch clone: the latter may still be
+    // transitioning back from its open 3D angle and returns an inflated rotated rectangle.
+    const targetRect = { left: target.left + 5, top: target.top, width: Math.max(40, target.width - 10), height: target.height };
+
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      if (!flight.overlay.isConnected) return;
+      flight.overlay.classList.add('is-retreating');
+      const scaleX = targetRect.width / window.innerWidth;
+      const scaleY = targetRect.height / window.innerHeight;
+      flight.shell.style.transform = `translate3d(${targetRect.left}px, ${targetRect.top}px, 0) scale(${scaleX}, ${scaleY})`;
+    }));
+    later(() => flight.overlay.classList.add('is-shutting'), 980);
+    later(() => flight.overlay.classList.add('is-exiting'), 1810);
+    later(() => {
+      flight.overlay.remove();
+      stage.classList.remove('is-returning');
+      body.classList.remove('door-transitioning');
+      if (focusDoor) restore?.focus({ preventScroll: true });
+    }, 2240);
   };
   $$('.skill-door').forEach(card => $('.door-button', card)?.addEventListener('click', () => openSkill(card.dataset.door)));
   $('.back-to-doors')?.addEventListener('click', closeSkill);
@@ -339,7 +401,7 @@
     const keys = Object.keys(skillData);
     const index = keys.indexOf(activeDoor);
     const nextKey = keys[(index + 1) % keys.length];
-    closeSkill({ scrollToStage: false, focusDoor: false });
+    closeSkill({ scrollToStage: false, focusDoor: false, animate: false });
     const nextButton = $('.skill-door[data-door="' + nextKey + '"] .door-button');
     nextButton?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
     later(() => openSkill(nextKey), reduceMotion ? 0 : 430);

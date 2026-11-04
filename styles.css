@@ -647,3 +647,48 @@ html[data-theme="light"] .story-image{border-color:rgba(181,31,50,.24)}
   .story-gallery-card figcaption strong{font-size:8px;line-height:1.3}
 }
 @media(prefers-reduced-motion:reduce){.back-to-top,.footer-back-to-top,.story-gallery-card,.story-gallery-photo img{transition:none!important}}
+
+
+/* V10 FINAL POLISH — remove the detached decorative orbit/frame behind the hero portrait. */
+.hero-visual .visual-orbit{display:none!important}
+
+/* V10 FINAL POLISH — cinematic reverse journey: leave the skill space, retreat through
+   the portal, resolve into the selected door, then swing it closed. */
+.door-return-overlay{position:fixed;inset:0;z-index:10000;overflow:hidden;pointer-events:none;isolation:isolate;opacity:1;background:radial-gradient(ellipse at 50% 42%,rgba(25,38,52,.18),rgba(3,7,12,.94) 78%);transition:opacity .42s ease}
+.door-return-overlay:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,transparent 0 18%,rgba(0,0,0,.48) 80%),linear-gradient(180deg,rgba(3,7,12,.12),rgba(3,7,12,.62));opacity:.9;transition:opacity .65s ease}
+.door-return-shell{position:absolute;left:0;top:0;width:100vw;height:100vh;perspective:1600px;transform-style:preserve-3d;filter:drop-shadow(0 28px 72px rgba(0,0,0,.62));transition:left 1.02s cubic-bezier(.16,.82,.18,1),top 1.02s cubic-bezier(.16,.82,.18,1),width 1.02s cubic-bezier(.16,.82,.18,1),height 1.02s cubic-bezier(.16,.82,.18,1),filter .8s ease}
+.door-return-portal{position:absolute;inset:0;border-radius:0;background:radial-gradient(ellipse at 50% 34%,rgba(242,211,161,.25),rgba(83,101,117,.12) 28%,transparent 62%),linear-gradient(180deg,#1c2a38 0%,#101a25 54%,#03070c 100%);box-shadow:inset 0 0 0 1px rgba(236,213,177,.2),inset 0 0 100px rgba(0,0,0,.7);opacity:1;transition:border-radius .92s cubic-bezier(.2,.76,.16,1),opacity .75s ease,filter .85s ease}
+.door-return-portal:before{content:"";position:absolute;inset:8% 14% 0;border-radius:50% 50% 0 0;background:radial-gradient(ellipse at 50% 30%,rgba(248,222,181,.17),rgba(16,27,39,.05) 58%,transparent 76%);filter:blur(20px)}
+.door-return-portal:after{content:"";position:absolute;inset:14px 13px 0;border:1px solid rgba(238,210,165,.14);border-bottom:0;opacity:0;transition:opacity .55s ease,border-radius .8s ease}
+.door-return-door{position:absolute!important;inset:0 5px 0!important;z-index:2!important;transform-origin:left center!important;transform:rotateY(-112deg) translateZ(3px)!important;opacity:0;filter:brightness(.82);backface-visibility:visible!important;transition:transform .72s cubic-bezier(.2,.72,.16,1),opacity .42s ease,filter .55s ease!important}
+.door-return-door>*{opacity:0!important}
+.door-return-overlay.is-retreating .door-return-shell{filter:drop-shadow(0 18px 38px rgba(0,0,0,.56))}
+.door-return-overlay.is-retreating .door-return-portal{border-radius:160px 160px 2px 2px;opacity:.92;filter:brightness(.94)}
+.door-return-overlay.is-retreating .door-return-portal:after{opacity:1;border-radius:145px 145px 0 0}
+.door-return-overlay.is-retreating .door-return-door{opacity:1}
+.door-return-overlay.is-shutting .door-return-door{transform:rotateY(0deg) translateZ(2px)!important;filter:brightness(1)!important}
+.door-return-overlay.is-shutting .door-return-portal{opacity:.15;filter:brightness(.55)}
+.door-return-overlay.is-exiting{opacity:0}
+@media(max-width:760px){.door-return-overlay.is-retreating .door-return-portal{border-radius:130px 130px 2px 2px}.door-return-overlay.is-retreating .door-return-portal:after{border-radius:118px 118px 0 0}}
+@media(prefers-reduced-motion:reduce){.door-return-overlay{display:none!important}.door-return-shell,.door-return-portal,.door-return-door{transition:none!important}}
+/* Keep the destination doors geometrically stable while the reverse camera move is resolving. */
+.doors-stage.is-returning{opacity:1!important;visibility:visible!important;transform:none!important;filter:none!important;transition:none!important;position:relative!important}
+/* Camera shells animate on the compositor instead of repeatedly relaying out their dimensions. */
+.door-flight-shell{transform-origin:top left;will-change:transform;transition:transform .82s cubic-bezier(.16,.82,.18,1),filter .65s ease}
+.door-return-shell{transform-origin:top left;will-change:transform;transition:transform 1.02s cubic-bezier(.16,.82,.18,1),filter .8s ease}
+
+
+/* V10 PHOTO + MOTION PERFORMANCE PASS. Keep the 3D movement on compositor-friendly
+   transforms/opacity; avoid animating layout dimensions, shadows or filters. */
+.hero-image-frame img,.story-image>img,.story-gallery-photo img{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.door-arch{transition:transform 1.02s cubic-bezier(.22,1,.36,1)!important}
+.door-flight-shell{transform-origin:top left;will-change:transform;transition:transform .9s cubic-bezier(.22,1,.36,1)!important;filter:drop-shadow(0 22px 42px rgba(0,0,0,.5))}
+.door-flight-door{transition:transform .94s cubic-bezier(.22,1,.36,1),opacity .38s ease!important;filter:none!important}
+.door-flight-portal{transition:transform 1.02s cubic-bezier(.22,1,.36,1),opacity .62s ease,border-radius .92s cubic-bezier(.22,1,.36,1)!important;filter:none!important}
+.door-flight-overlay.is-door-open .door-flight-portal{filter:none!important}
+.door-flight-overlay.is-entering .door-flight-portal{filter:none!important}
+.door-return-shell{transform-origin:top left;will-change:transform;transition:transform 1.06s cubic-bezier(.22,1,.36,1)!important;filter:drop-shadow(0 24px 56px rgba(0,0,0,.56))}
+.door-return-portal{transition:border-radius .96s cubic-bezier(.22,1,.36,1),opacity .7s ease!important;filter:none!important}
+.door-return-door{transition:transform .9s cubic-bezier(.22,1,.36,1),opacity .34s ease!important;filter:none!important}
+.door-return-overlay.is-shutting .door-return-portal{filter:none!important}
+@media(prefers-reduced-motion:reduce){.door-arch,.door-flight-shell,.door-flight-door,.door-flight-portal,.door-return-shell,.door-return-portal,.door-return-door{transition:none!important;will-change:auto!important}}
