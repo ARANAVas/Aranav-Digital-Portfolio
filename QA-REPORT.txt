@@ -1,29 +1,20 @@
-ARANAV PORTFOLIO V14 — STATIC QA REPORT
+ARANAV PORTFOLIO V10 — ABILITY CARD & PERFORMANCE PASS
 
-SOURCE VERIFICATION
-- Fetched the current original GitHub main index.html and script.js.
-- Verified 18 exact HTML patch anchors against the original index.html; each was present exactly once.
-- Verified the original four-door stage, theme toggle, original script reference and resume link.
-- Original contact address occurrences: index.html = 3; script.js = 2.
-- Role rotation contains one "Applied AI & GenAI" label; V14 changes that rotating hero label to "Brand & Content Strategy" while leaving the dedicated skills door intact.
-- Helper also updates the saved-theme fallback so first-time visitors see the dark theme; a previously saved theme remains respected.
+Static checks:
+- javascript_syntax: passed (node --check)
+- html_parser: passed
+- duplicate_ids: []
+- missing_local_assets: []
+- css_parser: {'top_level_rules': 693, 'errors': []}
+- resume_portfolio_link_embedded: True
+- responsive_image_variants: True
 
-V14 SOURCE CHECKS
-- New CSS and JavaScript are additive; V13's adaptive video loading and V12's reduced-motion fallback remain included.
-- V14 styles preserve both theme token sets and deliberately retain a dark, high-contrast treatment for the skill-door, statement and contact sections in either theme.
-- V14 JavaScript uses requestAnimationFrame for the reading-progress indicator and a passive scroll listener.
-- Hero film still loads only on intersection; it pauses off-screen and on hidden tabs. Static WebP poster remains available for reduced-motion / data-saver / slow connections.
-- Email replacement is applied to the source index and source script, not only visible mail links.
+Changes:
+- Ability card resized with fluid desktop/tablet/mobile dimensions, tighter spacing and typography, and a simpler shadow without backdrop blur.
+- Mobile card width and height are constrained for 320px–760px layouts; ability card remains anchored to the lower image area.
+- Hero visual uses layout containment without paint clipping.
+- Door overlays use transform-based movement and transient compositor hints; reduced-motion users retain non-animated navigation.
+- Responsive WebP variants and existing lazy-loading strategy retained.
+- Portfolio URL in the embedded ATS DOCX resume remains https://aranavas.github.io/Aranav-Digital-Portfolio/.
 
-MEDIA INVENTORY
-- aranav-brand-mark.webp — ~22 KB.
-- aranav-cinematic-logo-still.webp — ~31 KB.
-- aranav-cinematic-logo.webm — ~81 KB.
-- aranav-cinematic-logo.mp4 — ~89 KB.
-- Only a selected browser video source is loaded by the existing adaptive script; no GIF is required for the new hero media.
-
-LIMITATIONS
-- Direct GitHub writes are not available in this session; publishing is manual.
-- No browser-rendering or physical device lab was available in this build.
-- No Lighthouse, Core Web Vitals or performance score is claimed.
-- After upload, verify email delivery, both themes, hero media, door transitions, mobile menu, resume and contact interactions on real devices.
+Runtime testing: NOT COMPLETED. Chromium navigation was blocked by the execution environment (ERR_BLOCKED_BY_ADMINISTRATOR). This report does not claim real-device, cross-browser, Lighthouse or runtime overlap verification.

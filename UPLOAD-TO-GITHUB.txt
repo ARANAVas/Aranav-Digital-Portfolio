@@ -1,0 +1,12 @@
+V10 DEPLOYMENT
+1. Extract this ZIP.
+2. Open the extracted aranav-digital-portfolio folder.
+3. Replace the files in the GitHub repository root with these files and folders, including the complete assets folder.
+4. Commit and push to the main branch.
+5. Wait for GitHub Pages to finish deploying, then hard-refresh the website on phone and desktop.
+
+The embedded resume is assets/Aranav-Resume.pdf. The editable source is assets/Aranav-Resume-ATS.docx.
+The resume Portfolio hyperlink points to:
+https://aranavas.github.io/Aranav-Digital-Portfolio/
+
+Do not upload the outer ZIP itself as the website root; upload the contents of aranav-digital-portfolio.
