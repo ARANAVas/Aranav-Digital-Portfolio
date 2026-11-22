@@ -1,49 +1,23 @@
 {
-  "version": "V14 integrated into uploaded V10 source",
-  "focus": "V14 quiet-luxury branding, updated email, cinematic hero media and interaction polish",
-  "checks": {
-    "javascript_syntax": "passed (node --check on every root JS file)",
-    "html_parser": "passed (BeautifulSoup HTML parse)",
-    "duplicate_ids": [],
-    "missing_local_html_assets": [],
-    "missing_local_css_assets": [],
-    "css_parser": {
-      "cinematic-v12.css": {
-        "top_level_rules": 103,
-        "errors": []
-      },
-      "cinematic-v13.css": {
-        "top_level_rules": 23,
-        "errors": []
-      },
-      "cinematic-v14.css": {
-        "top_level_rules": 154,
-        "errors": []
-      },
-      "styles.css": {
-        "top_level_rules": 693,
-        "errors": []
-      }
-    },
-    "email_updated": true,
-    "four_skill_doors_retained": true,
-    "door_transition_code_retained": true,
-    "dark_theme_default": true,
-    "both_themes_available": true,
-    "resume_pdf_present": true,
-    "hero_media_assets_present": true,
-    "indexable_metadata": true,
-    "v14_assets_referenced": true
-  },
-  "result": "PASS",
-  "runtime_testing": {
-    "status": "not_completed",
-    "reason": "No browser-rendering or physical-device lab was available in this build.",
-    "not_claimed": [
-      "Android/iOS real-device verification",
-      "Chrome/Safari/Firefox runtime verification",
-      "Lighthouse/Core Web Vitals score",
-      "live GitHub Pages publication"
-    ]
-  }
+  "version": "16.2",
+  "html_id_count": 29,
+  "duplicate_ids": [],
+  "missing_local_references": [],
+  "missing_fragment_targets": [],
+  "node_check_passed": true,
+  "viewport_count": 14,
+  "document_horizontal_overflow_count": 0,
+  "clipped_text_count": 0,
+  "browser_console_errors": 0,
+  "javascript_page_errors": 0,
+  "four_skill_doors_passed": true,
+  "next_skill_navigation_passed": true,
+  "rotating_headlines_passed": true,
+  "theme_switch_passed": true,
+  "mobile_navigation_and_anchor_passed": true,
+  "contact_dialog_escape_and_focus_return_passed": true,
+  "reduced_motion_poster_fallback_passed": true,
+  "replacement_logo_video_loaded": true,
+  "resume_pdf_and_docx_present": true,
+  "publishing_status": "not_published"
 }

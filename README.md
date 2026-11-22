@@ -1,34 +1,38 @@
-# Aranav Sharma — Portfolio V14
+# Aranav Sharma — Premium Personal Portfolio (V16.2)
 
-A responsive, editorial-style personal portfolio with a restrained quiet-luxury direction: deep charcoal, warm ivory, aged brass, refined serif/sans typography and purposeful motion. It is designed to feel personal and art-directed rather than like a generic AI template.
+A refined editorial portfolio using charcoal, warm ivory, restrained brass accents and clear typography. This build replaces the hero logo animation with the new video supplied by the user and includes matching WebM and still-image fallbacks.
 
-## V14 update included
-- Dark luxury theme is the first-visit default; existing saved light/dark preferences are respected.
-- Updated identity, hero copy, brand/content positioning and page metadata.
-- Contact links, modal, copy-email action and script fallback use `aranavprime@gmail.com`.
-- Cinematic hero logo film with a static WebP poster; video loads only when visible and is skipped for reduced-motion, data-saver and slow connections.
-- V14 reading-progress hairline and subtle reveal polish.
-- The original four interactive skill doors, door-entry transition, skill details, theme switch, navigation and resume link are retained.
-- Existing resume files, photographs and original styles are retained.
+## Preserved features
+- Animated signature-logo hero with adaptive lazy loading.
+- Five rotating role headlines.
+- Four interactive skill doors and detailed capability panels.
+- Dark/light theme switch, mobile navigation and reduced-motion/data-saver support.
+- Selected work, experience, About gallery, education, résumé and contact dialog.
 
-## Main files
-- `index.html` — V14 page markup, metadata and resource references.
-- `styles.css` — original portfolio and skill-door design system.
-- `script-v14.js` — primary site interactions, email update and dark-theme default.
-- `script.js` — matching compatibility copy of the updated site script.
-- `cinematic-v12.css/js` — editorial design and reduced-motion fallback.
-- `cinematic-v13.css/js` — cinematic hero media and adaptive loading.
-- `cinematic-v14.css/js` — final quiet-luxury polish, reading progress and reveal refinements.
-- `assets/photos/` — original photography plus the new brand mark and cinematic logo media.
+## Files
+- `index.html` — semantic page, SEO/social metadata and content.
+- `portfolio-v15.css` — responsive visual system, dark/light themes and accessibility styling.
+- `script.js` — role rotation, adaptive hero video, theme switch, mobile navigation, skill doors, contact dialog and copy-email action.
+- `assets/` — résumé, favicon and image/video media.
+- `V16.2-RUNTIME-QA.json` and `QA-REPORT.txt` — test records.
 
-## Publish to GitHub Pages
-1. Extract this ZIP.
-2. Open your existing repository: `https://github.com/ARANAVas/Aranav-Digital-Portfolio`.
-3. Upload the *contents* of the extracted `Aranav-Digital-Portfolio-main` folder to the repository root. Do not upload the wrapper folder as a nested directory.
-4. Replace `index.html`, `script.js`, `styles.css` and the existing README/QA/upload notes with the included copies. Add the new `script-v14.js`, `cinematic-v12.*`, `cinematic-v13.*`, `cinematic-v14.*`, `robots.txt`, `sitemap.xml` and new brand media files.
-5. Merge the included `assets/` folder with the existing one. Keep the resume PDF/DOCX, favicon and original photos; do not delete existing assets.
-6. Commit to the branch configured in **Settings → Pages** (the existing setup is expected to use `main` / root).
-7. Open `https://aranavas.github.io/Aranav-Digital-Portfolio/` and hard-refresh after GitHub Pages finishes deploying.
+## Hero logo replacement
+The user's uploaded `1000081650.mp4` replaces the previous hero logo animation under the site's existing asset name. A matching VP9 WebM fallback and a WebP poster were generated from the same clip. The clip is 640×360, 10 fps and 3 seconds long. Sampled frames showed no visible Gemini watermark, so cropping was not needed.
 
-## Checks and limitations
-Static source checks are listed in `QA-REPORT.txt` and `QA-REPORT.json`. No live GitHub write, browser-rendered test, real-device test, Lighthouse run or Core Web Vitals measurement was performed in this build. After publishing, test the site in Android Chrome and desktop browsers, including both themes, all four doors, contact/email actions, video poster and resume download.
+## Validation
+The V16.2 package passed headless Chromium checks at 14 viewport widths from 320px to 1920px. There was no document-level horizontal overflow, no page or console errors, and the hero video, rotating headlines, theme switch, mobile navigation, a skill door and the contact dialog were tested. Reduced-motion mode retained the poster and avoided loading the video. Physical Android/iOS testing, hosted-font metrics and Lighthouse/Core Web Vitals remain outstanding. See `QA-REPORT.txt` for details.
+
+## Publish
+Upload the **contents** of this folder into the root of the existing GitHub repository:
+`https://github.com/ARANAVas/Aranav-Digital-Portfolio`
+
+Preserve the `assets/` and `assets/photos/` directory structure. In GitHub Pages choose branch `main` and folder `/(root)`. After committing, open the site in a private tab or hard-refresh to avoid cached prior media.
+
+
+## V16.2 editorial and accessibility update
+- Body type is DM Sans with Cormorant Garamond reserved for display accents.
+- Rewrote visible portfolio copy in a direct first-person voice; kept the five rotating role headlines and all four skill areas.
+- Kept the V16.1 replacement MP4/WebM logo and responsive still poster.
+- Improved small-label and mobile paragraph sizing, including a tablet-width contact CTA fit.
+- Contact dialog now returns focus to the exact button that opened it.
+- The video remains lazy-loaded and is disabled for reduced-motion / data-saver / slow connections.

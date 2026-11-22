@@ -1,0 +1,329 @@
+{
+  "viewports": [
+    {
+      "width": 320,
+      "height": 640,
+      "docWidth": 320,
+      "overflowNodes": [],
+      "internalOverflows": [],
+      "clippedText": []
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "docWidth": 360,
+      "overflowNodes": [],
+      "internalOverflows": [],
+      "clippedText": []
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "docWidth": 375,
+      "overflowNodes": [],
+      "internalOverflows": [],
+      "clippedText": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "docWidth": 390,
+      "overflowNodes": [],
+      "internalOverflows": [],
+      "clippedText": []
+    },
+    {
+      "width": 414,
+      "height": 896,
+      "docWidth": 414,
+      "overflowNodes": [],
+      "internalOverflows": [],
+      "clippedText": []
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "docWidth": 430,
+      "overflowNodes": [],
+      "internalOverflows": [],
+      "clippedText": []
+    },
+    {
+      "width": 600,
+      "height": 900,
+      "docWidth": 600,
+      "overflowNodes": [],
+      "internalOverflows": [],
+      "clippedText": []
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "docWidth": 768,
+      "overflowNodes": [],
+      "internalOverflows": [],
+      "clippedText": []
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "docWidth": 820,
+      "overflowNodes": [],
+      "internalOverflows": [],
+      "clippedText": []
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "docWidth": 1024,
+      "overflowNodes": [],
+      "internalOverflows": [
+        {
+          "tag": "DIV",
+          "cls": "hero-visual reveal",
+          "id": "",
+          "text": "ARANAV SHARMA / 2026 ARANAV SHARMA STRATEGY / STORY / GROWTH \u2733 STRATEGY WITH INTENT MY APP",
+          "client": 417,
+          "scroll": 420
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "docWidth": 1280,
+      "overflowNodes": [],
+      "internalOverflows": [
+        {
+          "tag": "DIV",
+          "cls": "hero-visual reveal",
+          "id": "",
+          "text": "ARANAV SHARMA / 2026 ARANAV SHARMA STRATEGY / STORY / GROWTH \u2733 STRATEGY WITH INTENT MY APP",
+          "client": 462,
+          "scroll": 470
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "docWidth": 1366,
+      "overflowNodes": [],
+      "internalOverflows": [
+        {
+          "tag": "DIV",
+          "cls": "hero-visual reveal",
+          "id": "",
+          "text": "ARANAV SHARMA / 2026 ARANAV SHARMA STRATEGY / STORY / GROWTH \u2733 STRATEGY WITH INTENT MY APP",
+          "client": 480,
+          "scroll": 488
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "docWidth": 1440,
+      "overflowNodes": [],
+      "internalOverflows": [
+        {
+          "tag": "DIV",
+          "cls": "hero-visual reveal",
+          "id": "",
+          "text": "ARANAV SHARMA / 2026 ARANAV SHARMA STRATEGY / STORY / GROWTH \u2733 STRATEGY WITH INTENT MY APP",
+          "client": 478,
+          "scroll": 486
+        }
+      ],
+      "clippedText": []
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "docWidth": 1920,
+      "overflowNodes": [],
+      "internalOverflows": [
+        {
+          "tag": "DIV",
+          "cls": "hero-visual reveal",
+          "id": "",
+          "text": "ARANAV SHARMA / 2026 ARANAV SHARMA STRATEGY / STORY / GROWTH \u2733 STRATEGY WITH INTENT MY APP",
+          "client": 476,
+          "scroll": 484
+        }
+      ],
+      "clippedText": []
+    }
+  ],
+  "interactions": {
+    "role": {
+      "before": "Meta & Google Ads",
+      "after": "Brand & Content Strategy",
+      "rotated": true
+    },
+    "theme": {
+      "light": "light",
+      "darkRestored": "dark"
+    },
+    "mobileNav": {
+      "open": "true",
+      "closed": "false"
+    },
+    "doors": [
+      {
+        "index": 1,
+        "open": true,
+        "title": "Digital Marketing & Paid Media"
+      },
+      {
+        "index": 2,
+        "open": true,
+        "title": "SEO & Website"
+      },
+      {
+        "index": 3,
+        "open": true,
+        "title": "Generative AI & Creative Workflows"
+      },
+      {
+        "index": 4,
+        "open": true,
+        "title": "Data & Operations"
+      }
+    ],
+    "nextSkill": {
+      "from": "Digital Marketing & Paid Media",
+      "to": "SEO & Website",
+      "works": true
+    },
+    "dialog": {
+      "opened": true,
+      "escapeClosed": true,
+      "focusReturnedToOpener": true
+    }
+  },
+  "themeTextSamples": {
+    "expertise": {
+      "text": "The work I do.\nFrom idea to execution.",
+      "color": "rgb(242, 238, 229)",
+      "font": "\"DM Sans\", \"Helvetica Neue\", Arial, sans-serif",
+      "size": "39px",
+      "lineHeight": "41.34px"
+    },
+    "work": {
+      "text": "Selected work.\nPractical thinking.",
+      "color": "rgb(37, 35, 31)",
+      "font": "\"DM Sans\", \"Helvetica Neue\", Arial, sans-serif",
+      "size": "39px",
+      "lineHeight": "41.34px"
+    },
+    "journey": {
+      "text": "Where I\u2019ve worked.\nWhat I\u2019ve learned.",
+      "color": "rgb(37, 35, 31)",
+      "font": "\"DM Sans\", \"Helvetica Neue\", Arial, sans-serif",
+      "size": "39px",
+      "lineHeight": "41.34px"
+    },
+    "about": {
+      "text": "From Physics\nto digital marketing.",
+      "color": "rgb(37, 35, 31)",
+      "font": "\"DM Sans\", \"Helvetica Neue\", Arial, sans-serif",
+      "size": "40px",
+      "lineHeight": "41.6px"
+    },
+    "contact": {
+      "text": "Have a project\nin mind?",
+      "color": "rgb(242, 238, 229)",
+      "font": "\"DM Sans\", \"Helvetica Neue\", Arial, sans-serif",
+      "size": "46px",
+      "lineHeight": "43.7px"
+    }
+  },
+  "images": [
+    {
+      "src": "dfPt0wAAA",
+      "ok": true,
+      "alt": ""
+    },
+    {
+      "src": "dfPt0wAAA",
+      "ok": true,
+      "alt": ""
+    },
+    {
+      "src": "IAAA",
+      "ok": true,
+      "alt": "Aranav Sharma signature logo"
+    },
+    {
+      "src": "+r9kAAAA==",
+      "ok": true,
+      "alt": "Aranav in a professional workspace, working at a laptop"
+    },
+    {
+      "src": "jc7omNIYj7IksD1xsaSkZTX8iiqT6OR+Q7wD0Bq0u+VK4",
+      "ok": true,
+      "alt": "Aranav wearing a navy suit against a clean blue studio background"
+    },
+    {
+      "src": "CzJ56EtC6LTLvmdphqEy0ffMN7PWekxT5jTWcCVK1XqVI",
+      "ok": true,
+      "alt": "Aranav in a dark suit with a softly lit studio background"
+    },
+    {
+      "src": "dfPt0wAAA",
+      "ok": true,
+      "alt": ""
+    }
+  ],
+  "video": {
+    "src": "data:video/webm;base64,GkXfo59ChoEBQveBAULygQRC84E",
+    "ready": 4,
+    "width": 640,
+    "height": 360,
+    "paused": true,
+    "poster": true
+  },
+  "reducedMotion": {
+    "video": {
+      "ready": 0,
+      "src": "",
+      "paused": true,
+      "poster": true
+    },
+    "roleStatic": true
+  },
+  "consoleErrors": [],
+  "pageErrors": [],
+  "final_spot_checks": {
+    "mobile_anchor_navigation": {
+      "viewport_width": 390,
+      "menu_opened_before_selection": true,
+      "destination": "#work",
+      "target_top_px": 92,
+      "fixed_header_bottom_px": 70,
+      "menu_closed_after_selection": true,
+      "passed": true
+    },
+    "tablet_contact_cta": {
+      "viewport_width": 768,
+      "width_px": 233,
+      "client_width_px": 231,
+      "scroll_width_px": 231,
+      "height_px": 52,
+      "scroll_height_px": 50,
+      "label": "START A CONVERSATION",
+      "passed": true
+    },
+    "static_integrity": {
+      "html_id_count": 29,
+      "duplicate_ids": [],
+      "missing_local_references": [],
+      "missing_fragment_targets": [],
+      "node_check_passed": true
+    }
+  }
+}

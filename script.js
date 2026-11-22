@@ -6,15 +6,20 @@
   const $ = (selector, scope = document) => scope.querySelector(selector);
   const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
 
-  // Page loader: never trap visitors behind the intro animation.
-  const loader = $('.preloader');
-  const finishLoading = () => { loader?.classList.add('is-done'); body.classList.remove('is-loading'); };
-  body.classList.add('is-loading');
-  if (document.readyState === 'complete') window.setTimeout(finishLoading, 180);
-  else window.addEventListener('load', () => window.setTimeout(finishLoading, 180), { once: true });
-  window.setTimeout(finishLoading, 1800);
 
-  // Short role rotator. The text remains readable during transitions and pauses in hidden tabs.
+  // Short, accessible role rotation. It pauses in hidden tabs and respects reduced-motion settings.
+  const loader = $('.preloader');
+  if (loader) {
+    body.classList.add('is-loading');
+    const finishLoading = () => {
+      loader.classList.add('is-done');
+      body.classList.remove('is-loading');
+    };
+    if (document.readyState === 'complete') window.setTimeout(finishLoading, 160);
+    else window.addEventListener('load', () => window.setTimeout(finishLoading, 160), { once: true });
+    window.setTimeout(finishLoading, 850);
+  }
+
   const roleText = $('#role-text');
   const roles = ['Digital Marketing', 'Meta & Google Ads', 'Brand & Content Strategy', 'SEO & Content Strategy', 'Brand Growth'];
   let roleIndex = 0, roleTimer = 0, roleSwapTimer = 0;
@@ -28,15 +33,90 @@
         roleIndex = (roleIndex + 1) % roles.length;
         roleText.textContent = roles[roleIndex];
         roleText.classList.remove('is-changing');
-        scheduleRoleRotation(2500);
-      }, 150);
+        scheduleRoleRotation(2600);
+      }, 170);
     }, delay);
   };
-  scheduleRoleRotation(2200);
+  scheduleRoleRotation(2100);
   document.addEventListener('visibilitychange', () => {
     stopRoleRotation();
-    if (!document.hidden) scheduleRoleRotation(500);
+    if (!document.hidden) scheduleRoleRotation(450);
   });
+
+  // Keep the signature logo's motion adaptive: load only near the viewport, pause off-screen,
+  // and retain the supplied still poster on reduced-motion, data-saver and slow connections.
+  const heroVideo = $('.hero-mark-video');
+  if (heroVideo) {
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const saveData = Boolean(navigator.connection && navigator.connection.saveData);
+    const slowConnection = Boolean(navigator.connection && /^(slow-2g|2g)$/.test(navigator.connection.effectiveType || ''));
+    const sources = Array.from(heroVideo.querySelectorAll('source[data-src]'));
+    let mediaLoaded = false;
+    let mediaVisible = false;
+    const pauseHeroVideo = () => { try { heroVideo.pause(); } catch (_) {} };
+    const loadHeroVideo = () => {
+      if (mediaLoaded || motionPreference.matches || saveData || slowConnection) return;
+      sources.forEach(source => { source.src = source.dataset.src; source.removeAttribute('data-src'); });
+      mediaLoaded = true;
+      heroVideo.load();
+    };
+    const playHeroVideo = () => {
+      if (!mediaVisible || document.hidden || motionPreference.matches || saveData || slowConnection) { pauseHeroVideo(); return; }
+      loadHeroVideo();
+      if (!mediaLoaded) return;
+      const attempt = heroVideo.play();
+      if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
+    };
+    if (motionPreference.matches || saveData || slowConnection || !('IntersectionObserver' in window)) {
+      pauseHeroVideo();
+      heroVideo.removeAttribute('autoplay');
+    } else {
+      const videoObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          mediaVisible = entry.isIntersecting && entry.intersectionRatio >= .12;
+          if (mediaVisible) playHeroVideo(); else pauseHeroVideo();
+        });
+      }, { threshold: [0, .12, .35] });
+      videoObserver.observe(heroVideo);
+    }
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) pauseHeroVideo();
+      else if (mediaVisible) playHeroVideo();
+    });
+    window.addEventListener('pagehide', pauseHeroVideo, { passive: true });
+    window.addEventListener('pageshow', () => { if (mediaVisible && !document.hidden) playHeroVideo(); });
+    if (typeof motionPreference.addEventListener === 'function') {
+      motionPreference.addEventListener('change', event => {
+        if (event.matches) { pauseHeroVideo(); heroVideo.removeAttribute('autoplay'); }
+        else if (mediaVisible) playHeroVideo();
+      });
+    }
+  }
+
+
+
+  // Single hairline reading progress; one paint per scroll burst.
+  const progress = document.createElement('div');
+  progress.className = 'v14-progress';
+  progress.setAttribute('aria-hidden', 'true');
+  progress.innerHTML = '<span></span>';
+  document.body.appendChild(progress);
+  const progressFill = progress.firstElementChild;
+  let progressFrame = 0;
+  const paintProgress = () => {
+    progressFrame = 0;
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    const position = total > 0 ? Math.min(1, Math.max(0, window.scrollY / total)) : 0;
+    progressFill.style.transform = 'scaleX(' + position + ')';
+  };
+  const scheduleProgress = () => {
+    if (progressFrame) return;
+    progressFrame = window.requestAnimationFrame(paintProgress);
+  };
+  window.addEventListener('scroll', scheduleProgress, { passive: true });
+  window.addEventListener('resize', scheduleProgress, { passive: true });
+  window.addEventListener('pageshow', paintProgress);
+  paintProgress();
 
   // Current year.
   const year = $('#current-year');
@@ -52,12 +132,12 @@
     themeButton?.setAttribute('aria-pressed', String(value === 'light'));
     if (themeButton) {
       themeButton.querySelector('span').textContent = value === 'dark' ? '☼' : '◐';
-      const nextThemeLabel = value === 'dark' ? 'Switch to white and red theme' : 'Switch to dark theme';
+      const nextThemeLabel = value === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
       themeButton.setAttribute('aria-label', nextThemeLabel);
       themeButton.setAttribute('title', nextThemeLabel);
     }
     const meta = $('meta[name="theme-color"]');
-    meta?.setAttribute('content', value === 'dark' ? '#0b1018' : '#ffffff');
+    meta?.setAttribute('content', value === 'dark' ? '#11110f' : '#f3efe7');
     try { localStorage.setItem('aranav-portfolio-theme', value); } catch (_) { /* Theme still works without storage. */ }
   };
   setTheme(savedTheme);
@@ -79,17 +159,6 @@
   $$('.nav a').forEach(link => link.addEventListener('click', closeMenu));
   document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
 
-  // Scroll reveal; content stays visible if the browser lacks IntersectionObserver.
-  const revealEls = $$('.reveal');
-  if ('IntersectionObserver' in window && !reduceMotion) {
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -28px 0px' });
-    revealEls.forEach(el => revealObserver.observe(el));
-  } else revealEls.forEach(el => el.classList.add('is-visible'));
-
   // Active navigation item.
   const navSections = ['home', 'expertise', 'work', 'journey', 'about', 'contact'].map(id => document.getElementById(id)).filter(Boolean);
   if ('IntersectionObserver' in window) {
@@ -104,7 +173,7 @@
   const skillData = {
     marketing: {
       number: '01 / 04', kicker: 'SKILL AREA / STRATEGY, PAID MEDIA & GROWTH', title: 'Digital Marketing & Paid Media', symbol: '✳',
-      intro: 'I approach digital marketing as a connected growth system: understand the audience, shape a clear message, choose the right channel and measure what matters. My toolkit includes social media, brand communication, campaign planning and the fundamentals of paid advertising across Meta Ads and Google Ads.',
+      intro: 'My work starts with the brief: who needs to hear the message, what they should take away and which channel makes sense. I plan social content and campaigns, and I’m building hands-on knowledge of Meta and Google Ads.',
       tags: ['Social Media Marketing', 'Meta Ads', 'Google Ads', 'Paid Media Planning', 'Brand Promotion', 'Content Strategy', 'Audience Research', 'Campaign Objectives', 'Creative Testing', 'Performance Metrics'],
       bullets: [
         'Plan content themes, platform-specific messaging and practical posting calendars around business goals.',
@@ -127,15 +196,15 @@
     },
     seo: {
       number: '02 / 04', kicker: 'SKILL AREA / SEARCH & EXPERIENCE', title: 'SEO & Website', symbol: '⌕',
-      intro: 'I work with SEO fundamentals and website reviews to make pages clearer for people and more understandable to search engines. My focus is careful research, useful structure and practical checks.',
+      intro: 'I review website content and basic technical signals to make pages easier to find and use. That includes keyword research, page titles, descriptions, headings, mobile checks and practical recommendations.',
       tags: ['SEO Fundamentals', 'Keyword Research', 'Search Intent', 'Metadata Review', 'On-page SEO', 'Website QA'],
       bullets: ['Research keywords and connect them with relevant page topics and search intent.', 'Review title tags, meta descriptions, headings and page content.', 'Check indexability signals and identify technical issues such as unintended noindex directives.', 'Review website usability, mobile layout, links and visible content.', 'Document findings and turn them into prioritised improvement recommendations.'],
       tools: 'Search research · Meta tag checkers · Browser QA · Google Search fundamentals · Website content review',
       quote: 'Visibility begins with relevance. A useful page should answer a real question, clearly.'
     },
     ai: {
-      number: '03 / 04', kicker: 'SKILL AREA / APPLIED AI & GENERATIVE AI', title: 'AI & Generative AI', symbol: '✧',
-      intro: 'I apply generative AI to research, content development, learning experiences and creative production. My strength is model-aware prompting: giving AI systems clear context, constraints and output direction, then refining and checking the result with human judgement.',
+      number: '03 / 04', kicker: 'SKILL AREA / APPLIED AI & GENERATIVE AI', title: 'Generative AI & Creative Workflows', symbol: '✧',
+      intro: 'I use tools such as ChatGPT, Gemini and Veo to support research, outlines, scripts and creative concepts. I write detailed prompts, compare the results and edit them before anything is used. The final decision stays with me.',
       tags: ['Prompt Engineering', 'Model-Agnostic Prompting', 'Context & Instruction Design', 'Multimodal Prompting', 'AI-Assisted Research', 'Content Generation', 'Video Storyboarding', 'Output Evaluation', 'Responsible AI'],
       bullets: [
         'Build structured prompts using role, objective, audience, context, examples, constraints and a defined output format.',
@@ -148,11 +217,11 @@
         'Follow human-in-the-loop and responsible-use practices: protect confidential data, verify important claims and respect rights and platform policies.'
       ],
       tools: 'Hands-on use: ChatGPT / OpenAI GPT · Google Gemini · Gemini Veo. Model ecosystem awareness: Anthropic Claude · Microsoft Copilot · Perplexity · Meta Llama · DeepSeek · xAI Grok · Mistral · Qwen · Cohere · Amazon Nova. Creative AI ecosystem awareness: DALL·E · Imagen · Adobe Firefly · Midjourney · Sora · Runway · Kling · Pika. Familiarity varies by tool; practical work is strongest in ChatGPT, Gemini and Veo.',
-      quote: 'The model creates possibilities. The prompt sets direction. Human judgement makes the result useful.'
+      quote: 'AI can help with a first draft. Good judgement, careful editing and fact-checking still make the work ready.'
     },
     operations: {
       number: '04 / 04', kicker: 'SKILL AREA / DATA & DIGITAL OPERATIONS', title: 'Data & Operations', symbol: '▤',
-      intro: 'Good execution depends on dependable systems. I bring detail-oriented data handling, documentation and coordination skills that help everyday work stay organised.',
+      intro: 'I like keeping the details in order. That means accurate data entry, clear documents, up-to-date spreadsheets and timely follow-ups.',
       tags: ['Advanced Data Entry', 'Data Accuracy', 'Data Management', 'MS Word', 'Microsoft Excel', 'Reporting', 'Team Coordination'],
       bullets: ['Enter, organise and validate information with attention to detail.', 'Maintain spreadsheets, digital records, documents and file structures.', 'Prepare clear summaries, progress updates and routine reports.', 'Handle email communication, internet research and document processing.', 'Coordinate tasks, follow up on deliverables and communicate blockers early.', 'Use checklists and simple workflows to reduce missed steps.'],
       tools: 'Microsoft Word · Microsoft Excel · Email · Online research · Documentation · File management · Task trackers',
@@ -160,12 +229,11 @@
     }
   };
 
-  // Cinematic door journey: approach -> hinge swing -> move through portal -> reveal skill detail.
+  // Skill areas use a restrained physical door transition rather than a full-screen camera effect.
   const stage = $('#doors-stage');
   const detail = $('#skill-detail');
   let activeDoor = null;
   let doorTimers = [];
-  let flightOverlay = null;
   const detailEls = {
     counter: $('#detail-counter'), kicker: $('#detail-kicker'), title: $('#detail-title'), intro: $('#detail-intro'),
     tags: $('#detail-tags'), list: $('#detail-list'), tools: $('#detail-tools'), quote: $('#detail-quote'), symbol: $('#detail-symbol')
@@ -222,58 +290,11 @@
     $$('.skill-door').forEach(card => {
       card.classList.remove('is-opening', 'is-open');
       const button = $('.door-button', card);
-      button.disabled = false;
-      button.setAttribute('aria-expanded', 'false');
+      if (button) {
+        button.disabled = false;
+        button.setAttribute('aria-expanded', 'false');
+      }
     });
-  };
-  const removeFlightOverlay = () => {
-    if (!flightOverlay) return;
-    flightOverlay.remove();
-    flightOverlay = null;
-    body.classList.remove('door-transitioning');
-  };
-  const buildFlightOverlay = (card, button) => {
-    removeFlightOverlay();
-    const arch = $('.door-arch', button);
-    const rect = (arch || button).getBoundingClientRect();
-    const ratio = Math.max(.48, Math.min(.9, rect.width / Math.max(rect.height, 1)));
-    const targetHeight = Math.min(window.innerHeight * .84, 900, (window.innerWidth * .84) / ratio);
-    const targetWidth = targetHeight * ratio;
-    const targetLeft = (window.innerWidth - targetWidth) / 2;
-    const targetTop = (window.innerHeight - targetHeight) / 2;
-    const zoom = Math.max(window.innerWidth / targetWidth, window.innerHeight / targetHeight) * 1.4;
-
-    const overlay = document.createElement('div');
-    overlay.className = 'door-flight-overlay';
-    overlay.setAttribute('aria-hidden', 'true');
-    const portal = document.createElement('div');
-    portal.className = 'door-flight-portal';
-    portal.style.setProperty('--portal-zoom', String(zoom));
-    const shell = document.createElement('div');
-    shell.className = 'door-flight-shell ' + Array.from(card.classList).filter(name => /^door-(blue|violet|green|amber)$/.test(name)).join(' ');
-    shell.style.left = rect.left + 'px';
-    shell.style.top = rect.top + 'px';
-    shell.style.width = rect.width + 'px';
-    shell.style.height = rect.height + 'px';
-    const slab = arch ? arch.cloneNode(true) : document.createElement('div');
-    slab.classList.add('door-flight-door');
-    slab.setAttribute('aria-hidden', 'true');
-    slab.querySelectorAll('[id]').forEach(node => node.removeAttribute('id'));
-    shell.append(portal, slab);
-    overlay.appendChild(shell);
-    body.appendChild(overlay);
-    body.classList.add('door-transitioning');
-    flightOverlay = overlay;
-
-    // Let the browser paint the exact starting rectangle before the camera dolly begins.
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      if (!flightOverlay) return;
-      overlay.classList.add('is-approaching');
-      const scaleX = targetWidth / rect.width;
-      const scaleY = targetHeight / rect.height;
-      shell.style.transform = `translate3d(${targetLeft - rect.left}px, ${targetTop - rect.top}px, 0) scale(${scaleX}, ${scaleY})`;
-    }));
-    return { overlay, shell };
   };
   const revealSkillPage = () => {
     if (!detail || !stage) return;
@@ -283,10 +304,6 @@
       detail.classList.add('is-active');
       $('#detail-title')?.focus({ preventScroll: true });
       detail.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
-      if (flightOverlay) {
-        flightOverlay.classList.add('is-exiting');
-        later(removeFlightOverlay, 520);
-      } else body.classList.remove('door-transitioning');
     });
   };
   const openSkill = key => {
@@ -301,107 +318,25 @@
     button.setAttribute('aria-expanded', 'true');
     card.classList.add('is-opening');
     fillSkillDetail(data);
-
-    if (reduceMotion) {
-      card.classList.add('is-open');
-      later(revealSkillPage, 0);
-      return;
-    }
-
-    const flight = buildFlightOverlay(card, button);
-    // Match stage timings to the compositor-friendly transition durations on compact screens.
-    const compact = window.matchMedia('(max-width: 760px)').matches;
-    const swingAt = compact ? 720 : 850;
-    const enterAt = compact ? 1360 : 1570;
-    const revealAt = compact ? 2380 : 2670;
-    later(() => {
-      flight.overlay.classList.add('is-door-open');
-      card.classList.add('is-open');
-    }, swingAt);
-    later(() => flight.overlay.classList.add('is-entering'), enterAt);
-    later(revealSkillPage, revealAt);
+    const reducedOrCompact = reduceMotion || window.matchMedia('(max-width: 860px), (pointer: coarse)').matches;
+    const saveData = Boolean(navigator.connection && navigator.connection.saveData);
+    card.classList.add('is-open');
+    later(revealSkillPage, reducedOrCompact || saveData ? 0 : 620);
   };
-  const buildReturnOverlay = card => {
-    // Begin with a full-screen portal. As the camera retreats, it resolves into the
-    // selected door; the door then swings shut to complete the reverse journey.
-    const overlay = document.createElement('div');
-    overlay.className = 'door-return-overlay';
-    overlay.setAttribute('aria-hidden', 'true');
-    const shell = document.createElement('div');
-    shell.className = 'door-return-shell ' + Array.from(card.classList).filter(name => /^door-(blue|violet|green|amber)$/.test(name)).join(' ');
-    shell.style.left = '0px';
-    shell.style.top = '0px';
-    shell.style.width = window.innerWidth + 'px';
-    shell.style.height = window.innerHeight + 'px';
-    const portal = document.createElement('div');
-    portal.className = 'door-return-portal';
-    const source = $('.door-arch', $('.door-button', card));
-    const slab = source ? source.cloneNode(true) : document.createElement('div');
-    slab.classList.add('door-return-door');
-    slab.setAttribute('aria-hidden', 'true');
-    slab.querySelectorAll('[id]').forEach(node => node.removeAttribute('id'));
-    shell.append(portal, slab);
-    overlay.appendChild(shell);
-    body.appendChild(overlay);
-    return { overlay, shell, portal, slab };
-  };
-  const closeSkill = ({ scrollToStage = true, focusDoor = true, animate = true } = {}) => {
+  const closeSkill = ({ scrollToStage = true, focusDoor = true } = {}) => {
     if (!detail || !stage || detail.hidden) return;
     clearDoorTimers();
-    removeFlightOverlay();
     const previous = activeDoor;
     const card = previous ? $('.skill-door[data-door="' + previous + '"]') : null;
     const restore = card ? $('.door-button', card) : null;
-
-    // Reduced-motion users and the Next Skill shortcut get a direct, accessible change.
-    if (!animate || reduceMotion || !scrollToStage || !card) {
-      detail.classList.remove('is-active');
-      detail.hidden = true;
-      stage.classList.remove('is-hidden');
-      resetDoors();
-      activeDoor = null;
-      if (focusDoor) restore?.focus({ preventScroll: true });
-      if (scrollToStage) stage.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
-      body.classList.remove('door-transitioning');
-      return;
-    }
-
-    const flight = buildReturnOverlay(card);
     detail.classList.remove('is-active');
+    body.classList.remove('skill-detail-active');
     detail.hidden = true;
     stage.classList.remove('is-hidden');
-    stage.classList.add('is-returning');
     resetDoors();
     activeDoor = null;
-
-    // Put the real door grid behind the overlay first, then measure its stable viewport position.
-    stage.scrollIntoView({ behavior: 'instant', block: 'start' });
-    body.classList.add('door-transitioning');
-    const targetButton = restore;
-    const target = targetButton.getBoundingClientRect();
-    // Measure the button's stable box, not the hinged arch clone: the latter may still be
-    // transitioning back from its open 3D angle and returns an inflated rotated rectangle.
-    const targetRect = { left: target.left + 5, top: target.top, width: Math.max(40, target.width - 10), height: target.height };
-
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      if (!flight.overlay.isConnected) return;
-      flight.overlay.classList.add('is-retreating');
-      const scaleX = targetRect.width / window.innerWidth;
-      const scaleY = targetRect.height / window.innerHeight;
-      flight.shell.style.transform = `translate3d(${targetRect.left}px, ${targetRect.top}px, 0) scale(${scaleX}, ${scaleY})`;
-    }));
-    const compact = window.matchMedia('(max-width: 760px)').matches;
-    const shutAt = compact ? 860 : 980;
-    const fadeAt = compact ? 1580 : 1810;
-    const removeAt = compact ? 1980 : 2240;
-    later(() => flight.overlay.classList.add('is-shutting'), shutAt);
-    later(() => flight.overlay.classList.add('is-exiting'), fadeAt);
-    later(() => {
-      flight.overlay.remove();
-      stage.classList.remove('is-returning');
-      body.classList.remove('door-transitioning');
-      if (focusDoor) restore?.focus({ preventScroll: true });
-    }, removeAt);
+    if (focusDoor) restore?.focus({ preventScroll: true });
+    if (scrollToStage) stage.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
   };
   $$('.skill-door').forEach(card => $('.door-button', card)?.addEventListener('click', () => openSkill(card.dataset.door)));
   $('.back-to-doors')?.addEventListener('click', closeSkill);
@@ -417,7 +352,11 @@
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
       closeMenu();
-      if (detail && !detail.hidden) closeSkill();
+      if (activeDoor && detail?.hidden) {
+        clearDoorTimers();
+        resetDoors();
+        activeDoor = null;
+      } else if (detail && !detail.hidden) closeSkill();
     }
   });
 
@@ -452,14 +391,16 @@
 
   // Contact dialog and copy actions.
   const modal = $('#contact-modal');
-  const openModal = () => {
+  let lastModalTrigger = null;
+  const openModal = event => {
+    lastModalTrigger = event?.currentTarget || null;
     if (modal?.showModal) modal.showModal();
     else window.location.href = 'mailto:aranavprime@gmail.com?subject=Professional%20Opportunity';
   };
   $$('.js-contact-open').forEach(button => button.addEventListener('click', openModal));
   $('.modal-close')?.addEventListener('click', () => modal?.close());
   modal?.addEventListener('click', event => { if (event.target === modal) modal.close(); });
-  modal?.addEventListener('close', () => $('.js-contact-open')?.focus({ preventScroll: true }));
+  modal?.addEventListener('close', () => (lastModalTrigger || $('.js-contact-open'))?.focus({ preventScroll: true }));
 
   const email = 'aranavprime@gmail.com';
   const copyText = async (statusEl) => {
