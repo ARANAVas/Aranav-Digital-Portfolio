@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#11120f">
+<title>Apply Aranav Portfolio V14</title>
+<style>
+:root{color-scheme:dark;--bg:#11120f;--panel:#1c1d17;--ink:#eee9df;--muted:#b5b0a5;--gold:#b89b70}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 'Helvetica Neue',Arial,sans-serif;padding:28px 18px}
+main{width:min(700px,100%);margin:4vh auto;background:var(--panel);border:1px solid rgba(184,155,112,.27);padding:clamp(22px,5vw,40px);box-shadow:0 25px 70px rgba(0,0,0,.22)}
+.kicker{font:600 9px/1.5 ui-monospace,monospace;color:var(--gold);letter-spacing:1.8px;text-transform:uppercase}
+h1{font:500 clamp(34px,7vw,52px)/1.03 Georgia,serif;letter-spacing:-1.1px;margin:14px 0}
+h1 em{color:var(--gold);font-style:italic}p{color:var(--muted);font-size:14px}
+label{display:block;margin:22px 0 8px;font-size:13px;font-weight:650}input[type=file]{width:100%;padding:14px;border:1px dashed rgba(184,155,112,.45);background:#141510;color:var(--muted);border-radius:2px}
+button{width:100%;margin-top:16px;padding:15px 18px;border:1px solid var(--gold);background:var(--gold);color:#17160f;font-size:13px;font-weight:750;letter-spacing:.5px;cursor:pointer}
+button:disabled{opacity:.42;cursor:not-allowed}.downloads{display:grid;grid-template-columns:1fr 1fr;gap:10px}.downloads button{margin-top:10px}.downloads button:last-child{background:transparent;color:var(--ink);border-color:rgba(184,155,112,.55)}@media(max-width:420px){.downloads{grid-template-columns:1fr}}#status{white-space:pre-wrap;margin-top:16px;padding:13px 14px;border:1px solid rgba(255,255,255,.1);background:rgba(0,0,0,.15);font-size:12px;color:var(--muted)}#status.good{border-color:rgba(148,190,143,.35);color:#c4dfbc}#status.bad{border-color:rgba(211,112,112,.4);color:#f0b4b4}
+code{color:#ddc8a5}ol{padding-left:20px;color:var(--muted);font-size:13px}li{margin:8px 0}.note{border-left:2px solid var(--gold);padding:10px 14px;background:rgba(184,155,112,.06);color:var(--muted);font-size:12px;margin-top:20px}
+</style>
+</head>
+<body>
+<main>
+  <div class="kicker">Aranav Sharma / Personal portfolio</div>
+  <h1>V14 — <em>quiet luxury.</em></h1>
+  <p>This offline updater creates the revised page and the email-updated site script from your original repository files. It preserves the existing skills, four animated doors, both themes and current resume path.</p>
+  <label for="sourceFiles">Choose both original files: <code>index.html</code> and <code>script.js</code></label>
+  <input id="sourceFiles" type="file" accept=".html,.js,text/html,text/javascript" multiple>
+  <div class="downloads"><button id="downloadIndexBtn" disabled>Download index-v14.html</button><button id="downloadScriptBtn" disabled>Download script-v14.js</button></div>
+  <div id="status" role="status" aria-live="polite">Waiting for the two original files.</div>
+  <ol>
+    <li>Download and extract your current GitHub repository.</li>
+    <li>Select the root <code>index.html</code> and root <code>script.js</code> together.</li>
+    <li>Download the two updated files generated here.</li>
+    <li>Upload the updated HTML as <code>index.html</code> and the updated script as <code>script-v14.js</code>.</li>
+    <li>Upload the V14 CSS/JS files to the repository root and the four supplied portrait-mark assets to <code>assets/photos/</code>.</li>
+  </ol>
+  <div class="note"><strong>All email touchpoints are updated:</strong> page mail links, contact modal links, copy-email action and the script's fallback/copy text now use <code>aranavprime@gmail.com</code>. Keep your original <code>styles.css</code>, the door-transition code and the remaining existing assets.</div>
+</main>
+<script>
+(() => {
+  'use strict';
+  const input = document.getElementById('sourceFiles');
+  const downloadIndexBtn = document.getElementById('downloadIndexBtn');
+  const downloadScriptBtn = document.getElementById('downloadScriptBtn');
+  const status = document.getElementById('status');
+  let outputHtml = '';
+  let outputScript = '';
+  const oldEmail = 'asarnavsharma04@gmail.com';
+  const newEmail = 'aranavprime@gmail.com';
+
+  const patches = [
+    ['<meta name="theme-color" content="#ffffff">', '<meta name="theme-color" content="#11120f">', 'Default browser theme colour'],
+    ['try { const storedTheme = localStorage.getItem(\'aranav-portfolio-theme\'); document.documentElement.dataset.theme = storedTheme === \'dark\' ? \'dark\' : \'light\'; }\n    catch (_) { document.documentElement.dataset.theme = \'light\'; }', 'try { const storedTheme = localStorage.getItem(\'aranav-portfolio-theme\'); document.documentElement.dataset.theme = storedTheme === \'light\' ? \'light\' : \'dark\'; }\n    catch (_) { document.documentElement.dataset.theme = \'dark\'; }', 'Dark luxury default while retaining saved theme preference'],
+    ['<title>Aranav | Digital Marketing & Applied AI Portfolio</title>', '<title>Aranav Sharma — Digital Marketing & Brand Strategy Portfolio</title>', 'Browser title'],
+    ['<meta name="description" content="Aranav — Digital Marketing, Meta Ads, Google Ads, Applied AI & Generative AI, SEO, brand growth and digital operations. Explore professional skills, experience and selected work.">', '<meta name="description" content="Aranav Sharma is a digital marketing professional focused on brand strategy, SEO, social content, paid-media planning and thoughtful digital execution. Explore selected work and professional experience.">', 'Search description'],
+    ['<meta property="og:title" content="Aranav | Digital Marketing & Applied AI Portfolio">', '<meta property="og:title" content="Aranav Sharma — Digital Marketing & Brand Strategy">', 'Social title'],
+    ['<meta property="og:description" content="Digital marketing, Meta Ads, Google Ads, applied AI, generative AI workflows, SEO and brand growth — a portfolio of skills and professional experience.">', '<meta property="og:description" content="Brand strategy, SEO, content systems and digital marketing. Explore Aranav Sharma’s selected work, capabilities and professional journey.">', 'Social description'],
+    ['<meta property="og:type" content="website">', '<meta property="og:type" content="website">\n  <meta property="og:url" content="https://aranavas.github.io/Aranav-Digital-Portfolio/">\n  <meta property="og:image" content="https://aranavas.github.io/Aranav-Digital-Portfolio/assets/photos/aranav-cinematic-logo-still.webp">\n  <meta name="twitter:card" content="summary_large_image">\n  <meta name="twitter:title" content="Aranav Sharma — Digital Marketing & Brand Strategy">\n  <meta name="twitter:description" content="A portfolio of brand strategy, SEO, digital marketing, content and professional experience.">\n  <meta name="twitter:image" content="https://aranavas.github.io/Aranav-Digital-Portfolio/assets/photos/aranav-cinematic-logo-still.webp">\n  <meta name="robots" content="index, follow, max-image-preview:large">\n  <link rel="canonical" href="https://aranavas.github.io/Aranav-Digital-Portfolio/">', 'Social cards and canonical URL'],
+    ['<link rel="preload" as="image" href="assets/photos/hero-office.webp" imagesrcset="assets/photos/hero-office-640.webp 640w, assets/photos/hero-office.webp 1024w" imagesizes="(max-width: 760px) 84vw, (max-width: 1100px) 44vw, 500px" fetchpriority="high">', '<link rel="preload" as="image" href="assets/photos/aranav-cinematic-logo-still.webp" fetchpriority="high">', 'Hero preload'],
+    ['<link rel="stylesheet" href="styles.css">', '<link rel="stylesheet" href="styles.css">\n  <link rel="stylesheet" href="cinematic-v12.css">\n  <link rel="stylesheet" href="cinematic-v13.css">\n  <link rel="stylesheet" href="cinematic-v14.css">', 'Design system stylesheets'],
+    ['<small>CREATING FIRST IMPRESSIONS</small>', '<small>ARANAV SHARMA · PERSONAL PORTFOLIO</small>', 'Preloader wording'],
+    ['<div class="preloader-mark">A<span>.</span></div>', '<div class="preloader-mark"><img class="preloader-logo" src="assets/photos/aranav-brand-mark.webp" alt=""></div>', 'Preloader identity'],
+    ['<a class="brand" href="#home" aria-label="Aranav, home">A<span>.</span></a>', '<a class="brand" href="#home" aria-label="Aranav, home"><img class="brand-logo" src="assets/photos/aranav-brand-mark.webp" alt=""><span class="brand-wordmark">ARANAV</span></a>', 'Header identity'],
+    ['<a class="brand" href="#home" aria-label="Aranav, back to home">A<span>.</span></a>', '<a class="brand" href="#home" aria-label="Aranav, back to home"><img class="brand-logo" src="assets/photos/aranav-brand-mark.webp" alt=""><span class="brand-wordmark">ARANAV</span></a>', 'Footer identity'],
+    ['DIGITAL MARKETING · PAID MEDIA · AI · BUSINESS GROWTH', 'DIGITAL MARKETING · BRAND STRATEGY · CONTENT · GROWTH', 'Hero positioning'],
+    ['<h1 class="hero-title reveal">Ideas deserve<br><em>to make an impact.</em></h1>', '<h1 class="hero-title reveal">Good ideas need<br><em>great execution.</em></h1>', 'Hero headline'],
+    ['<p class="hero-description reveal">I\'m Aranav — a digital marketing professional combining brand strategy, SEO, paid media planning across Meta and Google Ads, content execution and applied generative AI workflows to help businesses communicate clearly and grow with intent.</p>', '<p class="hero-description reveal">I’m Aranav Sharma — a digital marketing professional focused on brand strategy, SEO, social content and paid-media planning. I bring clear thinking and careful execution to the work, using technology where it adds real value.</p>', 'Hero introduction'],
+    ['<img src="assets/photos/hero-office.webp" srcset="assets/photos/hero-office-640.webp 640w, assets/photos/hero-office.webp 1024w" sizes="(max-width: 760px) 84vw, (max-width: 1100px) 44vw, 500px" alt="Aranav in a professional suit" fetchpriority="high" decoding="async" width="1024" height="1536">', '<video class="hero-mark-video" muted loop playsinline preload="none" poster="assets/photos/aranav-cinematic-logo-still.webp" aria-hidden="true"><source data-src="assets/photos/aranav-cinematic-logo.webm" type="video/webm"><source data-src="assets/photos/aranav-cinematic-logo.mp4" type="video/mp4"></video>', 'Cinematic hero identity'],
+    ['<span class="ability-card-top"><i></i> MY ABILITY CARD <b>↗</b></span>\n          <strong>Marketing <em>×</em> AI</strong>\n          <span class="ability-card-skills">Meta Ads · Google Ads · GenAI</span>\n          <span class="ability-card-foot">LEARN / BUILD / IMPROVE</span>', '<span class="ability-card-top"><i></i> MY APPROACH <b>↗</b></span>\n          <strong>Strategy <em>×</em> Craft</strong>\n          <span class="ability-card-skills">Brand · Content · Growth</span>\n          <span class="ability-card-foot">THINK / CREATE / REFINE</span>', 'Hero supporting card'],
+    ['<span>ARANAV</span><span>DIGITAL FIRST <b>✳</b></span>', '<span>ARANAV SHARMA</span><span>STRATEGY / STORY / GROWTH <b>✳</b></span>', 'Hero signature'],
+    ['Taking on the Head of Marketing role at EliteFinish gave me a wider view of how strategy, communication, creative work and coordination come together. Along the way, experimenting with generative AI tools has added a new layer to how I research, develop ideas and shape content.', 'Taking on the Head of Marketing role at EliteFinish gave me a wider view of how strategy, communication, creative work and coordination come together. I also explore emerging tools where they make research and content development more efficient, without losing the human judgement behind the work.', 'About copy'],
+    ['<script src="script.js" defer><' + '/script>', '<script src="script-v14.js" defer><' + '/script>\n  <script src="cinematic-v12.js" defer><' + '/script>\n  <script src="cinematic-v13.js" defer><' + '/script>\n  <script src="cinematic-v14.js" defer><' + '/script>', 'Updated scripts']
+  ];
+
+  function replaceOnce(html, find, replacement, label) {
+    const first = html.indexOf(find);
+    if (first < 0 || html.indexOf(find, first + find.length) >= 0) {
+      throw new Error('Could not safely update ' + label + '. Select the original repository file, not a previously generated version.');
+    }
+    return html.slice(0, first) + replacement + html.slice(first + find.length);
+  }
+  function download(name, content, type) {
+    const blob = new Blob([content], { type });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = name;
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1500);
+  }
+
+  input.addEventListener('change', async () => {
+    downloadIndexBtn.disabled = true;
+    downloadScriptBtn.disabled = true;
+    outputHtml = '';
+    outputScript = '';
+    status.className = '';
+    try {
+      const files = Array.from(input.files || []);
+      const htmlFile = files.find(file => file.name.toLowerCase() === 'index.html');
+      const scriptFile = files.find(file => file.name.toLowerCase() === 'script.js');
+      if (!htmlFile || !scriptFile) throw new Error('Select both original files: root index.html and root script.js.');
+
+      let html = await htmlFile.text();
+      let script = await scriptFile.text();
+      if (!html.includes('<title>Aranav | Digital Marketing & Applied AI Portfolio</title>') || !html.includes('id="doors-stage"') || !html.includes('class="theme-toggle"') || !html.includes('<script src="script.js" defer><' + '/script>')) {
+        throw new Error('The selected index.html is not the original repository version. Its original skill doors and theme switch could not be verified.');
+      }
+      if (!script.includes(oldEmail)) throw new Error('The original script.js does not contain the old contact email, so the copy-email action could not be safely updated.');
+
+      // Keep an existing visitor's saved theme, but use the darker luxury treatment on a first visit.
+      script = replaceOnce(script, "let savedTheme = 'light';", "let savedTheme = 'dark';", 'Default theme setting');
+      script = replaceOnce(script, "localStorage.getItem('aranav-portfolio-theme') || 'light'", "localStorage.getItem('aranav-portfolio-theme') || 'dark'", 'Theme storage fallback');
+      for (const [find, replacement, label] of patches) html = replaceOnce(html, find, replacement, label);
+      const htmlOldEmailCount = html.split(oldEmail).length - 1;
+      html = html.replaceAll(oldEmail, newEmail);
+      const scriptOldEmailCount = script.split(oldEmail).length - 1;
+      script = script.replaceAll(oldEmail, newEmail);
+      // Keep AI/GenAI within the skills area, but make the headline role rotation recruiter-friendly.
+      script = script.replaceAll('Applied AI & GenAI', 'Brand & Content Strategy');
+
+      if (!html.includes('aranavprime@gmail.com') || html.includes(oldEmail) || script.includes(oldEmail) || !script.includes(newEmail)) {
+        throw new Error('Email verification failed. No output was generated.');
+      }
+      if (!html.includes('cinematic-v14.css') || !html.includes('cinematic-v14.js') || !html.includes('script-v14.js') || !html.includes('id="doors-stage"') || !html.includes('class="theme-toggle"') || !html.includes('hero-mark-video')) {
+        throw new Error('Final portfolio verification failed. No output was generated.');
+      }
+      outputHtml = html;
+      outputScript = script;
+      downloadIndexBtn.disabled = false;
+      downloadScriptBtn.disabled = false;
+      status.className = 'good';
+      status.textContent = 'Ready. Email updated in the page (' + htmlOldEmailCount + ' old references) and script (' + scriptOldEmailCount + ' old references). The email copy action and contact fallbacks now use ' + newEmail + '. Both themes, original doors, resume and contact interactions are retained.\n\nClick the button to download index-v14.html and script-v14.js.';
+    } catch (error) {
+      status.className = 'bad';
+      status.textContent = error.message || 'Could not create the update.';
+    }
+  });
+
+  downloadIndexBtn.addEventListener('click', () => {
+    if (outputHtml) download('index-v14.html', outputHtml, 'text/html;charset=utf-8');
+  });
+  downloadScriptBtn.addEventListener('click', () => {
+    if (outputScript) download('script-v14.js', outputScript, 'text/javascript;charset=utf-8');
+  });
+})();
+</script>
+</body>
+</html>
