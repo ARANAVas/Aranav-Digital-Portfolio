@@ -1,34 +1,49 @@
 {
-  "version": "V10",
-  "focus": "Ability card refinement and device-wide performance pass",
+  "version": "V14 integrated into uploaded V10 source",
+  "focus": "V14 quiet-luxury branding, updated email, cinematic hero media and interaction polish",
   "checks": {
-    "javascript_syntax": "passed (node --check)",
-    "html_parser": "passed",
+    "javascript_syntax": "passed (node --check on every root JS file)",
+    "html_parser": "passed (BeautifulSoup HTML parse)",
     "duplicate_ids": [],
-    "missing_local_assets": [],
+    "missing_local_html_assets": [],
+    "missing_local_css_assets": [],
     "css_parser": {
-      "top_level_rules": 693,
-      "errors": []
+      "cinematic-v12.css": {
+        "top_level_rules": 103,
+        "errors": []
+      },
+      "cinematic-v13.css": {
+        "top_level_rules": 23,
+        "errors": []
+      },
+      "cinematic-v14.css": {
+        "top_level_rules": 154,
+        "errors": []
+      },
+      "styles.css": {
+        "top_level_rules": 693,
+        "errors": []
+      }
     },
-    "resume_portfolio_link_embedded": true,
-    "responsive_image_variants": true
+    "email_updated": true,
+    "four_skill_doors_retained": true,
+    "door_transition_code_retained": true,
+    "dark_theme_default": true,
+    "both_themes_available": true,
+    "resume_pdf_present": true,
+    "hero_media_assets_present": true,
+    "indexable_metadata": true,
+    "v14_assets_referenced": true
   },
-  "changes": [
-    "Ability card resized with fluid desktop/tablet/mobile dimensions, tighter spacing and typography, and a simpler shadow without backdrop blur.",
-    "Mobile card width and height are constrained for 320px\u2013760px layouts; ability card remains anchored to the lower image area.",
-    "Hero visual uses layout containment without paint clipping.",
-    "Door overlays use transform-based movement and transient compositor hints; reduced-motion users retain non-animated navigation.",
-    "Responsive WebP variants and existing lazy-loading strategy retained.",
-    "Portfolio URL in the embedded ATS DOCX resume remains https://aranavas.github.io/Aranav-Digital-Portfolio/."
-  ],
+  "result": "PASS",
   "runtime_testing": {
     "status": "not_completed",
-    "reason": "Chromium navigation to both local HTTP and file URLs was blocked by the execution environment (ERR_BLOCKED_BY_ADMINISTRATOR).",
+    "reason": "No browser-rendering or physical-device lab was available in this build.",
     "not_claimed": [
-      "real Android/iOS device verification",
-      "Safari/Firefox verification",
+      "Android/iOS real-device verification",
+      "Chrome/Safari/Firefox runtime verification",
       "Lighthouse/Core Web Vitals score",
-      "runtime overlap measurements"
+      "live GitHub Pages publication"
     ]
   }
 }

@@ -16,7 +16,7 @@
 
   // Short role rotator. The text remains readable during transitions and pauses in hidden tabs.
   const roleText = $('#role-text');
-  const roles = ['Digital Marketing', 'Meta & Google Ads', 'Applied AI & GenAI', 'SEO & Content Strategy', 'Brand Growth'];
+  const roles = ['Digital Marketing', 'Meta & Google Ads', 'Brand & Content Strategy', 'SEO & Content Strategy', 'Brand Growth'];
   let roleIndex = 0, roleTimer = 0, roleSwapTimer = 0;
   const stopRoleRotation = () => { window.clearTimeout(roleTimer); window.clearTimeout(roleSwapTimer); };
   const scheduleRoleRotation = delay => {
@@ -44,8 +44,8 @@
 
   // Theme switch with guarded persistence.
   const themeButton = $('.theme-toggle');
-  let savedTheme = 'light';
-  try { savedTheme = localStorage.getItem('aranav-portfolio-theme') || 'light'; } catch (_) { /* Storage can be disabled. */ }
+  let savedTheme = 'dark';
+  try { savedTheme = localStorage.getItem('aranav-portfolio-theme') || 'dark'; } catch (_) { /* Storage can be disabled. */ }
   const setTheme = theme => {
     const value = theme === 'light' ? 'light' : 'dark';
     root.dataset.theme = value;
@@ -454,14 +454,14 @@
   const modal = $('#contact-modal');
   const openModal = () => {
     if (modal?.showModal) modal.showModal();
-    else window.location.href = 'mailto:asarnavsharma04@gmail.com?subject=Professional%20Opportunity';
+    else window.location.href = 'mailto:aranavprime@gmail.com?subject=Professional%20Opportunity';
   };
   $$('.js-contact-open').forEach(button => button.addEventListener('click', openModal));
   $('.modal-close')?.addEventListener('click', () => modal?.close());
   modal?.addEventListener('click', event => { if (event.target === modal) modal.close(); });
   modal?.addEventListener('close', () => $('.js-contact-open')?.focus({ preventScroll: true }));
 
-  const email = 'asarnavsharma04@gmail.com';
+  const email = 'aranavprime@gmail.com';
   const copyText = async (statusEl) => {
     let copied = false;
     if (navigator.clipboard?.writeText && window.isSecureContext) {

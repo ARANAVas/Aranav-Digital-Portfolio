@@ -1,30 +1,34 @@
-# Aranav Portfolio — V10 Device-Wide Performance Build
+# Aranav Sharma — Portfolio V14
 
-This is the V10 build. The white + crimson theme remains the first-visit default; the dark theme remains available from the theme toggle.
+A responsive, editorial-style personal portfolio with a restrained quiet-luxury direction: deep charcoal, warm ivory, aged brass, refined serif/sans typography and purposeful motion. It is designed to feel personal and art-directed rather than like a generic AI template.
 
-## Included
-- Responsive portfolio source (`index.html`, `styles.css`, `script.js`)
-- Four enhanced WebP photos and responsive image variants
-- ATS-friendly PDF and editable DOCX resume
-- Favicon, QA reports and GitHub Pages upload notes
+## V14 update included
+- Dark luxury theme is the first-visit default; existing saved light/dark preferences are respected.
+- Updated identity, hero copy, brand/content positioning and page metadata.
+- Contact links, modal, copy-email action and script fallback use `aranavprime@gmail.com`.
+- Cinematic hero logo film with a static WebP poster; video loads only when visible and is skipped for reduced-motion, data-saver and slow connections.
+- V14 reading-progress hairline and subtle reveal polish.
+- The original four interactive skill doors, door-entry transition, skill details, theme switch, navigation and resume link are retained.
+- Existing resume files, photographs and original styles are retained.
 
-## Performance work in this pass
-- Explicit `display=swap` font loading
-- Responsive hero image preload with high fetch priority
-- Below-the-fold images use lazy loading, async decoding and low fetch priority
-- Gallery `sizes` values match the rendered 48px/72px thumbnail widths
-- Touch devices avoid sticky hover transforms
-- Mobile ambient blur disabled to reduce GPU compositing work
-- Keyboard skip-to-content link added
-- Back-to-top visibility refreshes on viewport resize
+## Main files
+- `index.html` — V14 page markup, metadata and resource references.
+- `styles.css` — original portfolio and skill-door design system.
+- `script-v14.js` — primary site interactions, email update and dark-theme default.
+- `script.js` — matching compatibility copy of the updated site script.
+- `cinematic-v12.css/js` — editorial design and reduced-motion fallback.
+- `cinematic-v13.css/js` — cinematic hero media and adaptive loading.
+- `cinematic-v14.css/js` — final quiet-luxury polish, reading progress and reveal refinements.
+- `assets/photos/` — original photography plus the new brand mark and cinematic logo media.
 
-## Deploy to GitHub Pages
-1. Download and extract this ZIP.
-2. Replace the repository's website files and the complete `assets` folder with the contents of `aranav-digital-portfolio`.
-3. Commit to the existing `main` branch.
-4. Wait for GitHub Pages to finish deploying, then hard-refresh the site.
+## Publish to GitHub Pages
+1. Extract this ZIP.
+2. Open your existing repository: `https://github.com/ARANAVas/Aranav-Digital-Portfolio`.
+3. Upload the *contents* of the extracted `Aranav-Digital-Portfolio-main` folder to the repository root. Do not upload the wrapper folder as a nested directory.
+4. Replace `index.html`, `script.js`, `styles.css` and the existing README/QA/upload notes with the included copies. Add the new `script-v14.js`, `cinematic-v12.*`, `cinematic-v13.*`, `cinematic-v14.*`, `robots.txt`, `sitemap.xml` and new brand media files.
+5. Merge the included `assets/` folder with the existing one. Keep the resume PDF/DOCX, favicon and original photos; do not delete existing assets.
+6. Commit to the branch configured in **Settings → Pages** (the existing setup is expected to use `main` / root).
+7. Open `https://aranavas.github.io/Aranav-Digital-Portfolio/` and hard-refresh after GitHub Pages finishes deploying.
 
-See `UPLOAD-TO-GITHUB.txt` for the concise checklist.
-
-## QA honesty
-Static validation passed: JavaScript syntax, CSS top-level parsing, duplicate IDs, ARIA references and local asset paths. Runtime Chromium navigation could not be completed in this execution environment, so this package is not represented as physically tested on every device or browser. See `QA-REPORT.txt` for remaining checks.
+## Checks and limitations
+Static source checks are listed in `QA-REPORT.txt` and `QA-REPORT.json`. No live GitHub write, browser-rendered test, real-device test, Lighthouse run or Core Web Vitals measurement was performed in this build. After publishing, test the site in Android Chrome and desktop browsers, including both themes, all four doors, contact/email actions, video poster and resume download.

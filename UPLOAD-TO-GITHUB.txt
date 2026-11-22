@@ -1,12 +1,36 @@
-V10 DEPLOYMENT
+ARANAV PORTFOLIO V14 — GITHUB PAGES UPLOAD
+
+Repository:
+https://github.com/ARANAVas/Aranav-Digital-Portfolio
+
 1. Extract this ZIP.
-2. Open the extracted aranav-digital-portfolio folder.
-3. Replace the files in the GitHub repository root with these files and folders, including the complete assets folder.
-4. Commit and push to the main branch.
-5. Wait for GitHub Pages to finish deploying, then hard-refresh the website on phone and desktop.
+2. Open the repository and upload the CONTENTS of the extracted folder to the repository root. Do not add the wrapper folder as a nested directory.
+3. Replace the existing index.html and script.js with the included V14 copies. Keep styles.css and the original assets folder; the supplied files include them too.
+4. Add the new files to the repository root:
+   - script-v14.js
+   - cinematic-v12.css / cinematic-v12.js
+   - cinematic-v13.css / cinematic-v13.js
+   - cinematic-v14.css / cinematic-v14.js
+   - robots.txt / sitemap.xml
+5. Merge these four new files into assets/photos/:
+   - aranav-brand-mark.webp
+   - aranav-cinematic-logo-still.webp
+   - aranav-cinematic-logo.webm
+   - aranav-cinematic-logo.mp4
+6. Keep the resume files, favicon and original photographs.
+7. Commit to the branch and folder configured in Settings > Pages (normally main / root).
+8. When deployment completes, visit:
+   https://aranavas.github.io/Aranav-Digital-Portfolio/
+   Hard-refresh the page.
 
-The embedded resume is assets/Aranav-Resume.pdf. The editable source is assets/Aranav-Resume-ATS.docx.
-The resume Portfolio hyperlink points to:
-https://aranavas.github.io/Aranav-Digital-Portfolio/
+POST-PUBLISH CHECKLIST
+- First visit opens in the dark quiet-luxury theme.
+- Existing saved light/dark theme preference still works.
+- All four animated skill doors open and their detail/back/next controls work.
+- Hero video poster appears immediately; video loads only when visible and only when device/network settings permit.
+- Email link, contact modal, copy-email button and fallback use aranavprime@gmail.com.
+- LinkedIn and resume links work.
+- Navigation and mobile menu work on narrow screens.
+- Test both themes and reduced-motion mode at mobile and desktop widths.
 
-Do not upload the outer ZIP itself as the website root; upload the contents of aranav-digital-portfolio.
+Publishing is not performed by this ZIP. Upload and commit the files to publish the changes.
