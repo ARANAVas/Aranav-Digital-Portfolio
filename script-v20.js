@@ -21,7 +21,7 @@
   }
 
   const roleText = $('#role-text');
-  const roles = ['Digital Marketing', 'Meta & Google Ads', 'Brand & Content Strategy', 'SEO & Content Strategy', 'Brand Growth'];
+  const roles = ['Brand & Content Strategy', 'Social Media Campaigns', 'SEO & Website Reviews', 'Paid Media Planning', 'Campaign Coordination', 'Creative Production'];
   let roleIndex = 0, roleTimer = 0, roleSwapTimer = 0;
   const stopRoleRotation = () => { window.clearTimeout(roleTimer); window.clearTimeout(roleSwapTimer); };
   const scheduleRoleRotation = delay => {
@@ -33,11 +33,11 @@
         roleIndex = (roleIndex + 1) % roles.length;
         roleText.textContent = roles[roleIndex];
         roleText.classList.remove('is-changing');
-        scheduleRoleRotation(2600);
-      }, 170);
+        scheduleRoleRotation(3200);
+      }, 210);
     }, delay);
   };
-  scheduleRoleRotation(2100);
+  scheduleRoleRotation(2600);
   document.addEventListener('visibilitychange', () => {
     stopRoleRotation();
     if (!document.hidden) scheduleRoleRotation(450);
@@ -99,9 +99,9 @@
   const progress = document.createElement('div');
   progress.className = 'v14-progress';
   progress.setAttribute('aria-hidden', 'true');
-  progress.innerHTML = '<span></span>';
+  const progressFill = document.createElement('span');
+  progress.appendChild(progressFill);
   document.body.appendChild(progress);
-  const progressFill = progress.firstElementChild;
   let progressFrame = 0;
   const paintProgress = () => {
     progressFrame = 0;
@@ -131,7 +131,7 @@
     root.dataset.theme = value;
     themeButton?.setAttribute('aria-pressed', String(value === 'light'));
     if (themeButton) {
-      themeButton.querySelector('span').textContent = value === 'dark' ? '☼' : '◐';
+      themeButton.querySelector('span').textContent = value === 'dark' ? '☾' : '☼';
       const nextThemeLabel = value === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
       themeButton.setAttribute('aria-label', nextThemeLabel);
       themeButton.setAttribute('title', nextThemeLabel);
@@ -229,11 +229,13 @@
     }
   };
 
-  // Skill areas use a restrained physical door transition rather than a full-screen camera effect.
+  // Four physical doors: finish the hinge movement before revealing the selected skill.
   const stage = $('#doors-stage');
   const detail = $('#skill-detail');
   let activeDoor = null;
+  let doorTransitionBusy = false;
   let doorTimers = [];
+  let closeTimer = 0;
   const detailEls = {
     counter: $('#detail-counter'), kicker: $('#detail-kicker'), title: $('#detail-title'), intro: $('#detail-intro'),
     tags: $('#detail-tags'), list: $('#detail-list'), tools: $('#detail-tools'), quote: $('#detail-quote'), symbol: $('#detail-symbol')
@@ -241,6 +243,7 @@
   const clearDoorTimers = () => {
     doorTimers.forEach(window.clearTimeout);
     doorTimers = [];
+    window.clearTimeout(closeTimer);
   };
   const later = (callback, delay) => {
     const timer = window.setTimeout(callback, delay);
@@ -254,7 +257,6 @@
     detailEls.intro.textContent = data.intro;
     detailEls.tags.replaceChildren(...data.tags.map(tag => { const node = document.createElement('span'); node.textContent = tag; return node; }));
     detailEls.list.replaceChildren(...data.bullets.map(item => { const li = document.createElement('li'); li.textContent = item; return li; }));
-    detailEls.tools.textContent = data.tools;
     const platformWrap = $('#detail-platforms');
     if (platformWrap) {
       platformWrap.replaceChildren();
@@ -268,94 +270,110 @@
         data.platforms.forEach(platform => {
           const card = document.createElement('article');
           card.className = 'platform-card';
-          const top = document.createElement('div');
-          top.className = 'platform-card-top';
+          const top = document.createElement('div'); top.className = 'platform-card-top';
           const title = document.createElement('h5'); title.textContent = platform.name;
           const descriptor = document.createElement('span'); descriptor.textContent = platform.descriptor;
           top.append(title, descriptor);
           const summary = document.createElement('p'); summary.textContent = platform.summary;
           const list = document.createElement('ul');
           platform.points.forEach(point => { const li = document.createElement('li'); li.textContent = point; list.appendChild(li); });
-          card.append(top, summary, list);
-          grid.appendChild(card);
+          card.append(top, summary, list); grid.appendChild(card);
         });
-        platformWrap.appendChild(grid);
-        platformWrap.hidden = false;
+        platformWrap.appendChild(grid); platformWrap.hidden = false;
       } else platformWrap.hidden = true;
     }
     detailEls.quote.textContent = '“' + data.quote + '”';
     detailEls.symbol.textContent = data.symbol;
   };
-  const resetDoors = () => {
-    $$('.skill-door').forEach(card => {
-      card.classList.remove('is-opening', 'is-open');
-      const button = $('.door-button', card);
-      if (button) {
-        button.disabled = false;
-        button.setAttribute('aria-expanded', 'false');
-      }
-    });
+  const setDoorButtonState = (card, expanded, disabled = false) => {
+    const button = card && $('.door-button', card);
+    if (!button) return;
+    button.disabled = disabled;
+    button.setAttribute('aria-expanded', String(expanded));
   };
   const revealSkillPage = () => {
     if (!detail || !stage) return;
+    doorTransitionBusy = false;
     stage.classList.add('is-hidden');
     detail.hidden = false;
+    detail.classList.remove('is-closing');
     requestAnimationFrame(() => {
       detail.classList.add('is-active');
-      $('#detail-title')?.focus({ preventScroll: true });
       detail.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      window.setTimeout(() => $('#detail-title')?.focus({ preventScroll: true }), reduceMotion ? 0 : 240);
     });
   };
   const openSkill = key => {
     const data = skillData[key];
     const card = $('.skill-door[data-door="' + key + '"]');
-    if (!data || !card || !detail || !stage || card.classList.contains('is-opening')) return;
+    if (!data || !card || !detail || !stage || activeDoor || doorTransitionBusy) return;
     clearDoorTimers();
-    if (activeDoor) resetDoors();
+    doorTransitionBusy = true;
     activeDoor = key;
-    const button = $('.door-button', card);
-    button.disabled = true;
-    button.setAttribute('aria-expanded', 'true');
-    card.classList.add('is-opening');
+    setDoorButtonState(card, true, true);
+    card.classList.remove('is-closing');
+    card.classList.add('is-opening', 'is-open');
     fillSkillDetail(data);
-    const reducedOrCompact = reduceMotion || window.matchMedia('(max-width: 860px), (pointer: coarse)').matches;
-    const saveData = Boolean(navigator.connection && navigator.connection.saveData);
-    card.classList.add('is-open');
-    later(revealSkillPage, reducedOrCompact || saveData ? 0 : 620);
+    const compact = window.matchMedia('(max-width: 760px)').matches;
+    // Let the physical panel complete most of its swing before the detail card appears.
+    const openDelay = reduceMotion ? 0 : (compact ? 850 : 960);
+    later(revealSkillPage, openDelay);
   };
-  const closeSkill = ({ scrollToStage = true, focusDoor = true } = {}) => {
-    if (!detail || !stage || detail.hidden) return;
+  const closeSkill = ({ scrollToStage = true, focusDoor = true, nextKey = null } = {}) => {
+    if (!detail || !stage || detail.hidden || doorTransitionBusy) return;
     clearDoorTimers();
+    doorTransitionBusy = true;
     const previous = activeDoor;
     const card = previous ? $('.skill-door[data-door="' + previous + '"]') : null;
-    const restore = card ? $('.door-button', card) : null;
     detail.classList.remove('is-active');
-    body.classList.remove('skill-detail-active');
-    detail.hidden = true;
-    stage.classList.remove('is-hidden');
-    resetDoors();
+    detail.classList.add('is-closing');
     activeDoor = null;
-    if (focusDoor) restore?.focus({ preventScroll: true });
-    if (scrollToStage) stage.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+    const compact = window.matchMedia('(max-width: 760px)').matches;
+    const detailExitDelay = reduceMotion ? 0 : 220;
+    closeTimer = window.setTimeout(() => {
+      detail.hidden = true;
+      detail.classList.remove('is-closing');
+      stage.classList.remove('is-hidden');
+      if (card) {
+        setDoorButtonState(card, true, false);
+        // The stage returns with the panel open; remove the open class on the next frame
+        // to let the same hinge animation visibly close the door.
+        requestAnimationFrame(() => requestAnimationFrame(() => card.classList.remove('is-opening')));
+      }
+      if (scrollToStage) stage.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      if (nextKey) {
+        later(() => { doorTransitionBusy = false; openSkill(nextKey); }, reduceMotion ? 0 : (compact ? 920 : 1040));
+      } else {
+        later(() => {
+          if (card) card.classList.remove('is-opening', 'is-open');
+          if (card) setDoorButtonState(card, false, false);
+          if (focusDoor && card) $('.door-button', card)?.focus({ preventScroll: true });
+          doorTransitionBusy = false;
+        }, reduceMotion ? 0 : (compact ? 900 : 1000));
+      }
+    }, detailExitDelay);
   };
   $$('.skill-door').forEach(card => $('.door-button', card)?.addEventListener('click', () => openSkill(card.dataset.door)));
-  $('.back-to-doors')?.addEventListener('click', closeSkill);
+  $('.back-to-doors')?.addEventListener('click', () => closeSkill());
   $('.detail-next')?.addEventListener('click', () => {
     const keys = Object.keys(skillData);
     const index = keys.indexOf(activeDoor);
     const nextKey = keys[(index + 1) % keys.length];
-    closeSkill({ scrollToStage: false, focusDoor: false, animate: false });
-    const nextButton = $('.skill-door[data-door="' + nextKey + '"] .door-button');
-    nextButton?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
-    later(() => openSkill(nextKey), reduceMotion ? 0 : 430);
+    closeSkill({ scrollToStage: false, focusDoor: false, nextKey });
   });
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
       closeMenu();
       if (activeDoor && detail?.hidden) {
         clearDoorTimers();
-        resetDoors();
+        const card = $('.skill-door[data-door="' + activeDoor + '"]');
         activeDoor = null;
+        doorTransitionBusy = false;
+        if (card) {
+          setDoorButtonState(card, false, false);
+          requestAnimationFrame(() => card.classList.remove('is-opening', 'is-open'));
+          $('.door-button', card)?.focus({ preventScroll: true });
+        }
       } else if (detail && !detail.hidden) closeSkill();
     }
   });
@@ -411,7 +429,7 @@
     if (!copied) {
       const input = document.createElement('textarea');
       input.value = email; input.setAttribute('readonly', '');
-      input.style.position = 'fixed'; input.style.opacity = '0'; input.style.pointerEvents = 'none';
+      input.className = 'clipboard-fallback';
       document.body.appendChild(input); input.select();
       try { copied = document.execCommand('copy'); } catch (_) { copied = false; }
       input.remove();
@@ -419,7 +437,28 @@
     if (statusEl) statusEl.textContent = copied ? 'Email address copied.' : 'Please copy: ' + email;
   };
   $('#copy-email')?.addEventListener('click', () => copyText($('#copy-feedback')));
-  $('#modal-copy')?.addEventListener('click', () => copyText($('#modal-status')));
+  $('#modal-copy')?.addEventListener('click', () => copyText($('#message-status')));
+
+  // Static-site contact composer: it creates an email draft locally; it does not transmit or store form data.
+  const messageForm = $('#contact-message-form');
+  const messageStatus = $('#message-status');
+  messageForm?.addEventListener('submit', event => {
+    event.preventDefault();
+    if (!messageForm.reportValidity()) return;
+    const name = $('#contact-name')?.value.trim() || '';
+    const sender = $('#contact-email')?.value.trim() || '';
+    const message = $('#contact-message')?.value.trim() || '';
+    const topic = $('#contact-topic')?.value || 'General conversation';
+    if (name.length > 80 || sender.length > 254 || message.length < 10 || message.length > 3000) {
+      if (messageStatus) messageStatus.textContent = 'Please check the fields and keep your message between 10 and 3,000 characters.';
+      return;
+    }
+    const subject = topic + ' — portfolio enquiry from ' + name;
+    const bodyText = 'Hello Aranav,\n\nTopic: ' + topic + '\n\n' + message + '\n\n— ' + name + '\nReply to: ' + sender;
+    const mailto = 'mailto:' + email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(bodyText);
+    if (messageStatus) messageStatus.textContent = 'Your email app should open with the draft. Review it there and press Send when you are ready.';
+    window.location.href = mailto;
+  });
 
   // Keep native pointer behaviour; decorative cursor tracking is intentionally omitted for leaner rendering.
 })();

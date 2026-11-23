@@ -1,0 +1,171 @@
+{
+  "viewportTests": [
+    {
+      "width": 320,
+      "height": 640,
+      "horizontalOverflow": false,
+      "clipped": [],
+      "pageErrors": []
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "horizontalOverflow": false,
+      "clipped": [],
+      "pageErrors": []
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "horizontalOverflow": false,
+      "clipped": [],
+      "pageErrors": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "horizontalOverflow": false,
+      "clipped": [],
+      "pageErrors": []
+    },
+    {
+      "width": 414,
+      "height": 896,
+      "horizontalOverflow": false,
+      "clipped": [],
+      "pageErrors": []
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "horizontalOverflow": false,
+      "clipped": [],
+      "pageErrors": []
+    },
+    {
+      "width": 600,
+      "height": 900,
+      "horizontalOverflow": false,
+      "clipped": [],
+      "pageErrors": []
+    },
+    {
+      "width": 640,
+      "height": 960,
+      "horizontalOverflow": false,
+      "clipped": [],
+      "pageErrors": []
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "horizontalOverflow": false,
+      "clipped": [],
+      "pageErrors": []
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "horizontalOverflow": false,
+      "clipped": [],
+      "pageErrors": []
+    },
+    {
+      "width": 900,
+      "height": 900,
+      "horizontalOverflow": false,
+      "clipped": [],
+      "pageErrors": []
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "horizontalOverflow": false,
+      "clipped": [],
+      "pageErrors": []
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "horizontalOverflow": false,
+      "clipped": [],
+      "pageErrors": []
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "horizontalOverflow": false,
+      "clipped": [],
+      "pageErrors": []
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "horizontalOverflow": false,
+      "clipped": [],
+      "pageErrors": []
+    },
+    {
+      "width": 1600,
+      "height": 900,
+      "horizontalOverflow": false,
+      "clipped": [],
+      "pageErrors": []
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "horizontalOverflow": false,
+      "clipped": [],
+      "pageErrors": []
+    }
+  ],
+  "functionalTests": {
+    "contactForm": {
+      "dialogOpened": true,
+      "autofocusField": "contact-name",
+      "blankFormInvalid": true,
+      "validFormAccepted": true,
+      "mailtoDraftCreated": true,
+      "draftContainsMessage": true,
+      "dialogClosed": true
+    },
+    "allDoorCycles": [
+      {
+        "door": 1,
+        "opened": true,
+        "detailTitle": "Digital Marketing & Paid Media",
+        "closed": true,
+        "buttonReset": true
+      },
+      {
+        "door": 2,
+        "opened": true,
+        "detailTitle": "SEO & Website",
+        "closed": true,
+        "buttonReset": true
+      },
+      {
+        "door": 3,
+        "opened": true,
+        "detailTitle": "Generative AI & Creative Workflows",
+        "closed": true,
+        "buttonReset": true
+      },
+      {
+        "door": 4,
+        "opened": true,
+        "detailTitle": "Data & Operations",
+        "closed": true,
+        "buttonReset": true
+      }
+    ],
+    "reducedMotion": {
+      "prefersReduce": true,
+      "videoSourcesStayDeferred": true
+    }
+  },
+  "notes": [
+    "Embedded document preview used because direct local/file navigation is blocked by the execution sandbox. Fonts use system fallback during this preview."
+  ]
+}

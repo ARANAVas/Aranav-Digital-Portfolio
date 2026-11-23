@@ -1,0 +1,79 @@
+/* V20.1 responsive hero correction — keep the signature capability card clear of the logo film. */
+.hero-visual{
+  height:auto;
+  min-height:0;
+  padding:54px 20px 22px 34px;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  justify-content:center;
+  gap:17px;
+  overflow:visible;
+}
+.hero-image-frame{
+  position:relative;
+  inset:auto;
+  width:100%;
+  height:auto;
+  min-height:0;
+  aspect-ratio:16 / 9;
+  overflow:hidden;
+  transform:none;
+  margin:0;
+}
+.hero-image-frame .hero-mark-video,
+.hero-image-frame .hero-mark-video img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.hero-ability-card{
+  position:relative;
+  inset:auto;
+  z-index:5;
+  align-self:flex-start;
+  width:min(280px,100%);
+  min-height:112px;
+  margin:0;
+  transform:none;
+  backdrop-filter:blur(12px);
+}
+.hero-ability-card:hover{transform:translateY(-3px);}
+.note-top{
+  top:0;
+  right:20px;
+  z-index:6;
+}
+@media(max-width:1100px){
+  .hero-visual{padding:54px 18px 18px 28px;gap:16px;}
+  .hero-ability-card{width:min(260px,100%);}
+  .note-top{right:18px;}
+}
+@media(max-width:760px){
+  .hero{gap:27px;}
+  .hero-visual{
+    width:100%;
+    max-width:440px;
+    height:auto;
+    min-height:0;
+    padding:54px 18px 14px 26px;
+    margin-inline:auto;
+    gap:16px;
+    overflow:visible;
+  }
+  .hero-image-frame{inset:auto;width:100%;height:auto;aspect-ratio:16/9;}
+  .hero-ability-card{width:min(320px,100%);min-height:112px;left:auto;bottom:auto;}
+  .note-top{top:0;right:18px;}
+}
+@media(max-width:430px){
+  .hero-visual{padding:52px 14px 12px 20px;gap:14px;}
+  .hero-image-frame{inset:auto;}
+  .hero-ability-card{width:100%;min-height:108px;left:auto;bottom:auto;}
+  .note-top{top:0;right:14px;}
+}
+@media(max-width:360px){
+  .hero-visual{padding-inline:16px 10px;}
+  .hero-ability-card{padding:11px 13px 10px;}
+}
+@media(prefers-reduced-motion:reduce){.hero-ability-card{transition:none!important;}.hero-ability-card:hover{transform:none!important;}}

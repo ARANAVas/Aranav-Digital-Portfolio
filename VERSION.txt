@@ -1,1 +1,4 @@
-16.2
+Aranav Digital Portfolio
+Version: V20.1 — Hero overlap fix
+Base: V20 Signature Edition
+Change: The Strategy × Craft card now sits below the logo video at all breakpoints.

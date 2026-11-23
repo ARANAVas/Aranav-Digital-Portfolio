@@ -1,0 +1,28 @@
+{
+  "version": "20.0.0",
+  "scope": "Static/source validation only; runtime smoke test documented in V20-EMBEDDED-RUNTIME-QA.json.",
+  "checks": {
+    "unique_ids_and_one_primary_h1": true,
+    "local_resources_resolve": true,
+    "fragment_links_resolve": true,
+    "javascript_syntax": true,
+    "css_parse": true,
+    "four_skill_doors_preserved": true,
+    "signature_logo_video_preserved": true,
+    "rotating_roles_preserved": true,
+    "theme_switch_preserved": true,
+    "four_case_studies_added": true,
+    "contact_topic_present": true,
+    "contact_privacy_boundary_present": true,
+    "privacy_page_present": true,
+    "custom_404_present": true,
+    "resume_download_present": true,
+    "no_inline_style_or_handlers": true
+  },
+  "passed": 16,
+  "total": 16,
+  "missing_local_resources": [],
+  "missing_fragment_targets": [],
+  "css_parse_errors": [],
+  "node_stderr": ""
+}

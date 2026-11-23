@@ -1,0 +1,177 @@
+{
+  "version": "20.0.0",
+  "files": [
+    {
+      "path": "404.html",
+      "bytes": 1413
+    },
+    {
+      "path": "README.md",
+      "bytes": 3139
+    },
+    {
+      "path": "SECURITY-DEPLOYMENT.md",
+      "bytes": 2531
+    },
+    {
+      "path": "UPLOAD-TO-GITHUB.txt",
+      "bytes": 708
+    },
+    {
+      "path": "V18-SECURITY-AUDIT.md",
+      "bytes": 4244
+    },
+    {
+      "path": "V19-EMBEDDED-RUNTIME-QA.json",
+      "bytes": 3536
+    },
+    {
+      "path": "V19-FILE-MANIFEST.json",
+      "bytes": 3513
+    },
+    {
+      "path": "V19-QA-REPORT.md",
+      "bytes": 2541
+    },
+    {
+      "path": "V19-SECURITY-AUDIT.json",
+      "bytes": 774
+    },
+    {
+      "path": "V19-SECURITY-AUDIT.md",
+      "bytes": 1793
+    },
+    {
+      "path": "V19-STATIC-QA.json",
+      "bytes": 1692
+    },
+    {
+      "path": "V20-EMBEDDED-RUNTIME-QA.json",
+      "bytes": 1916
+    },
+    {
+      "path": "V20-QA-REPORT.md",
+      "bytes": 2159
+    },
+    {
+      "path": "V20-STATIC-QA.json",
+      "bytes": 887
+    },
+    {
+      "path": "VERSION.txt",
+      "bytes": 191
+    },
+    {
+      "path": "_headers",
+      "bytes": 1246
+    },
+    {
+      "path": "assets/Aranav-Resume-ATS-v18.docx",
+      "bytes": 38767
+    },
+    {
+      "path": "assets/Aranav-Resume-v18.pdf",
+      "bytes": 69272
+    },
+    {
+      "path": "assets/favicon-v18.svg",
+      "bytes": 230
+    },
+    {
+      "path": "assets/photos/aranav-brand-mark-v18.webp",
+      "bytes": 21930
+    },
+    {
+      "path": "assets/photos/aranav-cinematic-logo-still-v18.webp",
+      "bytes": 16644
+    },
+    {
+      "path": "assets/photos/aranav-cinematic-logo-v18.mp4",
+      "bytes": 389754
+    },
+    {
+      "path": "assets/photos/aranav-cinematic-logo-v18.webm",
+      "bytes": 50640
+    },
+    {
+      "path": "assets/photos/hero-office-640-v18.webp",
+      "bytes": 54166
+    },
+    {
+      "path": "assets/photos/hero-office-v18.webp",
+      "bytes": 120200
+    },
+    {
+      "path": "assets/photos/portrait-blue-320-v18.webp",
+      "bytes": 7448
+    },
+    {
+      "path": "assets/photos/portrait-blue-640-v18.webp",
+      "bytes": 24206
+    },
+    {
+      "path": "assets/photos/portrait-blue-v18.webp",
+      "bytes": 90410
+    },
+    {
+      "path": "assets/photos/portrait-dark-320-v18.webp",
+      "bytes": 8552
+    },
+    {
+      "path": "assets/photos/portrait-dark-640-v18.webp",
+      "bytes": 27090
+    },
+    {
+      "path": "assets/photos/portrait-dark-v18.webp",
+      "bytes": 83860
+    },
+    {
+      "path": "assets/photos/working-desk-640-v18.webp",
+      "bytes": 56758
+    },
+    {
+      "path": "assets/photos/working-desk-v18.webp",
+      "bytes": 128404
+    },
+    {
+      "path": "index.html",
+      "bytes": 33243
+    },
+    {
+      "path": "portfolio-v18.css",
+      "bytes": 173293
+    },
+    {
+      "path": "portfolio-v19.css",
+      "bytes": 8740
+    },
+    {
+      "path": "portfolio-v20.css",
+      "bytes": 6705
+    },
+    {
+      "path": "privacy.html",
+      "bytes": 3631
+    },
+    {
+      "path": "robots.txt",
+      "bytes": 96
+    },
+    {
+      "path": "script-v20.js",
+      "bytes": 28193
+    },
+    {
+      "path": "sitemap.xml",
+      "bytes": 423
+    },
+    {
+      "path": "theme-init-v20.js",
+      "bytes": 408
+    },
+    {
+      "path": "vercel.json",
+      "bytes": 2545
+    }
+  ]
+}

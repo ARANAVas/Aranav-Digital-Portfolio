@@ -1,12 +1,9 @@
-V16.2 GITHUB PAGES DEPLOYMENT
+GITHUB PAGES UPDATE — V20.1
 
-1. Download and extract Aranav-Digital-Portfolio-V16.2-Editorial-Polished.zip.
-2. Open the extracted Aranav-Digital-Portfolio-V16.2 folder.
-3. Upload the CONTENTS of that folder (not the containing folder) into the root of:
-   https://github.com/ARANAVas/Aranav-Digital-Portfolio
-4. Preserve the `assets/` and `assets/photos/` folder structure.
-5. Commit the changes to `main`.
-6. In repository Settings → Pages, choose Deploy from a branch, branch `main`, folder `/(root)`.
-7. Open https://aranavas.github.io/Aranav-Digital-Portfolio/ in an incognito/private tab or hard-refresh to avoid cached old assets.
+1. Download and extract Aranav-Digital-Portfolio-V20.1-Hero-Fix.zip.
+2. Open your existing repository: ARANAVas/Aranav-Digital-Portfolio.
+3. Replace the repository files with the contents of this extracted folder (upload the contents, not the parent folder).
+4. Commit to the branch currently used by GitHub Pages.
+5. Wait for the GitHub Pages deployment to finish, then hard-refresh the portfolio.
 
-The supplied MP4 remains the hero animation, with a matching WebM fallback and WebP poster. The DM Sans and Cormorant Garamond font pair, revised copy and layout fixes are included.
+This patch preserves the existing V20 content and assets. The hero capability card is now placed below the animated logo video and does not overlap it on desktop, tablet or phone layouts.

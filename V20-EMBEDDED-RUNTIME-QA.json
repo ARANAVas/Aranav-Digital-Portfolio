@@ -1,0 +1,49 @@
+{
+  "version": "20.0.0",
+  "test_environment": "Embedded Chromium document. Direct local HTTP browser navigation was blocked by the execution environment, so the HTML, CSS and JavaScript were assembled into a self-contained preview. External Google Fonts and live-host transport were not tested; the smoke test neutralized local media sources. The separate preview render embeds local image assets for visual review.",
+  "viewport_widths": [
+    320,
+    360,
+    375,
+    390,
+    414,
+    430,
+    620,
+    760,
+    768,
+    900,
+    1024,
+    1280,
+    1440,
+    1920
+  ],
+  "responsive_checks": {
+    "document_scroll_width_matches_viewport": true,
+    "body_scroll_width_matches_viewport": true,
+    "count": 14
+  },
+  "interactive_checks": {
+    "all_four_skill_doors_open_and_show_matching_detail": true,
+    "all_four_skill_doors_reset_expanded_state_on_close": true,
+    "all_four_skill_detail_panels_hide_on_close": true,
+    "all_four_case_study_disclosures_open": true,
+    "dark_light_theme_toggle": true,
+    "contact_dialog_opens": true,
+    "contact_form_rejects_empty_required_fields": true,
+    "contact_form_builds_mailto_for_aranavprime_gmail": true,
+    "selected_contact_topic_is_included_in_email_draft": true,
+    "mobile_navigation_opens": true,
+    "hero_role_rotation_runs_when_motion_allowed": true,
+    "hero_video_sources_remain_deferred_with_reduced_motion": true
+  },
+  "browser_errors": {
+    "console_errors": 0,
+    "uncaught_page_errors": 0
+  },
+  "limitations": [
+    "The test does not establish compatibility across every browser/device.",
+    "Hero video playback and external font delivery were not tested in the embedded smoke test.",
+    "Physical Android/iOS testing, live-host response-header verification and Lighthouse/Core Web Vitals remain outstanding.",
+    "The contact form remains a client-side mailto draft and is not a server-backed submission endpoint."
+  ]
+}

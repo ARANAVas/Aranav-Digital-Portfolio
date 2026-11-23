@@ -1,0 +1,20 @@
+{
+  "version": "19.0.0",
+  "source_checks": {
+    "meta_csp": "present",
+    "no_inline_scripts": "passed",
+    "no_inline_event_handlers": "passed",
+    "no_inline_style_attributes": "passed",
+    "new_tab_links": "noopener noreferrer",
+    "dangerous_dom_sinks": "not detected",
+    "sensitive_token_pattern_scan": "no high-confidence matches in HTML/JS text sources",
+    "contact_data_handling": "client-side mailto draft; no backend transmission or storage"
+  },
+  "hosting_notes": "vercel.json and _headers apply only on their supported hosts; GitHub Pages does not consume them as response headers.",
+  "not_performed": [
+    "external penetration test",
+    "live response-header verification",
+    "physical handset testing",
+    "Lighthouse/Core Web Vitals"
+  ]
+}
