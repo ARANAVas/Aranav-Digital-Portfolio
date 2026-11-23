@@ -1,36 +1,61 @@
-# Aranav Sharma — Portfolio V20.1 | Hybrid Signature Edition
+# Aranav Sharma — Portfolio V20.2 | Signature Colour Edition
 
-V20 builds on V19 rather than replacing the visual identity. The cinematic logo video, rotating capability headlines, four animated skill doors, dark/light theme, original portraits, experience timeline, résumé and contact dialog remain.
+V20.2 builds directly on V20.1. The established portfolio layout and core interactions remain intact: cinematic logo video, rotating hero role line, four animated skill doors, capability card below the video, selected-work case notes, experience timeline, original portraits, résumé, theme switch and contact composer.
 
-## What changed in V20
+## What changed in V20.2
 
-### V20.1 responsive hero correction
+### Dark theme — Midnight Blue / Black
+- Retains the cinematic dark experience and strengthens it with layered ink-black and midnight-blue surfaces.
+- Uses soft blue accents for section details, buttons, focus states, borders and selected-work metadata.
 
-- The floating “Strategy × Craft” capability card is now a separate panel directly below the animated logo video, rather than sitting over the video/portrait.
-- The separation is enforced at all viewport widths, including narrow phones, tablets, laptops and large desktop screens. The top-right “Strategy with intent” marker stays above the video.
-- Existing V20 content, logo video assets, four skill doors, rotating headlines, themes and contact behavior are preserved.
+### Light theme — Porcelain White / Oxblood Red
+- Rebuilt the light theme around clean white surfaces, warm porcelain panels and a restrained deep-red accent.
+- Improved hierarchy and contrast across the hero, skills, project cards, timeline, About, education and contact sections.
+- Updated the header, modal, preloader, cards, tags and footer so light mode feels like a deliberate art direction rather than a reversed dark theme.
 
+### Selected Work readability
+- Strengthened project-card boundaries and shadows in both themes.
+- Increased heading and paragraph clarity, refined metadata and made skill tags easier to scan.
+- Refined the four work-preview visual panels and their labels for a more legible presentation.
+- Case-study disclosures now use clear blue accents in dark mode and red accents in light mode.
 
-- **Hybrid Signature art direction:** keeps the cinematic hero and signature motion, with more editorial spacing, typography, restrained material detail and clearer reading rhythm.
-- **Hero message:** “Building brands. Creating connections.” with a practical, first-person supporting statement.
-- **Case-study notes:** each existing selected-work card now opens an objective, contribution, approach and documented-output summary. No unverified reach, lead, revenue or learning metrics are invented. The paid-media card remains explicitly a planning concept, not a live-spend result.
-- **Contact composer:** added an optional topic selector. The form still creates a local `mailto:` draft for `aranavprime@gmail.com`; it does not submit to or store data on a server.
-- **Résumé:** the on-page actions now download the included PDF.
-- **Privacy page:** describes the actual client-side form, local theme preference, external Google Fonts request and static hosting boundary. No analytics or ad tracking is added.
-- **Custom 404 page:** included for static hosts such as GitHub Pages.
-- **Search/social metadata:** refined title and descriptions, Open Graph locale/site name and image alt text. Canonical URL, sitemap and robots directives remain aligned to the existing GitHub Pages URL.
-- **Accessibility refinements:** case-study disclosures use native `<details>` semantics; contact topic is a labeled native select; focus indicators and reduced-motion handling are retained.
+### Footer signature
+- Added a custom double-A monogram mark with theme-aware blue/red detailing, paired with the ARANAV SHARMA wordmark.
 
-## Deployment
+### Performance and maintenance
+- Consolidated the four previously loaded CSS layers into one `portfolio-v22.css` stylesheet, reducing local stylesheet requests from four to one.
+- Corrected malformed keyframe identifiers inherited from previous CSS layers.
+- Shortened the decorative preloader fallback from 850 ms to 560 ms.
+- Retained the hero video's viewport-aware loading, poster fallback, reduced-motion support and data-saver/slow-connection behavior.
+- Retained lazy loading and responsive sources for below-the-fold portraits.
 
-Upload the **contents** of this folder to the repository root (do not upload the outer folder as a nested directory), commit, and let GitHub Pages build. Confirm the repository Pages source and enable **Enforce HTTPS** in repository Settings → Pages. The custom `404.html` is supported by GitHub Pages.
+## Features intentionally preserved
 
-`vercel.json` and `_headers` are retained for compatible hosts. GitHub Pages does not apply those files as response headers. The CSP meta policy in `index.html` remains, but a meta CSP is not a replacement for verified HTTP response headers. See `SECURITY-DEPLOYMENT.md`.
+- Signature animated logo video and original logo artwork.
+- Rotating hero role copy.
+- Four interactive skill doors and their detailed content.
+- Hero capability card placed below the logo video (V20.1 fix).
+- Both theme modes and stored theme preference.
+- Selected work, experience timeline, story/About content, education and contact sections.
+- Résumé download and client-side contact email draft to `aranavprime@gmail.com`.
+- Privacy page, custom 404 page, sitemap, robots file and host configuration files.
 
-## Honest limitations / launch checklist
+## Deploy to GitHub Pages
 
-- This package has not been published to GitHub or another host from this build session.
-- This static contact composer does not receive or store submissions. A server-backed form requires a provider/endpoint, spam controls and an updated privacy notice.
-- No testimonials or customer-performance metrics are included because approved quotes and verified measurement records were not supplied.
-- No third-party analytics is enabled. Add privacy-respecting analytics only after selecting a provider and reviewing its consent and data handling requirements.
-- Complete physical Android/iOS checks, live-host response-header checks and Lighthouse/Core Web Vitals measurement after deployment.
+1. Download and extract `Aranav-Digital-Portfolio-V20.2-Signature-Colour-Edition.zip`.
+2. Open the existing repository `ARANAVas/Aranav-Digital-Portfolio`.
+3. Replace the repository contents with the **contents** of the extracted folder. Do not upload the parent folder as a nested directory.
+4. Keep the current GitHub Pages branch/folder configuration and commit the update.
+5. After deployment, hard-refresh the portfolio and test the theme switch.
+
+All pages now load `portfolio-v22.css` as the single local stylesheet. Do not mix the new `index.html` with previous CSS files or older index versions.
+
+`vercel.json` and `_headers` are retained for compatible hosts. GitHub Pages does not apply those files as response headers. The meta CSP is not a substitute for verified HTTP response headers. See `SECURITY-DEPLOYMENT.md`.
+
+## QA and honest limitations
+
+- Static HTML, local asset references, CSS parsing and JavaScript syntax checks passed; see `V20.2-QA-REPORT.md`.
+- Browser screenshots and interactive Chromium testing could not be completed in this build environment because browser navigation was blocked. Please check the rendered result on desktop and Android after deployment.
+- This package has not been published to GitHub or another host.
+- The contact composer opens a draft in the visitor's email application. It does not send or store submissions on a server.
+- Physical-device testing, live-host security-header checks and Lighthouse/Core Web Vitals measurement remain outstanding.

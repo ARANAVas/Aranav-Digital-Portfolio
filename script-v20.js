@@ -17,7 +17,7 @@
     };
     if (document.readyState === 'complete') window.setTimeout(finishLoading, 160);
     else window.addEventListener('load', () => window.setTimeout(finishLoading, 160), { once: true });
-    window.setTimeout(finishLoading, 850);
+    window.setTimeout(finishLoading, 560);
   }
 
   const roleText = $('#role-text');
@@ -137,7 +137,7 @@
       themeButton.setAttribute('title', nextThemeLabel);
     }
     const meta = $('meta[name="theme-color"]');
-    meta?.setAttribute('content', value === 'dark' ? '#11110f' : '#f3efe7');
+    meta?.setAttribute('content', value === 'dark' ? '#070b13' : '#fffdfc');
     try { localStorage.setItem('aranav-portfolio-theme', value); } catch (_) { /* Theme still works without storage. */ }
   };
   setTheme(savedTheme);

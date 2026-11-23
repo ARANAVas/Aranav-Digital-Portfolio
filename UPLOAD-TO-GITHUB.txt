@@ -1,9 +1,11 @@
-GITHUB PAGES UPDATE — V20.1
+GITHUB PAGES UPDATE — V20.2 SIGNATURE COLOUR EDITION
 
-1. Download and extract Aranav-Digital-Portfolio-V20.1-Hero-Fix.zip.
-2. Open your existing repository: ARANAVas/Aranav-Digital-Portfolio.
-3. Replace the repository files with the contents of this extracted folder (upload the contents, not the parent folder).
-4. Commit to the branch currently used by GitHub Pages.
-5. Wait for the GitHub Pages deployment to finish, then hard-refresh the portfolio.
+1. Download and extract Aranav-Digital-Portfolio-V20.2-Signature-Colour-Edition.zip.
+2. Open the existing repository: ARANAVas/Aranav-Digital-Portfolio.
+3. Replace the repository files with the contents of the extracted folder (upload the contents, not the parent folder).
+4. Keep the repository Pages source branch and folder unchanged.
+5. Commit the changes, wait for GitHub Pages to deploy, then hard-refresh the site.
 
-This patch preserves the existing V20 content and assets. The hero capability card is now placed below the animated logo video and does not overlap it on desktop, tablet or phone layouts.
+The new build loads portfolio-v22.css as its single bundled stylesheet. Do not mix old and new index/CSS files. Existing media, résumé, scripts, privacy page, 404 page, robots.txt, sitemap.xml and hosting configuration are included in the archive.
+
+This package has not been published by this build process.

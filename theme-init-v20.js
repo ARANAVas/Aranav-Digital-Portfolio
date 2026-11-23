@@ -6,5 +6,5 @@
   catch (_) { theme = 'dark'; }
   root.dataset.theme = theme;
   const themeColor = document.querySelector('meta[name="theme-color"]');
-  if (themeColor) themeColor.content = theme === 'light' ? '#f3efe7' : '#11110f';
+  if (themeColor) themeColor.content = theme === 'light' ? '#fffdfc' : '#070b13';
 })();
