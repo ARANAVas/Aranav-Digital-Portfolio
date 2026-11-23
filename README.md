@@ -1,61 +1,53 @@
-# Aranav Sharma — Portfolio V20.2 | Signature Colour Edition
+# Aranav Sharma — Digital Portfolio
 
-V20.2 builds directly on V20.1. The established portfolio layout and core interactions remain intact: cinematic logo video, rotating hero role line, four animated skill doors, capability card below the video, selected-work case notes, experience timeline, original portraits, résumé, theme switch and contact composer.
+**V21.2 · Core Craft Edition**
 
-## What changed in V20.2
+A responsive static personal portfolio for Aranav Sharma. This is a core refinement of the existing portfolio, not a replacement. It retains the signature logo video, rotating role line, selected work, experience, About, contact, résumé, privacy page, AA footer mark and four interactive Skills doors.
 
-### Dark theme — Midnight Blue / Black
-- Retains the cinematic dark experience and strengthens it with layered ink-black and midnight-blue surfaces.
-- Uses soft blue accents for section details, buttons, focus states, borders and selected-work metadata.
+## Design system
 
-### Light theme — Porcelain White / Oxblood Red
-- Rebuilt the light theme around clean white surfaces, warm porcelain panels and a restrained deep-red accent.
-- Improved hierarchy and contrast across the hero, skills, project cards, timeline, About, education and contact sections.
-- Updated the header, modal, preloader, cards, tags and footer so light mode feels like a deliberate art direction rather than a reversed dark theme.
+- **Dark:** midnight navy and black, cool electric-blue highlights, layered surfaces and restrained borders.
+- **Light:** porcelain white and warm blush surfaces, oxblood-red accents, dark charcoal typography and clear text contrast.
+- **Typography:** Manrope for interface and display text; Cormorant Garamond for selected editorial emphasis.
+- **Skills:** four stained-timber doors with raised inset panels, metal hinges, brass hardware, keyholes, a door edge and a lit portal.
+- **Door interaction:** perspective swing from the left hinge; the selected detail panel opens after the swing and closes before the door returns. The transition-aware state machine supports keyboard controls, Escape, touch layouts and reduced-motion preferences.
+- **Responsive layout:** four doors on wide desktop, two on tablet and most phones, one column below 350 px.
+- **Navigation:** sticky header is opaque in both themes so page content never bleeds through it while scrolling.
 
-### Selected Work readability
-- Strengthened project-card boundaries and shadows in both themes.
-- Increased heading and paragraph clarity, refined metadata and made skill tags easier to scan.
-- Refined the four work-preview visual panels and their labels for a more legible presentation.
-- Case-study disclosures now use clear blue accents in dark mode and red accents in light mode.
+## Important files
 
-### Footer signature
-- Added a custom double-A monogram mark with theme-aware blue/red detailing, paired with the ARANAV SHARMA wordmark.
+- `index.html` — main portfolio.
+- `portfolio-core-v21.css` — consolidated stylesheet for all three pages.
+- `script-v21.js` — interactions, skill-door state flow, theme toggle, contact dialog, reading progress and responsive navigation.
+- `theme-init-v21.js` — applies the saved theme before the page is painted.
+- `privacy.html` — privacy information.
+- `404.html` — custom not-found page.
+- `assets/` — original portfolio images, logo media and résumé files.
+- `_headers` — security/caching rules for hosts that support this file format.
+- `vercel.json` — Vercel security and caching configuration.
+- `V21-QA-REPORT.md` / `.json` — static and browser-emulated QA summary.
+- `V21-BROWSER-RUNTIME-RESULTS.json`, `V21-INTERACTION-RESULTS.json`, `V21-TOUCH-RESULTS.json` — detailed viewport and interaction evidence.
+- `V21-PREVIEW-CHECKS.json` — measured theme, sticky-header and mobile layout checks.
+- `V21-DEVICE-CHECKLIST.md` — tests to complete after deployment on actual devices.
 
-### Performance and maintenance
-- Consolidated the four previously loaded CSS layers into one `portfolio-v22.css` stylesheet, reducing local stylesheet requests from four to one.
-- Corrected malformed keyframe identifiers inherited from previous CSS layers.
-- Shortened the decorative preloader fallback from 850 ms to 560 ms.
-- Retained the hero video's viewport-aware loading, poster fallback, reduced-motion support and data-saver/slow-connection behavior.
-- Retained lazy loading and responsive sources for below-the-fold portraits.
+## Local preview
 
-## Features intentionally preserved
+From this folder, start any static file server, for example:
 
-- Signature animated logo video and original logo artwork.
-- Rotating hero role copy.
-- Four interactive skill doors and their detailed content.
-- Hero capability card placed below the logo video (V20.1 fix).
-- Both theme modes and stored theme preference.
-- Selected work, experience timeline, story/About content, education and contact sections.
-- Résumé download and client-side contact email draft to `aranavprime@gmail.com`.
-- Privacy page, custom 404 page, sitemap, robots file and host configuration files.
+```bash
+python -m http.server 8000
+```
 
-## Deploy to GitHub Pages
+Then visit `http://localhost:8000/`. No build step or package installation is required. Google Fonts are optional; system fallbacks are included.
 
-1. Download and extract `Aranav-Digital-Portfolio-V20.2-Signature-Colour-Edition.zip`.
-2. Open the existing repository `ARANAVas/Aranav-Digital-Portfolio`.
-3. Replace the repository contents with the **contents** of the extracted folder. Do not upload the parent folder as a nested directory.
-4. Keep the current GitHub Pages branch/folder configuration and commit the update.
-5. After deployment, hard-refresh the portfolio and test the theme switch.
+## Contact behaviour
 
-All pages now load `portfolio-v22.css` as the single local stylesheet. Do not mix the new `index.html` with previous CSS files or older index versions.
+The contact form validates the entered fields and creates a prefilled email draft addressed to `aranavprime@gmail.com` using the visitor's own email application. It does not store or transmit form submissions to a server.
 
-`vercel.json` and `_headers` are retained for compatible hosts. GitHub Pages does not apply those files as response headers. The meta CSP is not a substitute for verified HTTP response headers. See `SECURITY-DEPLOYMENT.md`.
+## Motion and media
 
-## QA and honest limitations
+The animated logo video uses `preload="none"` and is activated near the viewport; reduced-motion, data-saver and slow-connection preferences skip video playback. Supporting photos use lazy loading and responsive `srcset` variants. The reading-progress element is a native `<progress>` element and does not require inline style mutations.
 
-- Static HTML, local asset references, CSS parsing and JavaScript syntax checks passed; see `V20.2-QA-REPORT.md`.
-- Browser screenshots and interactive Chromium testing could not be completed in this build environment because browser navigation was blocked. Please check the rendered result on desktop and Android after deployment.
-- This package has not been published to GitHub or another host.
-- The contact composer opens a draft in the visitor's email application. It does not send or store submissions on a server.
-- Physical-device testing, live-host security-header checks and Lighthouse/Core Web Vitals measurement remain outstanding.
+## Deployment
+
+This is a source package. It has **not** been published to GitHub Pages. Extract the ZIP and upload the contents to the existing repository root; keep the `assets/` directory structure intact. See `UPLOAD-TO-GITHUB.txt`. GitHub Pages does not apply Vercel's `vercel.json` or Netlify-style `_headers` response rules. After publishing, complete the real-device checklist.

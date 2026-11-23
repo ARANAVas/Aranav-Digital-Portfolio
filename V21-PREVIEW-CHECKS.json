@@ -1,0 +1,20 @@
+{
+  "dark": {
+    "header": "rgb(7, 13, 23)",
+    "title": "The work I do.\nFrom idea to execution."
+  },
+  "light": {
+    "header": "rgb(255, 253, 252)",
+    "title": "The work I do.\nFrom idea to execution."
+  },
+  "dark_mobile": {
+    "header": "rgb(7, 13, 23)",
+    "overflow": false,
+    "doorGrid": "170px 170px"
+  },
+  "light_mobile": {
+    "header": "rgb(255, 253, 252)",
+    "overflow": false,
+    "doorGrid": "170px 170px"
+  }
+}

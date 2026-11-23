@@ -96,18 +96,18 @@
 
 
   // Single hairline reading progress; one paint per scroll burst.
-  const progress = document.createElement('div');
+  const progress = document.createElement('progress');
   progress.className = 'v14-progress';
+  progress.max = 1000;
+  progress.value = 0;
   progress.setAttribute('aria-hidden', 'true');
-  const progressFill = document.createElement('span');
-  progress.appendChild(progressFill);
   document.body.appendChild(progress);
   let progressFrame = 0;
   const paintProgress = () => {
     progressFrame = 0;
     const total = document.documentElement.scrollHeight - window.innerHeight;
     const position = total > 0 ? Math.min(1, Math.max(0, window.scrollY / total)) : 0;
-    progressFill.style.transform = 'scaleX(' + position + ')';
+    progress.value = Math.round(position * progress.max);
   };
   const scheduleProgress = () => {
     if (progressFrame) return;
@@ -229,34 +229,50 @@
     }
   };
 
-  // Four physical doors: finish the hinge movement before revealing the selected skill.
+  // Four physical doors. UI state follows real CSS transition events, with a bounded
+  // timeout fallback for browsers that suppress transitionend (tab changes, interrupted paint).
   const stage = $('#doors-stage');
   const detail = $('#skill-detail');
   let activeDoor = null;
-  let doorTransitionBusy = false;
-  let doorTimers = [];
-  let closeTimer = 0;
+  let doorState = 'closed';
+  let doorTransitionToken = 0;
   const detailEls = {
     counter: $('#detail-counter'), kicker: $('#detail-kicker'), title: $('#detail-title'), intro: $('#detail-intro'),
     tags: $('#detail-tags'), list: $('#detail-list'), tools: $('#detail-tools'), quote: $('#detail-quote'), symbol: $('#detail-symbol')
   };
-  const clearDoorTimers = () => {
-    doorTimers.forEach(window.clearTimeout);
-    doorTimers = [];
-    window.clearTimeout(closeTimer);
-  };
-  const later = (callback, delay) => {
-    const timer = window.setTimeout(callback, delay);
-    doorTimers.push(timer);
-    return timer;
+  const waitForTransition = (element, propertyName, maxWait) => {
+    if (!element || reduceMotion) return Promise.resolve();
+    return new Promise(resolve => {
+      let finished = false;
+      let timer = 0;
+      const finish = () => {
+        if (finished) return;
+        finished = true;
+        window.clearTimeout(timer);
+        element.removeEventListener('transitionend', onEnd);
+        element.removeEventListener('transitioncancel', onEnd);
+        resolve();
+      };
+      const onEnd = event => {
+        if (event.target === element && (!propertyName || event.propertyName === propertyName)) finish();
+      };
+      element.addEventListener('transitionend', onEnd);
+      element.addEventListener('transitioncancel', onEnd);
+      timer = window.setTimeout(finish, maxWait);
+    });
   };
   const fillSkillDetail = data => {
+    if (!data || !detailEls.title) return;
     detailEls.counter.textContent = data.number;
     detailEls.kicker.textContent = data.kicker;
     detailEls.title.textContent = data.title;
     detailEls.intro.textContent = data.intro;
-    detailEls.tags.replaceChildren(...data.tags.map(tag => { const node = document.createElement('span'); node.textContent = tag; return node; }));
-    detailEls.list.replaceChildren(...data.bullets.map(item => { const li = document.createElement('li'); li.textContent = item; return li; }));
+    detailEls.tags.replaceChildren(...data.tags.map(tag => {
+      const node = document.createElement('span'); node.textContent = tag; return node;
+    }));
+    detailEls.list.replaceChildren(...data.bullets.map(item => {
+      const li = document.createElement('li'); li.textContent = item; return li;
+    }));
     const platformWrap = $('#detail-platforms');
     if (platformWrap) {
       platformWrap.replaceChildren();
@@ -268,8 +284,7 @@
         const grid = document.createElement('div');
         grid.className = 'platform-card-grid';
         data.platforms.forEach(platform => {
-          const card = document.createElement('article');
-          card.className = 'platform-card';
+          const card = document.createElement('article'); card.className = 'platform-card';
           const top = document.createElement('div'); top.className = 'platform-card-top';
           const title = document.createElement('h5'); title.textContent = platform.name;
           const descriptor = document.createElement('span'); descriptor.textContent = platform.descriptor;
@@ -291,69 +306,76 @@
     button.disabled = disabled;
     button.setAttribute('aria-expanded', String(expanded));
   };
-  const revealSkillPage = () => {
-    if (!detail || !stage) return;
-    doorTransitionBusy = false;
+  const showSkillDetail = token => {
+    if (!stage || !detail || token !== doorTransitionToken) return;
     stage.classList.add('is-hidden');
     detail.hidden = false;
     detail.classList.remove('is-closing');
     requestAnimationFrame(() => {
+      if (token !== doorTransitionToken || detail.hidden) return;
       detail.classList.add('is-active');
       detail.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
-      window.setTimeout(() => $('#detail-title')?.focus({ preventScroll: true }), reduceMotion ? 0 : 240);
+      requestAnimationFrame(() => detailEls.title?.focus({ preventScroll: true }));
     });
   };
-  const openSkill = key => {
+  const openSkill = async key => {
     const data = skillData[key];
-    const card = $('.skill-door[data-door="' + key + '"]');
-    if (!data || !card || !detail || !stage || activeDoor || doorTransitionBusy) return;
-    clearDoorTimers();
-    doorTransitionBusy = true;
+    const card = stage && $('.skill-door[data-door="' + key + '"]', stage);
+    const button = card && $('.door-button', card);
+    const panel = card && $('.door-arch', card);
+    if (!data || !card || !button || !detail || !stage || doorState !== 'closed') return;
+    const token = ++doorTransitionToken;
+    doorState = 'opening';
     activeDoor = key;
     setDoorButtonState(card, true, true);
     card.classList.remove('is-closing');
     card.classList.add('is-opening', 'is-open');
     fillSkillDetail(data);
-    const compact = window.matchMedia('(max-width: 760px)').matches;
-    // Let the physical panel complete most of its swing before the detail card appears.
-    const openDelay = reduceMotion ? 0 : (compact ? 850 : 960);
-    later(revealSkillPage, openDelay);
+    await waitForTransition(panel, 'transform', 1500);
+    if (token !== doorTransitionToken || doorState !== 'opening') return;
+    doorState = 'open';
+    setDoorButtonState(card, true, false);
+    showSkillDetail(token);
   };
-  const closeSkill = ({ scrollToStage = true, focusDoor = true, nextKey = null } = {}) => {
-    if (!detail || !stage || detail.hidden || doorTransitionBusy) return;
-    clearDoorTimers();
-    doorTransitionBusy = true;
+  const closeSkill = async ({ scrollToStage = true, focusDoor = true, nextKey = null } = {}) => {
+    if (!stage || !detail || !activeDoor || doorState === 'closed' || doorState === 'closing') return;
+    const token = ++doorTransitionToken;
     const previous = activeDoor;
-    const card = previous ? $('.skill-door[data-door="' + previous + '"]') : null;
-    detail.classList.remove('is-active');
-    detail.classList.add('is-closing');
-    activeDoor = null;
-    const compact = window.matchMedia('(max-width: 760px)').matches;
-    const detailExitDelay = reduceMotion ? 0 : 220;
-    closeTimer = window.setTimeout(() => {
+    const card = $('.skill-door[data-door="' + previous + '"]', stage);
+    const button = card && $('.door-button', card);
+    const panel = card && $('.door-arch', card);
+    doorState = 'closing';
+    setDoorButtonState(card, true, true);
+    if (!detail.hidden) {
+      detail.classList.remove('is-active');
+      detail.classList.add('is-closing');
+      await waitForTransition(detail, 'opacity', 720);
+      if (token !== doorTransitionToken) return;
       detail.hidden = true;
       detail.classList.remove('is-closing');
-      stage.classList.remove('is-hidden');
-      if (card) {
-        setDoorButtonState(card, true, false);
-        // The stage returns with the panel open; remove the open class on the next frame
-        // to let the same hinge animation visibly close the door.
-        requestAnimationFrame(() => requestAnimationFrame(() => card.classList.remove('is-opening')));
-      }
-      if (scrollToStage) stage.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
-      if (nextKey) {
-        later(() => { doorTransitionBusy = false; openSkill(nextKey); }, reduceMotion ? 0 : (compact ? 920 : 1040));
-      } else {
-        later(() => {
-          if (card) card.classList.remove('is-opening', 'is-open');
-          if (card) setDoorButtonState(card, false, false);
-          if (focusDoor && card) $('.door-button', card)?.focus({ preventScroll: true });
-          doorTransitionBusy = false;
-        }, reduceMotion ? 0 : (compact ? 900 : 1000));
-      }
-    }, detailExitDelay);
+    }
+    stage.classList.remove('is-hidden');
+    if (card) {
+      card.classList.remove('is-opening');
+      card.classList.add('is-closing');
+      await waitForTransition(panel, 'transform', 1500);
+      if (token !== doorTransitionToken) return;
+      card.classList.remove('is-open', 'is-closing');
+      setDoorButtonState(card, false, false);
+    }
+    activeDoor = null;
+    doorState = 'closed';
+    if (scrollToStage) stage.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+    if (nextKey) {
+      await openSkill(nextKey);
+    } else if (focusDoor) {
+      button?.focus({ preventScroll: true });
+    }
   };
-  $$('.skill-door').forEach(card => $('.door-button', card)?.addEventListener('click', () => openSkill(card.dataset.door)));
+  $$('.skill-door').forEach(card => {
+    const button = $('.door-button', card);
+    button?.addEventListener('click', () => openSkill(card.dataset.door));
+  });
   $('.back-to-doors')?.addEventListener('click', () => closeSkill());
   $('.detail-next')?.addEventListener('click', () => {
     const keys = Object.keys(skillData);
@@ -362,20 +384,9 @@
     closeSkill({ scrollToStage: false, focusDoor: false, nextKey });
   });
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') {
-      closeMenu();
-      if (activeDoor && detail?.hidden) {
-        clearDoorTimers();
-        const card = $('.skill-door[data-door="' + activeDoor + '"]');
-        activeDoor = null;
-        doorTransitionBusy = false;
-        if (card) {
-          setDoorButtonState(card, false, false);
-          requestAnimationFrame(() => card.classList.remove('is-opening', 'is-open'));
-          $('.door-button', card)?.focus({ preventScroll: true });
-        }
-      } else if (detail && !detail.hidden) closeSkill();
-    }
+    if (event.key !== 'Escape') return;
+    closeMenu();
+    if (activeDoor && doorState !== 'closing') closeSkill({ scrollToStage: false });
   });
 
   // Reliable back-to-top controls. The old #top target sat on a sticky header,

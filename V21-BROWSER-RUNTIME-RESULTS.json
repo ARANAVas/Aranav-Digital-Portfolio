@@ -1,0 +1,508 @@
+{
+  "asset_missing": [],
+  "viewport_results": [
+    {
+      "viewport": 320,
+      "scrollWidth": 320,
+      "overflow": false,
+      "heroFrame": {
+        "x": 14,
+        "y": 806,
+        "w": 292,
+        "h": 164
+      },
+      "abilityCard": {
+        "x": 22,
+        "y": 982,
+        "w": 276,
+        "h": 131
+      },
+      "heroOverlapArea": 0,
+      "visualHeight": 358
+    },
+    {
+      "viewport": 350,
+      "scrollWidth": 350,
+      "overflow": false,
+      "heroFrame": {
+        "x": 14,
+        "y": 758,
+        "w": 322,
+        "h": 181
+      },
+      "abilityCard": {
+        "x": 22,
+        "y": 951,
+        "w": 306,
+        "h": 131
+      },
+      "heroOverlapArea": 0,
+      "visualHeight": 375
+    },
+    {
+      "viewport": 360,
+      "scrollWidth": 360,
+      "overflow": false,
+      "heroFrame": {
+        "x": 18,
+        "y": 758,
+        "w": 324,
+        "h": 182
+      },
+      "abilityCard": {
+        "x": 26,
+        "y": 953,
+        "w": 308,
+        "h": 131
+      },
+      "heroOverlapArea": 0,
+      "visualHeight": 376
+    },
+    {
+      "viewport": 375,
+      "scrollWidth": 375,
+      "overflow": false,
+      "heroFrame": {
+        "x": 18,
+        "y": 758,
+        "w": 339,
+        "h": 191
+      },
+      "abilityCard": {
+        "x": 26,
+        "y": 961,
+        "w": 323,
+        "h": 132
+      },
+      "heroOverlapArea": 0,
+      "visualHeight": 385
+    },
+    {
+      "viewport": 390,
+      "scrollWidth": 390,
+      "overflow": false,
+      "heroFrame": {
+        "x": 18,
+        "y": 747,
+        "w": 354,
+        "h": 199
+      },
+      "abilityCard": {
+        "x": 26,
+        "y": 959,
+        "w": 338,
+        "h": 132
+      },
+      "heroOverlapArea": 0,
+      "visualHeight": 397
+    },
+    {
+      "viewport": 414,
+      "scrollWidth": 414,
+      "overflow": false,
+      "heroFrame": {
+        "x": 18,
+        "y": 635,
+        "w": 378,
+        "h": 213
+      },
+      "abilityCard": {
+        "x": 29,
+        "y": 859,
+        "w": 356,
+        "h": 134
+      },
+      "heroOverlapArea": 0,
+      "visualHeight": 412
+    },
+    {
+      "viewport": 430,
+      "scrollWidth": 430,
+      "overflow": false,
+      "heroFrame": {
+        "x": 18,
+        "y": 635,
+        "w": 394,
+        "h": 222
+      },
+      "abilityCard": {
+        "x": 29,
+        "y": 868,
+        "w": 372,
+        "h": 135
+      },
+      "heroOverlapArea": 0,
+      "visualHeight": 422
+    },
+    {
+      "viewport": 600,
+      "scrollWidth": 600,
+      "overflow": false,
+      "heroFrame": {
+        "x": 20,
+        "y": 561,
+        "w": 560,
+        "h": 315
+      },
+      "abilityCard": {
+        "x": 85,
+        "y": 888,
+        "w": 430,
+        "h": 137
+      },
+      "heroOverlapArea": 0,
+      "visualHeight": 518
+    },
+    {
+      "viewport": 760,
+      "scrollWidth": 760,
+      "overflow": false,
+      "heroFrame": {
+        "x": 100,
+        "y": 595,
+        "w": 560,
+        "h": 315
+      },
+      "abilityCard": {
+        "x": 165,
+        "y": 922,
+        "w": 430,
+        "h": 137
+      },
+      "heroOverlapArea": 0,
+      "visualHeight": 521
+    },
+    {
+      "viewport": 768,
+      "scrollWidth": 768,
+      "overflow": false,
+      "heroFrame": {
+        "x": 54,
+        "y": 631,
+        "w": 660,
+        "h": 371
+      },
+      "abilityCard": {
+        "x": 104,
+        "y": 1015,
+        "w": 560,
+        "h": 119
+      },
+      "heroOverlapArea": 0,
+      "visualHeight": 565
+    },
+    {
+      "viewport": 820,
+      "scrollWidth": 820,
+      "overflow": false,
+      "heroFrame": {
+        "x": 80,
+        "y": 637,
+        "w": 660,
+        "h": 371
+      },
+      "abilityCard": {
+        "x": 130,
+        "y": 1022,
+        "w": 560,
+        "h": 119
+      },
+      "heroOverlapArea": 0,
+      "visualHeight": 565
+    },
+    {
+      "viewport": 900,
+      "scrollWidth": 900,
+      "overflow": false,
+      "heroFrame": {
+        "x": 120,
+        "y": 656,
+        "w": 660,
+        "h": 371
+      },
+      "abilityCard": {
+        "x": 170,
+        "y": 1040,
+        "w": 560,
+        "h": 119
+      },
+      "heroOverlapArea": 0,
+      "visualHeight": 565
+    },
+    {
+      "viewport": 1024,
+      "scrollWidth": 1024,
+      "overflow": false,
+      "heroFrame": {
+        "x": 603,
+        "y": 287,
+        "w": 371,
+        "h": 209
+      },
+      "abilityCard": {
+        "x": 603,
+        "y": 511,
+        "w": 260,
+        "h": 119
+      },
+      "heroOverlapArea": 0,
+      "visualHeight": 416
+    },
+    {
+      "viewport": 1100,
+      "scrollWidth": 1100,
+      "overflow": false,
+      "heroFrame": {
+        "x": 643,
+        "y": 288,
+        "w": 389,
+        "h": 219
+      },
+      "abilityCard": {
+        "x": 643,
+        "y": 523,
+        "w": 260,
+        "h": 119
+      },
+      "heroOverlapArea": 0,
+      "visualHeight": 426
+    },
+    {
+      "viewport": 1280,
+      "scrollWidth": 1280,
+      "overflow": false,
+      "heroFrame": {
+        "x": 808,
+        "y": 255,
+        "w": 412,
+        "h": 232
+      },
+      "abilityCard": {
+        "x": 808,
+        "y": 504,
+        "w": 280,
+        "h": 119
+      },
+      "heroOverlapArea": 0,
+      "visualHeight": 444
+    },
+    {
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "overflow": false,
+      "heroFrame": {
+        "x": 896,
+        "y": 273,
+        "w": 424,
+        "h": 238
+      },
+      "abilityCard": {
+        "x": 896,
+        "y": 528,
+        "w": 280,
+        "h": 119
+      },
+      "heroOverlapArea": 0,
+      "visualHeight": 451
+    },
+    {
+      "viewport": 1600,
+      "scrollWidth": 1600,
+      "overflow": false,
+      "heroFrame": {
+        "x": 978,
+        "y": 276,
+        "w": 422,
+        "h": 238
+      },
+      "abilityCard": {
+        "x": 978,
+        "y": 531,
+        "w": 280,
+        "h": 119
+      },
+      "heroOverlapArea": 0,
+      "visualHeight": 450
+    },
+    {
+      "viewport": 1920,
+      "scrollWidth": 1920,
+      "overflow": false,
+      "heroFrame": {
+        "x": 1138,
+        "y": 276,
+        "w": 422,
+        "h": 238
+      },
+      "abilityCard": {
+        "x": 1138,
+        "y": 531,
+        "w": 280,
+        "h": 119
+      },
+      "heroOverlapArea": 0,
+      "visualHeight": 450
+    },
+    {
+      "viewport": 2560,
+      "scrollWidth": 2560,
+      "overflow": false,
+      "heroFrame": {
+        "x": 1458,
+        "y": 276,
+        "w": 422,
+        "h": 238
+      },
+      "abilityCard": {
+        "x": 1458,
+        "y": 531,
+        "w": 280,
+        "h": 119
+      },
+      "heroOverlapArea": 0,
+      "visualHeight": 450
+    }
+  ],
+  "interactions": {
+    "first_door_open": {
+      "detailHidden": false,
+      "detailActive": true,
+      "title": "Digital Marketing & Paid Media",
+      "expanded": "true",
+      "disabled": false,
+      "doorClass": "skill-door door-blue reveal is-opening is-open",
+      "doorTransform": "matrix3d(-0.309017, 0, 0.951057, 0, 0, 1, 0, 0, -0.951057, 0, -0.309017, 0, -1.90211, 0, -0.618034, 1)"
+    },
+    "first_door_close": {
+      "detailHidden": true,
+      "expanded": "false",
+      "disabled": false,
+      "doorClass": "skill-door door-blue reveal",
+      "doorTransform": "matrix3d(0.99863, 0, 0.052336, 0, 0, 1, 0, 0, -0.052336, 0, 0.99863, 0, -0.052336, 0, 0.99863, 1)"
+    },
+    "next_skill": {
+      "title": "Generative AI & Creative Workflows",
+      "counter": "03 / 04",
+      "active": [
+        false,
+        false,
+        true,
+        false
+      ]
+    },
+    "escape_close": {
+      "detailHidden": true,
+      "anyOpen": false,
+      "allExpanded": true
+    },
+    "mobile_menu_open": {
+      "open": true,
+      "expanded": "true"
+    },
+    "mobile_menu_close": {
+      "open": false,
+      "expanded": "false"
+    },
+    "theme_toggle": {
+      "theme": "light",
+      "pressed": "true",
+      "label": "Switch to dark theme"
+    },
+    "case_study_open": {
+      "open": true,
+      "summaryText": "EXPLORE THE CASE NOTES\n\uff0b"
+    },
+    "contact_modal_open": true,
+    "contact_modal_close": true,
+    "progress_element": {
+      "tag": "PROGRESS",
+      "inlineStyleWrites": false
+    },
+    "reduced_motion_open": {
+      "hidden": true,
+      "opacity": "0",
+      "transform": "none",
+      "faceOpacity": "1"
+    },
+    "reduced_motion_close": {
+      "hidden": true,
+      "expanded": "true"
+    },
+    "reduced_motion_fresh_context_open": {
+      "hidden": false,
+      "opacity": "1",
+      "transform": "none",
+      "faceOpacity": "1",
+      "expanded": "true"
+    },
+    "reduced_motion_fresh_context_close": {
+      "hidden": true,
+      "expanded": "false",
+      "state": "skill-door door-blue reveal"
+    }
+  },
+  "console_errors": [],
+  "page_errors": [],
+  "light_theme": {
+    "theme": "light",
+    "bg": "rgb(210, 210, 211)",
+    "primary": "rgb(33, 24, 29)",
+    "accent": "rgb(165, 35, 61)",
+    "contactTitle": "rgb(33, 25, 29)",
+    "contactTitleFill": "rgb(33, 25, 29)",
+    "contactEm": "rgb(163, 35, 61)",
+    "contactEmFill": "rgb(163, 35, 61)",
+    "contactBg": "rgba(0, 0, 0, 0)",
+    "workBg": "rgb(255, 255, 255)"
+  },
+  "selected_work": [
+    {
+      "class": "work-card work-wide reveal",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(33, 24, 29)",
+      "border": "rgba(117, 38, 55, 0.19)"
+    },
+    {
+      "class": "case-study",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(33, 24, 29)",
+      "border": "rgba(165, 35, 61, 0.25) rgb(33, 24, 29) rgb(33, 24, 29)"
+    },
+    {
+      "class": "work-card reveal",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(33, 24, 29)",
+      "border": "rgba(117, 38, 55, 0.19)"
+    },
+    {
+      "class": "case-study",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(33, 24, 29)",
+      "border": "rgba(165, 35, 61, 0.25) rgb(33, 24, 29) rgb(33, 24, 29)"
+    },
+    {
+      "class": "work-card reveal",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(33, 24, 29)",
+      "border": "rgba(117, 38, 55, 0.19)"
+    },
+    {
+      "class": "case-study",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(33, 24, 29)",
+      "border": "rgba(165, 35, 61, 0.25) rgb(33, 24, 29) rgb(33, 24, 29)"
+    },
+    {
+      "class": "work-card reveal",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(33, 24, 29)",
+      "border": "rgba(117, 38, 55, 0.19)"
+    },
+    {
+      "class": "case-study",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(33, 24, 29)",
+      "border": "rgba(165, 35, 61, 0.25) rgb(33, 24, 29) rgb(33, 24, 29)"
+    }
+  ]
+}

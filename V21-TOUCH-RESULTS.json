@@ -1,0 +1,16 @@
+{
+  "open": {
+    "hidden": false,
+    "expanded": "true",
+    "open": true,
+    "transform": "matrix3d(-0.241922, 0, 0.970296, 0, 0, 1, 0, 0, -0.970296, 0, -0.241922, 0, -0.970296, 0, -0.241922, 1)"
+  },
+  "close": {
+    "hidden": true,
+    "expanded": "false",
+    "open": false,
+    "closing": false
+  },
+  "console_errors": [],
+  "page_errors": []
+}

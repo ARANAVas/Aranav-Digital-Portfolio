@@ -1,4 +1,5 @@
-Aranav Digital Portfolio
-Version: V20.2 — Signature Colour Edition
-Base: V20.1 Hero Fix
-Themes: Midnight Blue / Black (dark), Porcelain White / Oxblood Red (light)
+Aranav Digital Portfolio — V21.2 Core Craft Edition
+Dual-theme core refinement · Four realistic interactive skill doors · responsive browser QA
+Dark: midnight blue / black with blue accents. Light: porcelain white / oxblood red with high-contrast type.
+Active assets: portfolio-core-v21.css?v=21.2, script-v21.js?v=21.2, theme-init-v21.js?v=21.2
+Release source only; not yet published to GitHub Pages.

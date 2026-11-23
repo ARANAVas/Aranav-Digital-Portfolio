@@ -57,7 +57,7 @@
       ]
     },
     {
-      "source": "/portfolio-v19.css",
+      "source": "/portfolio-core-v21.css",
       "headers": [
         {
           "key": "Cache-Control",
@@ -66,7 +66,7 @@
       ]
     },
     {
-      "source": "/script-v19.js",
+      "source": "/script-v21.js",
       "headers": [
         {
           "key": "Cache-Control",
@@ -75,7 +75,7 @@
       ]
     },
     {
-      "source": "/theme-init-v19.js",
+      "source": "/theme-init-v21.js",
       "headers": [
         {
           "key": "Cache-Control",

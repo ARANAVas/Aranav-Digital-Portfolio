@@ -1,0 +1,221 @@
+{
+  "release": "V21.2 Core Craft Edition",
+  "source_basis": "V20.3 latest source package, refined without removing signature sections and assets",
+  "pages": {
+    "index.html": {
+      "title": "Aranav Sharma \u2014 Marketing, Brand & Digital Portfolio",
+      "ids": 35,
+      "duplicate_ids": []
+    },
+    "privacy.html": {
+      "title": "Privacy \u2014 Aranav Sharma",
+      "ids": 0,
+      "duplicate_ids": []
+    },
+    "404.html": {
+      "title": "Page not found \u2014 Aranav Sharma",
+      "ids": 0,
+      "duplicate_ids": []
+    }
+  },
+  "checks": {
+    "css_parse_errors": [],
+    "missing_local_assets_or_links": [],
+    "broken_internal_fragment_links": [],
+    "duplicate_ids": {
+      "index.html": [],
+      "privacy.html": [],
+      "404.html": []
+    },
+    "inline_style_attributes": [],
+    "inline_event_handlers": [],
+    "buttons_missing_type": [],
+    "images_missing_alt": [],
+    "external_newtab_missing_rel": [],
+    "skills": {
+      "count": 4,
+      "keys": [
+        "marketing",
+        "seo",
+        "ai",
+        "operations"
+      ],
+      "all_buttons_typed": true,
+      "all_have_accessible_name": true,
+      "all_aria_expanded_false": true,
+      "all_control_detail": true,
+      "detail_hidden_initially": true,
+      "door_hardware": true,
+      "door_caption_present": true
+    },
+    "script": {
+      "uses_transition_events": true,
+      "bounded_transition_fallback": true,
+      "supports_reduced_motion": true,
+      "uses_native_progress_element": true,
+      "no_inline_style_mutation": true,
+      "door_state_machine": true,
+      "door_focus_management": true
+    },
+    "responsive_and_interaction_css": {
+      "four_column_desktop": true,
+      "two_column_mid_small": true,
+      "one_column_under_350": true,
+      "tablet_breakpoint": true,
+      "mobile_breakpoint": true,
+      "door_open_rotation": true,
+      "door_close_rotation": true,
+      "touch_door_animation": true,
+      "reduced_motion_override": true,
+      "reduced_motion_preserves_door_face": true,
+      "dark_theme_tokens": true,
+      "light_theme_tokens": true
+    },
+    "font_tokens_aligned": true,
+    "malformed_keyframes": [],
+    "vercel_cache_rules": {
+      "current_css_cache_rule": true,
+      "current_script_cache_rule": true,
+      "current_theme_init_cache_rule": true
+    },
+    "csp_compatibility": {
+      "index_blocks_inline_styles": true,
+      "no_html_inline_style": true,
+      "native_progress_does_not_use_inline_style": true
+    },
+    "contrast_ratios": {
+      "dark_primary": 17.94892514686584,
+      "dark_secondary": 10.416330493121897,
+      "dark_blue_accent": 9.360947186768193,
+      "light_primary": 17.192531840009405,
+      "light_secondary": 8.91522165886644,
+      "light_red_accent": 7.329579108211615,
+      "light_button": 7.222293442602548
+    },
+    "all_contrast_pairs_at_least_4_5": true,
+    "active_local_stylesheet_count_per_page": {
+      "index.html": 1,
+      "privacy.html": 1,
+      "404.html": 1
+    },
+    "no_inline_style_mutation_csp": true
+  },
+  "unverified_runtime_tests": [
+    "Chromium navigation is blocked by this execution environment (ERR_BLOCKED_BY_ADMINISTRATOR); live rendering could not be exercised here.",
+    "Physical Android, iOS and real-browser interaction tests remain outstanding.",
+    "Lighthouse / Core Web Vitals and live hosting response headers remain outstanding.",
+    "GitHub Pages deployment has not been performed."
+  ],
+  "file_sizes": {
+    "_headers": 1246,
+    "vercel.json": 2550,
+    "index.html": 34040,
+    "README.md": 3424,
+    "theme-init-v21.js": 408,
+    "robots.txt": 96,
+    "V21-QA-REPORT.md": 2442,
+    "portfolio-core-v21.css": 279185,
+    "script-v21.js": 28338,
+    "V21-QA-REPORT.json": 4039,
+    "privacy.html": 3554,
+    "sitemap.xml": 423,
+    "UPLOAD-TO-GITHUB.txt": 1531,
+    "SECURITY-DEPLOYMENT.md": 2321,
+    "V21-CHANGELOG.md": 2492,
+    "404.html": 1336,
+    "VERSION.txt": 406,
+    "V21-DEVICE-CHECKLIST.md": 2786
+  },
+  "css_bytes": 279185,
+  "css_local_url_references": [],
+  "browser_runtime": {
+    "method": "Chromium in-memory harness: original HTML, CSS and JavaScript loaded into an about:blank document; local assets mapped to data URIs. External Google Fonts and the CSP meta tag were omitted only inside this harness; source CSP directives were separately inspected statically.",
+    "viewport_widths_css_px": [
+      320,
+      350,
+      360,
+      375,
+      390,
+      414,
+      430,
+      600,
+      760,
+      768,
+      820,
+      900,
+      1024,
+      1100,
+      1280,
+      1440,
+      1600,
+      1920,
+      2560
+    ],
+    "viewport_count": 19,
+    "all_viewports_no_horizontal_overflow": true,
+    "all_viewports_hero_card_video_overlap_area_zero": true,
+    "all_skill_doors_desktop_open_close": true,
+    "mobile_touch_open_close": {
+      "open": {
+        "hidden": false,
+        "expanded": "true",
+        "open": true,
+        "transform": "matrix3d(-0.241922, 0, 0.970296, 0, 0, 1, 0, 0, -0.970296, 0, -0.241922, 0, -0.970296, 0, -0.241922, 1)"
+      },
+      "close": {
+        "hidden": true,
+        "expanded": "false",
+        "open": false,
+        "closing": false
+      },
+      "console_errors": [],
+      "page_errors": []
+    },
+    "next_skill_and_escape_close": true,
+    "mobile_menu_open_close": true,
+    "theme_toggle": {
+      "theme": "light",
+      "pressed": "true",
+      "label": "Switch to dark theme"
+    },
+    "case_study_disclosure": true,
+    "contact_dialog_open_close": true,
+    "reduced_motion_fresh_context_open_close": true,
+    "sticky_header_background": {
+      "desktop": {
+        "dark": "rgb(7, 13, 23)",
+        "light": "rgb(255, 253, 252)"
+      },
+      "mobile": {
+        "dark": "rgb(7, 13, 23)",
+        "light": "rgb(255, 253, 252)"
+      }
+    },
+    "mobile_light_caption": true,
+    "console_errors": [],
+    "page_errors": [],
+    "missing_assets_in_harness": []
+  },
+  "performance_snapshot": {
+    "local_stylesheet_requests_per_page": {
+      "index.html": 1,
+      "privacy.html": 1,
+      "404.html": 1
+    },
+    "stylesheet_raw_bytes": 279185,
+    "stylesheet_gzip_bytes": 53527,
+    "javascript_raw_bytes": 28338,
+    "javascript_gzip_bytes": 9257,
+    "assets_total_bytes": 1188331,
+    "hero_video_preload": "none",
+    "supporting_photos": "lazy loaded with responsive srcset variants"
+  },
+  "test_limitations": [
+    "Viewport checks use desktop Chromium emulation, not physical iPhone/Android hardware.",
+    "The browser harness disables external Google Font network requests; Manrope/Cormorant fallbacks are used for these render checks.",
+    "The CSP meta element was removed only inside the in-memory harness to permit inlining local source; CSP compatibility was checked statically, not tested as a live HTTP response header.",
+    "Firefox, Safari and other browser engines were not tested.",
+    "Lighthouse / Core Web Vitals and live hosting response headers were not run.",
+    "The site has not been deployed to GitHub Pages."
+  ]
+}
